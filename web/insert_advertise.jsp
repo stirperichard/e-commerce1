@@ -71,9 +71,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <textarea name="Text1" cols="100" rows="12"></textarea>
                         </div>
 
+
+
                         <a class="news-letter" href="#">
                             <label class="checkbox"><input type="checkbox" name="checkbox" ><i> </i>Is a charitable product ?</label>
                         </a>
+
+
 
 
                         <div class="clearfix"></div>
