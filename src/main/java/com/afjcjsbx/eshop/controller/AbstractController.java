@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.afjcjsbx.eshop.utils.SessionUtil;
 
-/**
- * @author Umesh A
- *
- */
+
 public abstract class AbstractController {
 
 
