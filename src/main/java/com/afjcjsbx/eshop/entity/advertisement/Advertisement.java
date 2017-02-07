@@ -12,12 +12,6 @@ public class Advertisement extends Entity{
 
     private Product product;
 
-    @Override
-    public String toString() {
-        return "Advertisement{" +
-                "product=" + product +
-                '}';
-    }
 
     public Product getProduct() {
         return product;
