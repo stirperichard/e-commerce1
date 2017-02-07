@@ -7,10 +7,24 @@ import com.afjcjsbx.eshop.entity.Entity;
  */
 public class Review extends Entity {
 
+    private Integer ratings;
     private String description;
     private String username;
-    private int stars;
 
+
+    public Review(Integer ratings, String description, String username) {
+        this.ratings = ratings;
+        this.description = description;
+        this.username = username;
+    }
+
+    public Integer getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Integer ratings) {
+        this.ratings = ratings;
+    }
 
     public String getDescription() {
         return description;
@@ -20,7 +34,6 @@ public class Review extends Entity {
         this.description = description;
     }
 
-
     public String getUsername() {
         return username;
     }
@@ -28,13 +41,4 @@ public class Review extends Entity {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public int getStars() {
-        return stars;
-    }
-
-    public void setStars(int stars) {
-        this.stars = stars;
-    }
-
 }

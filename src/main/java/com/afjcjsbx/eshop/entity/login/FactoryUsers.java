@@ -11,12 +11,8 @@ public class FactoryUsers {
                 return new Producer();
             case "C":
                 return new Consumer();
-                /*
             case "A":
                 return new Admin();
-                break;
-                */
-
             default:
                 return new Guest();
         }

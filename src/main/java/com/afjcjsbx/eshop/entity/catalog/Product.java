@@ -1,6 +1,7 @@
 package com.afjcjsbx.eshop.entity.catalog;
 
 import com.afjcjsbx.eshop.entity.Entity;
+import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.Producer;
 import com.afjcjsbx.eshop.entity.review.Review;
 
@@ -13,27 +14,45 @@ public class Product extends Entity{
 	private String description;
 	private String SKU;
 	private String picture;
-	private float price;
-	private int discountPercentage;
-	private float shipmentCost;
-	private Producer producer;
+	private Float price;
+	private Integer discountPercentage;
+	private Float shipmentCost;
+	private AbstractUser producer;
 	private Category category;
 	private String manufacturer;
-    private String keywords;
+    private List<Keyword> keywords;
     private List<Review> reviews;
     private boolean isCharitable;
     private boolean availability;
+
+
+	public Product() {}
+
+	public Product(int id, String name, String description, String picture, Float price, Integer discountPercentage, Float shipmentCost, AbstractUser producer, Category category, String manufacturer, List<Keyword> keywords, List<Review> reviews, boolean isCharitable, boolean availability) {
+		super(id);
+		this.name = name;
+		this.description = description;
+		this.picture = picture;
+		this.price = price;
+		this.discountPercentage = discountPercentage;
+		this.shipmentCost = shipmentCost;
+		this.producer = producer;
+		this.category = category;
+		this.manufacturer = manufacturer;
+		this.keywords = keywords;
+		this.reviews = reviews;
+		this.isCharitable = isCharitable;
+		this.availability = availability;
+	}
 
 
 	public String getName() {
 		return name;
 	}
 
-	public Product setName(String name) {
+	public void setName(String name) {
 		this.name = name;
-        return this;
-
-    }
+	}
 
 	public String getDescription() {
 		return description;
@@ -59,36 +78,35 @@ public class Product extends Entity{
 		this.picture = picture;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public Product setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
-        return this;
-    }
+	}
 
-	public int getDiscountPercentage() {
+	public Integer getDiscountPercentage() {
 		return discountPercentage;
 	}
 
-	public void setDiscountPercentage(int discountPercentage) {
+	public void setDiscountPercentage(Integer discountPercentage) {
 		this.discountPercentage = discountPercentage;
 	}
 
-	public float getShipmentCost() {
+	public Float getShipmentCost() {
 		return shipmentCost;
 	}
 
-	public void setShipmentCost(float shipmentCost) {
+	public void setShipmentCost(Float shipmentCost) {
 		this.shipmentCost = shipmentCost;
 	}
 
-	public Producer getProducer_email() {
+	public AbstractUser getProducer() {
 		return producer;
 	}
 
-	public void setProducer_email(Producer producer) {
+	public void setProducer(AbstractUser producer) {
 		this.producer = producer;
 	}
 
@@ -108,11 +126,11 @@ public class Product extends Entity{
 		this.manufacturer = manufacturer;
 	}
 
-	public String getKeywords() {
+	public List<Keyword> getKeywords() {
 		return keywords;
 	}
 
-	public void setKeywords(String keywords) {
+	public void setKeywords(List<Keyword> keywords) {
 		this.keywords = keywords;
 	}
 
@@ -132,19 +150,6 @@ public class Product extends Entity{
 		isCharitable = charitable;
 	}
 
-    public Product getProduct(){
-        return this;
-    }
-
-
-	public Producer getProducer() {
-		return producer;
-	}
-
-	public void setProducer(Producer producer) {
-		this.producer = producer;
-	}
-
 	public boolean isAvailability() {
 		return availability;
 	}
@@ -152,5 +157,4 @@ public class Product extends Entity{
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
 	}
-
 }
