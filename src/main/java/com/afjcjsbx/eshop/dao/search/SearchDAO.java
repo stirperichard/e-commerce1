@@ -39,7 +39,7 @@ public class SearchDAO {
 
                 p.setId(productID);
                 p.setName(productName);
-                p.setPhoto(photo);
+                p.setPicture(photo);
                 p.setDiscountPercentage(discount);
                 p.setPrice(price);
 

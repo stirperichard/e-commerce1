@@ -46,7 +46,7 @@ public class SearchController {
                 p.setId(productID);
                 p.setName(productName);
                 p.setDescription(description);
-                p.setPhoto(photo);
+                p.setPicture(photo);
                 p.setDiscountPercentage(discount);
                 p.setPrice(price);
 

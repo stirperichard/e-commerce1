@@ -13,17 +13,17 @@ public class Product extends Entity{
 	private String name;
 	private String description;
 	private String SKU;
-	private String photo;
+	private String picture;
 	private float price;
 	private int discountPercentage;
 	private float shipmentCost;
 	private Producer producer;
 	private Category category;
-	private Manufacturer manufacturer;
-    private List<Keyword> keywords;
+	private String manufacturer;
+    private String keywords;
     private List<Review> reviews;
     private boolean isCharitable;
-
+    private boolean availability;
 
 
 	public String getName() {
@@ -52,12 +52,12 @@ public class Product extends Entity{
 		this.SKU = SKU;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	public float getPrice() {
@@ -101,19 +101,19 @@ public class Product extends Entity{
 		this.category = category;
 	}
 
-	public Manufacturer getManufacturer() {
+	public String getManufacturer() {
 		return manufacturer;
 	}
 
-	public void setManufacturer(Manufacturer manufacturer) {
+	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
-	public List<Keyword> getKeywords() {
+	public String getKeywords() {
 		return keywords;
 	}
 
-	public void setKeywords(List<Keyword> keywords) {
+	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
 
@@ -137,5 +137,21 @@ public class Product extends Entity{
         return this;
     }
 
+
+	public Producer getProducer() {
+		return producer;
+	}
+
+	public void setProducer(Producer producer) {
+		this.producer = producer;
+	}
+
+	public boolean isAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
+	}
 
 }

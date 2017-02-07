@@ -1,18 +1,14 @@
 package com.afjcjsbx.eshop.controller.advertisement;
 
 import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
-import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.login.FactoryUsers;
 import com.afjcjsbx.eshop.entity.login.Producer;
 import com.afjcjsbx.eshop.utils.ConnectionManager;
 import com.afjcjsbx.eshop.utils.Query;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdvertisementController {
-
 
 
     public boolean insert_advertisement(Advertisement advertisement, Producer producer) {
@@ -21,10 +17,18 @@ public class AdvertisementController {
 
             PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_ADVERTISE);
 
-            statement.setString(1, "bill");
-            statement.setString(2, "secretpass");
-            statement.setString(3, "Bill Gates");
-            statement.setString(4, "bill.gates@microsoft.com");
+            statement.setString(1, producer.getEmail());
+            statement.setString(2, advertisement.getProduct().getCategory().getName());
+            statement.setString(3, advertisement.getProduct().getName());
+            statement.setString(4, advertisement.getProduct().getDescription());
+            statement.setString(5, advertisement.getProduct().getPicture());
+            statement.setString(6, Float.toString(advertisement.getProduct().getPrice()));
+            statement.setString(7, advertisement.getProduct().getManufacturer());
+            statement.setString(8, (advertisement.getProduct().isCharitable()) ? "1" : "0");
+            statement.setString(9, advertisement.getProduct().getKeywords());
+            statement.setString(10, Integer.toString(advertisement.getProduct().getDiscountPercentage()));
+            statement.setString(11, Float.toString(advertisement.getProduct().getShipmentCost()));
+            statement.setString(12, (advertisement.getProduct().isAvailability()) ? "1" : "0");
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -45,10 +49,11 @@ public class AdvertisementController {
         try {
 
             PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.UPDATE_ADVERTISE);
-            statement.setString(1, "123456789");
-            statement.setString(2, "William Henry Bill Gates");
-            statement.setString(3, "bill.gates@microsoft.com");
-            statement.setString(4, "bill");
+
+            statement.setString(1, advertisement.getProduct().getName());
+            statement.setString(2, advertisement.getProduct().getDescription());
+            statement.setString(3, Float.toString(advertisement.getProduct().getPrice()));
+            statement.setString(4, Integer.toString(advertisement.getProduct().getDiscountPercentage()));
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -75,10 +80,7 @@ public class AdvertisementController {
 
             PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.DELETE_ADVERTISE);
 
-            statement.setString(1, "bill");
-            statement.setString(2, "secretpass");
-            statement.setString(3, "Bill Gates");
-            statement.setString(4, "bill.gates@microsoft.com");
+            statement.setString(1, Integer.toString(advertisement.getProduct().getId()));
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {

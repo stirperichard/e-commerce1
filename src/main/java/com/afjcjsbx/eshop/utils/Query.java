@@ -17,7 +17,7 @@ public class Query {
             "ProductDescription, Picture, Price, Manufacturer, isCharitable, Keywords, DiscountPercentage, " +
             "ShipmentCost, Availability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    public static final String UPDATE_ADVERTISE = "UPDATE Products SET ProductName=?, ProductDescription=?, DiscountPercentage=? WHERE ProductID=?";
+    public static final String UPDATE_ADVERTISE = "UPDATE Products SET ProductName=?, ProductDescription=?, Price=?, DiscountPercentage=? WHERE ProductID=?";
 
     public static final String DELETE_ADVERTISE = "DELETE FROM Products WHERE ProductID=?";
 

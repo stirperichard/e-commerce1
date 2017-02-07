@@ -915,7 +915,7 @@ p span.overline{
 	display: block;
 	text-transform: uppercase;
 }
-.login-right input[type="text"], .login-right input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
 	border: 1px solid #555;
 	outline-color:#08538C;
 	width: 96%;
