@@ -10,7 +10,7 @@ import com.afjcjsbx.eshop.entity.login.Producer;
  */
 public class Advertisement extends Entity{
 
-    private Product product;
+   /* private Product product;*/
 
 
     public Product getProduct() {
