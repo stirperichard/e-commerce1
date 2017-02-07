@@ -56,11 +56,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <form>
 
 
+
                     <div class="register-top-grid">
                         <h3>INSERT ADVERTISE</h3>
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Product Name<label>*</label></span>
-                            <input type="text">
+                            <input type="text" rows="12">
                         </div>
                         <div style="visibility: hidden" >
                             <span>Hidden<label>*</label></span>
@@ -69,6 +70,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Product Description<label>*</label></span>
                             <textarea name="Text1" cols="100" rows="12"></textarea>
+                        </div>
+
+                        <div style="visibility: hidden" >
+                            <span>Hidden<label>*</label></span>
+                            <input type="text">
                         </div>
 
 
@@ -132,6 +138,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="clearfix"></div>
                     </form>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>

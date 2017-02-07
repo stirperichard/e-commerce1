@@ -2,7 +2,6 @@ package com.afjcjsbx.eshop.entity.search;
 
 
 import com.afjcjsbx.eshop.controller.search.SearchController;
-import com.afjcjsbx.eshop.entity.catalog.ConcreteProduct;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class SearchBean {
     private int maxDiscount;
     private String[] types = null;
     private String[] brands = null;
-    private HashMap<Product, ArrayList<ConcreteProduct>> result = new HashMap<Product, ArrayList<ConcreteProduct>>();
+    private ArrayList<Product> result = new ArrayList<>();
 
 
 
@@ -87,17 +86,17 @@ public class SearchBean {
         this.brands = brands;
     }
 
-    public HashMap<Product, ArrayList<ConcreteProduct>> getResult() {
+    public ArrayList<Product> getResult() {
         return result;
     }
 
-    public void setResult(HashMap<Product, ArrayList<ConcreteProduct>> result) {
+    public void setResult(ArrayList<Product> result) {
         this.result = result;
     }
 
     public void validate() throws Exception {
         //If the search is a basic one I have to check the presence of all the fields.
-        this.result = new HashMap<Product, ArrayList<ConcreteProduct>>();
+        this.result = new ArrayList<Product>();
 
         if(this.search.length() < 3) {
             throw new Exception("Incorrect input data, please enter 3 character");

@@ -3,7 +3,7 @@ import com.afjcjsbx.eshop.enums.Roles;
 
 import static com.afjcjsbx.eshop.enums.Roles.CONSUMER;
 
-public class Customer extends AbstractUser {
+public class Consumer extends AbstractUser {
 
 	@Override
 	public Roles getType() {

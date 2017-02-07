@@ -99,7 +99,7 @@ public class ShoppingCartController extends AbstractController{
 
 		/*
 
-	public boolean deleteProductInCart(Product p, Customer c) throws ProductNotFoundException {
+	public boolean deleteProductInCart(Product p, Consumer c) throws ProductNotFoundException {
 		if(c.getShoppingCart().deleteProduct(p.getPid())){
 			return true;
 		}else{
@@ -108,7 +108,7 @@ public class ShoppingCartController extends AbstractController{
 	}
 
 
-	public void eptyCart(Customer c){
+	public void eptyCart(Consumer c){
 		c.getShoppingCart().emptyCart();
 	}
 

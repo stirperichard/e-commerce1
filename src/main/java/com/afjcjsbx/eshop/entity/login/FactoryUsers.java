@@ -10,7 +10,7 @@ public class FactoryUsers {
             case "P":
                 return new Producer();
             case "C":
-                return new Customer();
+                return new Consumer();
                 /*
             case "A":
                 return new Admin();

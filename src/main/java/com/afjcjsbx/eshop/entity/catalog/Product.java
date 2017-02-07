@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Product extends Entity{
 
-
 	private String name;
 	private String description;
 	private String SKU;

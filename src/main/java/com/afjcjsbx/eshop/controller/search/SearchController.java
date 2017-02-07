@@ -1,6 +1,5 @@
 package com.afjcjsbx.eshop.controller.search;
 
-import com.afjcjsbx.eshop.entity.catalog.ConcreteProduct;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 import com.afjcjsbx.eshop.entity.search.SearchBean;
 import com.afjcjsbx.eshop.utils.ConnectionManager;
@@ -14,10 +13,9 @@ import java.util.HashMap;
 public class SearchController {
 
 
-    public static HashMap<Product, ArrayList<ConcreteProduct>> search(SearchBean searchBean) {
+    public static ArrayList<Product> search(SearchBean searchBean) {
 
-        HashMap<Product, ArrayList<ConcreteProduct>> final_result = new HashMap<Product, ArrayList<ConcreteProduct>>();
-
+        ArrayList<Product> final_result = new ArrayList<>();
 
         return final_result;
     }

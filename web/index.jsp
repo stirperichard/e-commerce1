@@ -1,6 +1,6 @@
 <%@ page import="com.afjcjsbx.eshop.controller.shoppingcart.ShoppingCartController" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="com.afjcjsbx.eshop.entity.login.Customer" %>
+<%@ page import="com.afjcjsbx.eshop.entity.login.Consumer" %>
 <%@ page import="com.afjcjsbx.eshop.constants.Constants" %>
 <!DOCTYPE HTML>
 <html>
