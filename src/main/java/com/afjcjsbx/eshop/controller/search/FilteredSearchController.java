@@ -18,15 +18,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class SearchController {
+public class FilteredSearchController {
 
 
-    public static ArrayList<Product> search(SearchBean searchBean) {
+    protected ArrayList<Product> search() throws SQLException {
 
-        ArrayList<Product> final_result = new ArrayList<>();
+        PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
+        ResultSet resultSet = statement.executeQuery();
 
-        return final_result;
+        ArrayList<Product> products = new ArrayList<>();
+
+        while (resultSet.next()) {
+            products.add(retrieveProductInfoFromDatabaseQuery(resultSet));
+        }
+        return products;
     }
 
 
@@ -56,43 +63,46 @@ public class SearchController {
     }
 
 
-    public Product searchProductByID(String pid) {
+    public Product searchProductByID(String pid) throws SQLException {
 
-        Product p = new Product();
+        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
+        preparedStatement.setString(1, pid);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        System.err.println("query:" + preparedStatement.toString());
+
+        if (resultSet.next()) {
+            return retrieveProductInfoFromDatabaseQuery(resultSet);
+        }
+
+        throw new SQLException();
+
+    }
+
+
+    public List<Product> searchByString(String search) {
+
+        List<Product> result = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
-            preparedStatement.setString(1, pid);
+            PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
+            preparedStatement.setString(1, "%" + search + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             System.err.println("query:" + preparedStatement.toString());
 
             while (resultSet.next()) {
 
-                int productID = resultSet.getInt("ProductID");
-                String productName = resultSet.getString("ProductName");
-                String description = resultSet.getString("ProductDescription");
-                String photo = resultSet.getString("Picture");
-                int discount = resultSet.getInt("Discount");
-                float price = resultSet.getFloat("Price");
-
-                p.setId(productID);
-                p.setName(productName);
-                p.setDescription(description);
-                p.setPicture(photo);
-                p.setDiscountPercentage(discount);
-                p.setPrice(price);
-
-                System.out.println(productID + " " + productName);
-
+                Product p = retrieveProductInfoFromDatabaseQuery(resultSet);
+                result.add(p);
             }
+
         } catch (Exception e) {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
 
-        return p;
-
+        return result;
     }
 
 

@@ -1,11 +1,10 @@
 package com.afjcjsbx.eshop.entity.search;
 
 
-import com.afjcjsbx.eshop.controller.search.SearchController;
+import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SearchBean {
 
@@ -104,7 +103,7 @@ public class SearchBean {
 
 
         try {
-            this.result = SearchController.search(this);
+            this.result = FilteredSearchController.search(this);
         } catch (Exception e) {
             throw e;
         }

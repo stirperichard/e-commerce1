@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.controller.shoppingcart;
 
-import com.afjcjsbx.eshop.controller.search.SearchController;
+import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class AddToCartServlet extends HttpServlet {
         String product_id = request.getParameter("productid");
 
 
-        SearchController sc = new SearchController();
+        FilteredSearchController sc = new FilteredSearchController();
 
         Product p = sc.searchProductByID(product_id);
 

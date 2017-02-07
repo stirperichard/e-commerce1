@@ -1,8 +1,5 @@
 package com.afjcjsbx.eshop.controller.shoppingcart;
 
-import com.afjcjsbx.eshop.controller.search.SearchController;
-import com.afjcjsbx.eshop.entity.catalog.Product;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

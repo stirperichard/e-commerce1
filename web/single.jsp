@@ -1,11 +1,11 @@
-<%@ page import="com.afjcjsbx.eshop.controller.search.SearchController" %>
+<%@ page import="com.afjcjsbx.eshop.controller.search.FilteredSearchController" %>
 <%@ page import="com.afjcjsbx.eshop.entity.catalog.Product" %>
 <%@ page import="com.afjcjsbx.eshop.constants.Constants" %>
 <%@ page import="static com.afjcjsbx.eshop.utils.SessionUtil.getSessionAttribute" %>
 <%@ page import="com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    SearchController searchController = new SearchController();
+    FilteredSearchController filteredSearchController = new FilteredSearchController();
 %>
 
 <!DOCTYPE HTML>
@@ -52,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         if (request.getParameter("pid") == null) {
             out.println("Error in product");
         } else {
-            p = searchController.searchProductByID(request.getParameter("pid"));
+            p = filteredSearchController.searchProductByID(request.getParameter("pid"));
             request.setAttribute(Constants.PRODUCT, p);
         }
 
