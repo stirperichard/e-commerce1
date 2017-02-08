@@ -39,7 +39,7 @@ public class ShopProductController {
     }
 
 
-    public boolean insert_advertisement(Product product, Producer producer) {
+    public boolean insertProduct(Product product, Producer producer) {
 
         try {
 
@@ -72,7 +72,7 @@ public class ShopProductController {
     }
 
 
-    public boolean update_advertisement(Advertisement advertisement) {
+    public boolean updateproduct(Advertisement advertisement) {
 
         try {
 
@@ -102,7 +102,7 @@ public class ShopProductController {
     }
 
 
-    public boolean delete_advertisement(Advertisement advertisement) {
+    public boolean deleteProduct(Advertisement advertisement) {
 
         try {
 

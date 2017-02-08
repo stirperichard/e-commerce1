@@ -19,10 +19,10 @@ public class LoginServlet extends HttpServlet {
 
         try {
 
-            String username = request.getParameter("username");
+            String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            AbstractUser user = LoginController.retrieveOwnerInfoByEmailAndPassword(username, password);
+            AbstractUser user = LoginController.retrieveUserInfoByEmailAndPassword(email, password);
 
             if (user != null) {
                 if (user.isValid()) {

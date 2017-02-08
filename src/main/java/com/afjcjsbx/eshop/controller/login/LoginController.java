@@ -32,7 +32,7 @@ public class LoginController extends AbstractController {
                 u_surname = resultSet.getString("Surname"),
                 u_username = resultSet.getString("Username"),
                 u_email = resultSet.getString("Mail"),
-                u_password = resultSet.getString("password"),
+                u_password = resultSet.getString("Password"),
                 u_type = resultSet.getString("Type");
 
 
@@ -66,11 +66,14 @@ public class LoginController extends AbstractController {
     }
 
 
-    static AbstractUser retrieveOwnerInfoByEmailAndPassword(String email, String password) throws SQLException {
+    static AbstractUser retrieveUserInfoByEmailAndPassword(String email, String password) throws SQLException {
 
         PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
         preparedStatement.setString(1, email);
-        preparedStatement.setString(1, password);
+        preparedStatement.setString(2, password);
+
+        System.out.println("Welcome " + email + " " + password);
+
 
         ResultSet resultSet = preparedStatement.executeQuery();
 

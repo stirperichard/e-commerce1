@@ -13,29 +13,57 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ShoppingCartController shoppingCartController = new ShoppingCartController();
+
+    AbstractUser u;
+
+    if (session.getAttribute("currentSessionUser") != null) {
+        u = (AbstractUser) session.getAttribute("currentSessionUser");
+    }else{
+        u = new Guest();
+    }
 %>
+
 
 <!--header-->
 <div class="header">
+
+
     <div class="header-top">
         <div class="container">
+
+
             <div class="lang_list">
                 <select tabindex="4" class="dropdown1">
-                    <option value="" class="label" value="">En</option>
-                    <option value="1">English</option>
-                    <option value="2">French</option>
-                    <option value="3">German</option>
+                    <option value="English" class="label" value="">English</option>
                 </select>
             </div>
+
             <div class="top-right">
+
+
                 <ul>
 
-                    <li class="text"><% if(session.getAttribute("currentSessionUser") == null) { %>
+
+                    <li class="text">
+
+                        <% if (u.getType() == Roles.GUEST) { %>
                         <a href="login.jsp">login</a>
-                            <% } else { %>
-                        <a href="login.jsp"><%
-                                out.print(((AbstractUser) session.getAttribute("currentSessionUser")).getUsername());
-                            }%></a>
+                        <% } else { %>
+
+                        <div class="dropdown">
+                            <button class="dropbtn"><%= u.getUsername().toUpperCase() %></button>
+
+                            <div class="dropdown-content">
+                                <% if (u.getType() == Roles.PRODUCER) { %>
+                                <a href="insert_advertise.jsp">Sell a product</a>
+                                <% } %>
+                                <a href="user_profile.jsp">Profile</a>
+                                <a href="logout">Logout</a>
+
+                            </div>
+                        </div>
+                        <% } %>
+
                     </li>
                     <li>
                         <div class="cart box_1">

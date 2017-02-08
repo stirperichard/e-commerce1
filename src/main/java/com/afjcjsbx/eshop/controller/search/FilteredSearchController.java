@@ -1,8 +1,13 @@
 package com.afjcjsbx.eshop.controller.search;
 
 import com.afjcjsbx.eshop.controller.login.LoginController;
+import com.afjcjsbx.eshop.controller.search.decoration.CategoryResearch;
+import com.afjcjsbx.eshop.controller.search.decoration.DiscountResearch;
+import com.afjcjsbx.eshop.controller.search.decoration.ManufacturerResearch;
+import com.afjcjsbx.eshop.controller.search.decoration.PriceResearch;
 import com.afjcjsbx.eshop.entity.catalog.Category;
 import com.afjcjsbx.eshop.entity.catalog.Keyword;
+import com.afjcjsbx.eshop.entity.catalog.Manufacturer;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.FactoryUsers;
@@ -103,6 +108,23 @@ public class FilteredSearchController {
         }
 
         return result;
+    }
+
+
+
+
+    public ArrayList<Product> startResearch(Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
+                                            Integer maxDisount, Manufacturer manufacturer) throws SQLException {
+
+        FilteredSearchController fsc = new FilteredSearchController();
+        fsc = new PriceResearch(minPrice, maxPrice, fsc);
+
+        if (category != null) fsc = new CategoryResearch(category, fsc);
+        if (minDiscount > 0) fsc = new DiscountResearch(minDiscount, fsc);
+        if (manufacturer != null) fsc = new ManufacturerResearch(manufacturer, fsc);
+
+        return fsc.search();
+
     }
 
 

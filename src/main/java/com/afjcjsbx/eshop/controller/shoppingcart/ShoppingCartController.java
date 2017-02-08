@@ -15,6 +15,7 @@ import java.util.List;
 public class ShoppingCartController extends AbstractController{
 
 
+
 	public float getCartPrice(HttpServletRequest request) {
 
 		AbstractUser user = getSessionAttribute("currentSessionUser", request);
@@ -27,22 +28,33 @@ public class ShoppingCartController extends AbstractController{
 		float price = 0.0f;
 		for(int i = 0; i < shoppingCart.getShoppingCartItems().size(); i++){
 			Product p = shoppingCart.getShoppingCartItems().get(i);
-			price = price + p.getPrice();
+			price = price + p.getPrice() + p.getShipmentCost();
 		}
 		return price;
 	}
 
 
-	public void addProduct(HttpServletRequest request, Product p){
+	public boolean addProduct(HttpServletRequest request, Product p){
 
 		AbstractUser user = getSessionAttribute("currentSessionUser", request);
 
 		if(user == null){
 			user = new Guest();
 		}
+
+		for(int i = 0; i < user.getShoppingCart().getShoppingCartItems().size(); i++){
+
+			if(p.getId() == user.getShoppingCart().getShoppingCartItems().get(i).getId()){
+				System.err.println("PRODOTTO GIA PRESENTE NEL CARRELLO");
+				return false;
+			}
+		}
+
 		user.getShoppingCart().getShoppingCartItems().add(p);
 
 		setSessionAttribute("currentSessionUser", user, request);
+
+		return true;
 	}
 
 

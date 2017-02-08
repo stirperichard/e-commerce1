@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  * Created by afjcjsbx on 03/02/17.
  */
-public class AddToCartServlet extends HttpServlet {
+public class RemoveToCartServlet extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -20,24 +20,10 @@ public class AddToCartServlet extends HttpServlet {
 
         String product_id = request.getParameter("productid");
 
-        FilteredSearchController sc = new FilteredSearchController();
-
-        Product p = null;
-        try {
-            p = sc.searchProductByID(product_id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         ShoppingCartController scc = new ShoppingCartController();
+        scc.removeProduct(request, Integer.parseInt(product_id));
 
-        if (scc.addProduct(request, p)) {
-            response.sendRedirect("checkout.jsp"); //error page
-        }else{
-            response.sendRedirect("single.jsp?pid=" + product_id + "&option=alreadyInCart"); //error page
-        }
+        response.sendRedirect("checkout.jsp"); //error page
 
     }
-
-
 }

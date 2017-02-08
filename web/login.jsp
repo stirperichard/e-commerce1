@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <form action="login">
                             <div>
                                 <span>Email Address<label>*</label></span>
-                                <input type="text" name="username">
+                                <input type="text" name="email">
                             </div>
                             <div>
                                 <span>Password<label>*</label></span>
