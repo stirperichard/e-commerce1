@@ -1,5 +1,6 @@
 package com.afjcjsbx.eshop.controller.product;
 
+import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
 import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
 import com.afjcjsbx.eshop.entity.catalog.Keyword;
 import com.afjcjsbx.eshop.entity.catalog.Product;
@@ -8,26 +9,34 @@ import com.afjcjsbx.eshop.utils.ConnectionManager;
 import com.afjcjsbx.eshop.utils.Query;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ShopProductController {
 
 
 	/*
-    public String displayProductWithReference(){}
-	
-
-	public String displayProduct(){}
-
-
-	public String display(){}
 
 	public ReadableProductPrice calculatePrice() {}
 
 	private List<ReadableProduct> relatedItems(){}
 	
     */
+
+
+    public Product displayProduct(String pid) throws SQLException {
+
+        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
+        preparedStatement.setString(1, pid);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            return FilteredSearchController.retrieveProductInfoFromDatabaseQuery(resultSet);
+        }
+
+        throw new SQLException();
+    }
 
 
     public boolean insert_advertisement(Product product, Producer producer) {
@@ -44,7 +53,7 @@ public class ShopProductController {
             statement.setString(6, Float.toString(product.getPrice()));
             statement.setString(7, product.getManufacturer());
             statement.setString(8, product.isCharitable() ? "1" : "0");
-            statement.setString(9, product.getKeywords());
+            statement.setString(9, keywordsToString(product.getKeywords()));
             statement.setString(10, Integer.toString(product.getDiscountPercentage()));
             statement.setString(11, Float.toString(product.getShipmentCost()));
             statement.setString(12, product.isAvailability() ? "1" : "0");
@@ -115,13 +124,14 @@ public class ShopProductController {
     }
 
 
-    private String keywordsToString(ArrayList<Keyword> keywords) {
+    private String keywordsToString(List<Keyword> keywords) {
         StringBuilder string_keywords = new StringBuilder();
 
         for (Keyword keyword : keywords) {
             string_keywords.append(keyword).append(", ");
         }
+
+        return string_keywords.toString();
     }
 }
 
-}
