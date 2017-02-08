@@ -5,22 +5,11 @@ import com.afjcjsbx.eshop.entity.catalog.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.Guest;
 import com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class ShoppingCartController extends AbstractController{
-
-
-	@RequestMapping(value = "/test/{argument}", method = RequestMethod.GET)
-	public void Controller(@PathVariable("argument") String argument) {
-
-		System.out.println("PORCO DIO !!" + argument);
-	}
-
 
 	public float getCartPrice(HttpServletRequest request) {
 

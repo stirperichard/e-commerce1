@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.controller.registration;
 
-import com.afjcjsbx.eshop.entity.login.Customer;
+import com.afjcjsbx.eshop.entity.login.Consumer;
 import com.afjcjsbx.eshop.entity.login.Producer;
 
 /**

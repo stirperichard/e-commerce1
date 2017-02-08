@@ -693,9 +693,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <form>
                                 <fieldset>
                                     <legend>Account type</legend>
-                                    Customer <input type="radio" name="account_type" value="customer"/><br>
-                                    Producer  <input type="radio" name="account_type" value="producer"/><br>
-                                    Charity <input type="radio" name="account_type" value="charity"/>
+                                    <input type="radio" name="account_type" value="customer"/> Consumer <br>
+                                    <input type="radio" name="account_type" value="producer"/> Producer <br>
+                                    <input type="radio" name="account_type" value="charity"/> Charity
                                 </fieldset>
                             </form>
                         </div>

@@ -95,36 +95,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Picture Link<label></label></span>
                             <input type="text">
                         </div>
-                        <div class="wow fadeInRight" data-wow-delay="0.4s">
-                            <span>Confirm Password<label>*</label></span>
+                        <div style="visibility: hidden">
+                            <span>Hidden div<label>*</label></span>
                             <input type="text">
                         </div>
                     </div>
 
-
-                   <h3>PRICE INFORMATION</h3>
-
+                    <h3>PRICE INFORMATION</h3>
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Price<label>*</label></span>
                             <input type="text">
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
-                            <span>Discount percentage<label></label></span>
+                            <span>Discount percentage<label style="visibility:hidden">*</label></span>
                             <input type="text">
                         </div>
                     </div>
 
 
-                   <h3>SHIPMENT INFORMATION</h3>
+                    <h3>SHIPMENT INFORMATION</h3>
 
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Shipment cost<label>*</label></span>
                             <input type="text">
                         </div>
-                        <div class="wow fadeInRight" data-wow-delay="0.4s">
-                            <span>Confirm Password<label>*</label></span>
+                        <div style="visibility: hidden">
+                            <span>Hidden div<label>*</label></span>
                             <input type="text">
                         </div>
                     </div>
