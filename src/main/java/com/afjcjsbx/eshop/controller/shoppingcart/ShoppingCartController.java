@@ -15,13 +15,6 @@ import java.util.List;
 public class ShoppingCartController extends AbstractController{
 
 
-	@RequestMapping(value = "/test/{argument}", method = RequestMethod.GET)
-	public void Controller(@PathVariable("argument") String argument) {
-
-		System.out.println("PORCO DIO !!" + argument);
-	}
-
-
 	public float getCartPrice(HttpServletRequest request) {
 
 		AbstractUser user = getSessionAttribute("currentSessionUser", request);
