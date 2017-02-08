@@ -93,21 +93,6 @@ public class SearchBean {
         this.result = result;
     }
 
-    public void validate() throws Exception {
-        //If the search is a basic one I have to check the presence of all the fields.
-        this.result = new ArrayList<Product>();
-
-        if(this.search.length() < 3) {
-            throw new Exception("Incorrect input data, please enter 3 character");
-        }
-
-
-        try {
-            this.result = FilteredSearchController.search(this);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
 
 
 }

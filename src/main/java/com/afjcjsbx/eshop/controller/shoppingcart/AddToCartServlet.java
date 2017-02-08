@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 
 /**
  * Created by afjcjsbx on 03/02/17.
@@ -23,7 +24,12 @@ public class AddToCartServlet extends HttpServlet {
 
         FilteredSearchController sc = new FilteredSearchController();
 
-        Product p = sc.searchProductByID(product_id);
+        Product p = null;
+        try {
+            p = sc.searchProductByID(product_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         ShoppingCartController scc = new ShoppingCartController();
         scc.addProduct(request, p);
