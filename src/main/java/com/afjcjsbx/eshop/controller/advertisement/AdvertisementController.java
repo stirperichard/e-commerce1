@@ -44,6 +44,11 @@ public class AdvertisementController {
     }
 
 
+    @Override
+    public String toString() {
+        return "AdvertisementController{}";
+    }
+
     public boolean update_advertisement(Advertisement advertisement) {
 
         try {
