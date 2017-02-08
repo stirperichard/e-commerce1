@@ -1,18 +1,21 @@
 package com.afjcjsbx.eshop.controller.product;
 
 import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
+import com.afjcjsbx.eshop.entity.catalog.Keyword;
+import com.afjcjsbx.eshop.entity.catalog.Product;
 import com.afjcjsbx.eshop.entity.login.Producer;
 import com.afjcjsbx.eshop.utils.ConnectionManager;
 import com.afjcjsbx.eshop.utils.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ShopProductController {
 
 
 	/*
-	public String displayProductWithReference(){}
+    public String displayProductWithReference(){}
 	
 
 	public String displayProduct(){}
@@ -27,26 +30,24 @@ public class ShopProductController {
     */
 
 
-
-
-    public boolean insert_advertisement(Advertisement advertisement, Producer producer) {
+    public boolean insert_advertisement(Product product, Producer producer) {
 
         try {
 
             PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_ADVERTISE);
 
             statement.setString(1, producer.getEmail());
-            statement.setString(2, advertisement.getProduct().getCategory().getName());
-            statement.setString(3, advertisement.getProduct().getName());
-            statement.setString(4, advertisement.getProduct().getDescription());
-            statement.setString(5, advertisement.getProduct().getPicture());
-            statement.setString(6, Float.toString(advertisement.getProduct().getPrice()));
-            statement.setString(7, advertisement.getProduct().getManufacturer());
-            statement.setString(8, (advertisement.getProduct().isCharitable()) ? "1" : "0");
-            statement.setString(9, advertisement.getProduct().getKeywords());
-            statement.setString(10, Integer.toString(advertisement.getProduct().getDiscountPercentage()));
-            statement.setString(11, Float.toString(advertisement.getProduct().getShipmentCost()));
-            statement.setString(12, (advertisement.getProduct().isAvailability()) ? "1" : "0");
+            statement.setString(2, product.getCategory().getName());
+            statement.setString(3, product.getName());
+            statement.setString(4, product.getDescription());
+            statement.setString(5, product.getPicture());
+            statement.setString(6, Float.toString(product.getPrice()));
+            statement.setString(7, product.getManufacturer());
+            statement.setString(8, product.isCharitable() ? "1" : "0");
+            statement.setString(9, product.getKeywords());
+            statement.setString(10, Integer.toString(product.getDiscountPercentage()));
+            statement.setString(11, Float.toString(product.getShipmentCost()));
+            statement.setString(12, product.isAvailability() ? "1" : "0");
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -112,5 +113,15 @@ public class ShopProductController {
 
         return false;
     }
+
+
+    private String keywordsToString(ArrayList<Keyword> keywords) {
+        StringBuilder string_keywords = new StringBuilder();
+
+        for (Keyword keyword : keywords) {
+            string_keywords.append(keyword).append(", ");
+        }
+    }
+}
 
 }
