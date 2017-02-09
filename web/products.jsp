@@ -198,8 +198,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         $("#slider-range").slider({
                             range: true,
                             min: 0,
-                            max: 100000,
-                            values: [500, 100000],
+                            max: 9999,
+                            values: [0, 9999],
                             slide: function (event, ui) {
                                 $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                             }
@@ -283,35 +283,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     %>
 
-                        <div class="product-grid" onclick="location.href='single.jsp?pid=<%= product.getId() %>';" style="cursor: pointer;">
-                            <div class="product-img b-link-stripe b-animate-go  thickbox">
+                    <div class="product-grid" onclick="location.href='single.jsp?pid=<%= product.getId() %>';"
+                         style="cursor: pointer;">
+                        <div class="product-img b-link-stripe b-animate-go  thickbox">
 
-                                <a href="ciao" data-toggle="modal" data-target="#myModal12" class="offer-img">
-                                    <img src="<%= product.getPicture() %>" class="img-responsive" alt=""/>
-                                </a>
-                                <div class="product-info simpleCart_shelfItem">
-                                    <div class="product-info-cust prt_name">
-                                        <h4><%= product.getName() %>
-                                        </h4>
-                                        <span class="item_price"><%= product.getPrice() %></span>
-                                        <div class="ofr">
-                                            <p class="pric1">
-                                                <del></del>
-                                            </p>
-                                            <p class="disc">[<%= product.getDiscountPercentage() %>% Off]</p>
-                                        </div>
+                            <img src="<%= product.getPicture() %>" class="img-responsive" alt=""/>
+
+                            <div class="product-info simpleCart_shelfItem">
+                                <div class="product-info-cust prt_name">
+                                    <h4><%= product.getName() %>
+                                    </h4>
+                                    <span class="item_price"><%= product.getPrice() %></span>
+                                    <div class="ofr">
+                                        <p class="pric1">
+                                            <del></del>
+                                        </p>
+                                        <p class="disc">[<%= product.getDiscountPercentage() %>% Off]</p>
                                     </div>
-                                    <div class="b-wrapper">
-                                        <h4 class="b-animate b-from-left  b-delay03">
-                                            <button> +</button>
-                                        </h4>
-                                    </div>
-                                    <div class="clearfix"></div>
                                 </div>
-
-
+                                <div class="b-wrapper">
+                                    <h4 class="b-animate b-from-left  b-delay03">
+                                        <button> +</button>
+                                    </h4>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
+
+
                         </div>
+                    </div>
 
 
                     <%

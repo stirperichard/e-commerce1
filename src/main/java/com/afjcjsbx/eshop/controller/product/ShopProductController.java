@@ -43,7 +43,7 @@ public class ShopProductController {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_ADVERTISE);
+            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_PRODUCT);
 
             statement.setString(1, producer.getEmail());
             statement.setString(2, product.getCategory().getName());
@@ -72,16 +72,16 @@ public class ShopProductController {
     }
 
 
-    public boolean updateproduct(Advertisement advertisement) {
+    public boolean updateproduct(Product p) {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.UPDATE_ADVERTISE);
+            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.UPDATE_PRODUCT);
 
-            statement.setString(1, advertisement.getProduct().getName());
-            statement.setString(2, advertisement.getProduct().getDescription());
-            statement.setString(3, Float.toString(advertisement.getProduct().getPrice()));
-            statement.setString(4, Integer.toString(advertisement.getProduct().getDiscountPercentage()));
+            statement.setString(1, p.getName());
+            statement.setString(2, p.getDescription());
+            statement.setString(3, Float.toString(p.getPrice()));
+            statement.setString(4, Integer.toString(p.getDiscountPercentage()));
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -102,17 +102,16 @@ public class ShopProductController {
     }
 
 
-    public boolean deleteProduct(Advertisement advertisement) {
+    public boolean deleteProduct(Product p) {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.DELETE_ADVERTISE);
+            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.DELETE_PRODUCT);
 
-            statement.setString(1, Integer.toString(advertisement.getProduct().getId()));
+            statement.setString(1, Integer.toString(p.getId()));
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
-                System.out.println("A new user was inserted successfully!");
                 return true;
             }
 

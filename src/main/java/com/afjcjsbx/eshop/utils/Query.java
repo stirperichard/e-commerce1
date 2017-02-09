@@ -3,6 +3,9 @@ package com.afjcjsbx.eshop.utils;
 
 public class Query {
 
+    public static final String RETRIEVE_CATEGORIES = "SELECT * FROM Categories";
+
+
     public static final String FIND_REGISTERED_USER = "SELECT * FROM Users WHERE Mail = ? and password = ?";
 
     public static final String FIND_USER_BY_EMAIL = "SELECT * FROM Users WHERE Mail = ?";
@@ -18,12 +21,12 @@ public class Query {
             "FROM Products " +
             "WHERE Products.ProductID = ?";
 
-    public static final String INSERT_ADVERTISE = "INSERT INTO Products (ProducerID, Category, ProductName, " +
+    public static final String INSERT_PRODUCT = "INSERT INTO Products (ProducerID, Category, ProductName, " +
             "ProductDescription, Picture, Price, Manufacturer, isCharitable, Keywords, DiscountPercentage, " +
             "ShipmentCost, Availability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    public static final String UPDATE_ADVERTISE = "UPDATE Products SET ProductName=?, ProductDescription=?, Price=?, DiscountPercentage=? WHERE ProductID=?";
+    public static final String UPDATE_PRODUCT = "UPDATE Products SET ProductName=?, ProductDescription=?, Price=?, DiscountPercentage=? WHERE ProductID=?";
 
-    public static final String DELETE_ADVERTISE = "DELETE FROM Products WHERE ProductID=?";
+    public static final String DELETE_PRODUCT = "DELETE FROM Products WHERE ProductID=?";
 
 }

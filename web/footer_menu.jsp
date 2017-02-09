@@ -18,12 +18,12 @@
         <div class="col-md-3 footer-grid ">
             <h3>Menu</h3>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.jsp">Home</a></li>
                 <li><a href="kitchen.html">Kitchen</a></li>
                 <li><a href="care.html">Personal Care</a></li>
                 <li><a href="hold.html">Household</a></li>
                 <li><a href="codes.html">Short Codes</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.jsp">Contact</a></li>
             </ul>
         </div>
         <div class="col-md-3 footer-grid ">
@@ -32,7 +32,7 @@
                 <li><a href="shipping.html">Shipping</a></li>
                 <li><a href="terms.html">Terms & Conditions</a></li>
                 <li><a href="faqs.html">Faqs</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.jsp">Contact</a></li>
                 <li><a href="offer.html">Online Shopping</a></li>
 
             </ul>
