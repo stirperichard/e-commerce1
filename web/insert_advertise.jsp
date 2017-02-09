@@ -57,7 +57,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="main-1">
         <div class="container">
             <div class="register">
-                <form>
 
 
                     <div class="register-top-grid">
@@ -153,8 +152,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </form>
                 <div class="clearfix"></div>
                 <div class="register-but">
-                    <form action="insertproduct">
-                        <input type="submit" value="submit">
+                    <form action="insertproduct" method="post">
+
+                    <input type="submit" value="submit">
                         <div class="clearfix"></div>
                     </form>
                 </div>
