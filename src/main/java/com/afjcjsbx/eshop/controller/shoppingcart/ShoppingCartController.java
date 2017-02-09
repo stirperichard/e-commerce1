@@ -5,6 +5,7 @@ import com.afjcjsbx.eshop.entity.catalog.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.Guest;
 import com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart;
+//prova cambiamnwto
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
