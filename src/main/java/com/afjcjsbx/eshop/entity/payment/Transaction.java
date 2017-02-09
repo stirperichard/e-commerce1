@@ -13,6 +13,11 @@ public class Transaction {
     private Consumer consumer;
     private Product product;
 
+    public Transaction(Producer producer, Consumer consumer, Product product) {
+        this.producer = producer;
+        this.consumer = consumer;
+        this.product = product;
+    }
 
     public Producer getProducer() {
         return producer;

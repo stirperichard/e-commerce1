@@ -1,14 +1,14 @@
 package com.afjcjsbx.eshop.exceptions;
-public class ProductNotFoundException extends Exception {
+public class ProductNotFound extends Exception {
 	
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ProductNotFoundException(){}
+	public ProductNotFound(){}
     
-    public ProductNotFoundException(String msg){
+    public ProductNotFound(String msg){
         super(msg);
     }
     
