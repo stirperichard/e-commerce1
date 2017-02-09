@@ -104,7 +104,7 @@ public class ShoppingCartController extends AbstractController{
 
 		/*
 
-	public boolean deleteProductInCart(Product p, Consumer c) throws ProductNotFoundException {
+	public boolean deleteProductInCart(Product p, Consumer c) throws ProductNotFound {
 		if(c.getShoppingCart().deleteProduct(p.getPid())){
 			return true;
 		}else{
@@ -119,12 +119,12 @@ public class ShoppingCartController extends AbstractController{
 
 
 
-	public Product getProductFromCart(int pid) throws ProductNotFoundException {
+	public Product getProductFromCart(int pid) throws ProductNotFound {
 		for(Product p : cart){
 			if(p.getPid() == pid){
 				return p;
 			}else{
-				throw new ProductNotFoundException();
+				throw new ProductNotFound();
 			}
 		}
 		return null;
@@ -142,7 +142,7 @@ public class ShoppingCartController extends AbstractController{
 	}
 
 
-	public boolean deleteProduct(int pid) throws ProductNotFoundException {
+	public boolean deleteProduct(int pid) throws ProductNotFound {
 
 		for(int i = 0; i < cart.size(); i++){
 
@@ -156,7 +156,7 @@ public class ShoppingCartController extends AbstractController{
 				return true;
 			}
 		}
-		throw new ProductNotFoundException("Product with ID " + pid + " is not Found.");
+		throw new ProductNotFound("Product with ID " + pid + " is not Found.");
 	}
 
 
