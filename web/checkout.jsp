@@ -108,13 +108,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
             <div class="cart-header">
-                <div class="close1"></div>
+
+                <div align="right">
+
+                    <a class="acount-btn" onclick="location.href='removetocart?productid=<%= product.getId() %>';"
+                       style="cursor: pointer;">x</a>
+
+                </div>
+
                 <div class="cart-sec simpleCart_shelfItem">
                     <div class="cart-item cyc">
-                        <img src="<%= product.getPhoto() %>" class="img-responsive" alt="">
+                        <img src="<%= product.getPicture() %>" class="img-responsive" alt="">
                     </div>
                     <div class="cart-item-info">
-                        <h3><a href="#"><%= product.getName() %></a><span>Pickup time:</span></h3>
+                        <h3><a href="#"><%= product.getName() %>
+                        </a><span>Pickup time:</span></h3>
                         <ul class="qty">
                             <li><p><%= product.getShipmentCost() %> delivery</p></li>
                         </ul>
@@ -124,15 +132,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
 
-                    <div class="btn_form" align="right">
-                        <a href="#" class="add-cart item_add">Checkout</a>
+                    <br><br>
+
+                    <div align="right">
+                        <a class="acount-btn" onclick="location.href='addtocart?productid=<%= product.getId() %>';"
+                           style="cursor: pointer;">Checkout</a>
                     </div>
+
 
                     <div class="clearfix"></div>
 
                 </div>
             </div>
-
 
 
             <%

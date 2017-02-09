@@ -1,11 +1,10 @@
 package com.afjcjsbx.eshop.entity.search;
 
 
-import com.afjcjsbx.eshop.controller.search.SearchController;
+import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SearchBean {
 
@@ -94,21 +93,6 @@ public class SearchBean {
         this.result = result;
     }
 
-    public void validate() throws Exception {
-        //If the search is a basic one I have to check the presence of all the fields.
-        this.result = new ArrayList<Product>();
-
-        if(this.search.length() < 3) {
-            throw new Exception("Incorrect input data, please enter 3 character");
-        }
-
-
-        try {
-            this.result = SearchController.search(this);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
 
 
 }

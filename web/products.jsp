@@ -287,7 +287,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="product-img b-link-stripe b-animate-go  thickbox">
 
                                 <a href="ciao" data-toggle="modal" data-target="#myModal12" class="offer-img">
-                                    <img src="<%= product.getPhoto() %>" class="img-responsive" alt=""/>
+                                    <img src="<%= product.getPicture() %>" class="img-responsive" alt=""/>
                                 </a>
                                 <div class="product-info simpleCart_shelfItem">
                                     <div class="product-info-cust prt_name">

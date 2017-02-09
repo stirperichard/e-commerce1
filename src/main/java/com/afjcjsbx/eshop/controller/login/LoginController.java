@@ -25,44 +25,63 @@ public class LoginController extends AbstractController {
 
 */
 
-    public static AbstractUser login(String username, String password) {
 
-        AbstractUser user = null;
+    private static AbstractUser retrieveUserInfoFromDatabaseQuery(ResultSet resultSet) throws SQLException {
 
-        try{
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
-            statement.setString(1, username);
-            //statement.setString(2, UtilityMD5.stringByHashingPassword(password));
-            statement.setString(2, password);
+        String u_name = resultSet.getString("Name"),
+                u_surname = resultSet.getString("Surname"),
+                u_username = resultSet.getString("Username"),
+                u_email = resultSet.getString("Mail"),
+                u_password = resultSet.getString("Password"),
+                u_type = resultSet.getString("Type");
 
-            ResultSet resultSet = statement.executeQuery();
 
-            // if user does not exist set the isValid variable to false
-            if (!resultSet.next()) {
-                System.out.println("Sorry, you are not a registered user! Please sign up first");
-                return null;
-            } else {
-                //if user exists set the isValid variable to true
-                String type = resultSet.getString("Type");
-                String firstName = resultSet.getString("Name");
-                String lastName = resultSet.getString("Surname");
-                String user_name = resultSet.getString("Username");
-                String email = resultSet.getString("Mail");
+        AbstractUser user = FactoryUsers.get(u_type);
 
-                user = FactoryUsers.get(type);
-                user.setName(firstName);
-                user.setSurname(lastName);
-                user.setUsername(user_name);
-                user.setEmail(email);
+        user.setName(u_name);
+        user.setSurname(u_surname);
+        user.setUsername(u_username);
+        user.setEmail(u_email);
+        user.setPassword(u_password);
+        user.setValid(true);
 
-                System.out.println("Welcome " + firstName + " " + lastName);
-                user.setValid(true);
-            }
-        } catch (SQLException e) {
-            System.out.println("Log In failed: An Exception has occurred!");
-            e.printStackTrace();
-        }
+        System.out.println("Welcome " + u_name + " " + u_surname);
+
         return user;
+    }
+
+
+    public static AbstractUser retrieveOwnerInfoByEmail(String email) throws SQLException {
+
+        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_USER_BY_EMAIL);
+        preparedStatement.setString(1, email);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            return retrieveUserInfoFromDatabaseQuery(resultSet);
+        }
+
+        throw new SQLException();
+    }
+
+
+    static AbstractUser retrieveUserInfoByEmailAndPassword(String email, String password) throws SQLException {
+
+        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
+        preparedStatement.setString(1, email);
+        preparedStatement.setString(2, password);
+
+        System.out.println("Welcome " + email + " " + password);
+
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            return retrieveUserInfoFromDatabaseQuery(resultSet);
+        }
+
+        throw new SQLException();
     }
 
 

@@ -1,6 +1,5 @@
 package com.afjcjsbx.eshop.controller.search;
 
-import com.afjcjsbx.eshop.dao.search.SearchDAO;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 
 import javax.servlet.RequestDispatcher;
@@ -24,10 +23,8 @@ public class SearchServlet extends HttpServlet {
 
             if (!search.isEmpty()) {
 
-                SearchDAO searchDAO = new SearchDAO();
-                List<Product> productlist = searchDAO.search(search);
-
-                System.out.println(productlist.size() +  " lungheezzaaa");
+                FilteredSearchController filteredSearchController = new FilteredSearchController();
+                List<Product> productlist = filteredSearchController.searchByString(search);
 
                 request.setAttribute("productlist", productlist);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/products.jsp");

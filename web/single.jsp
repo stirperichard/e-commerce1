@@ -1,11 +1,12 @@
-<%@ page import="com.afjcjsbx.eshop.controller.search.SearchController" %>
+<%@ page import="com.afjcjsbx.eshop.controller.search.FilteredSearchController" %>
 <%@ page import="com.afjcjsbx.eshop.entity.catalog.Product" %>
 <%@ page import="com.afjcjsbx.eshop.constants.Constants" %>
 <%@ page import="static com.afjcjsbx.eshop.utils.SessionUtil.getSessionAttribute" %>
 <%@ page import="com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    SearchController searchController = new SearchController();
+    FilteredSearchController filteredSearchController = new FilteredSearchController();
 %>
 
 <!DOCTYPE HTML>
@@ -52,7 +53,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         if (request.getParameter("pid") == null) {
             out.println("Error in product");
         } else {
-            p = searchController.searchProductByID(request.getParameter("pid"));
+            try {
+                p = filteredSearchController.searchProductByID(request.getParameter("pid"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
             request.setAttribute(Constants.PRODUCT, p);
         }
 
@@ -70,42 +76,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="single-grids">
 
 
+                <!-- The popup -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div align="center"><p>Product already in cart</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <script>
+                    // Get the modal
+                    var modal = document.getElementById('myModal');
+
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function (event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+
+
+                <script type="text/javascript"
+                        src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var url = window.location.href;
+                        option = url.match(/option=(.*)/)[1];
+                        if (option == 'alreadyInCart') {
+                            showDiv();
+                        }
+                    });
+                    function showDiv() {
+                        modal.style.display = "block";
+                    }
+                </script>
+
+
                 <div class="col-md-4 single-grid">
                     <div class="flexslider">
                         <ul class="slides">
-                            <li data-thumb="<%= p.getPhoto() %>">
-                                <div class="thumb-image"><img src="<%= p.getPhoto() %>" data-imagezoom="true"
+                            <li data-thumb="<%= p.getPicture() %>">
+                                <div class="thumb-image"><img src="<%= p.getPicture() %>" data-imagezoom="true"
                                                               class="img-responsive"></div>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 single-grid simpleCart_shelfItem">
-                    <h3><%= p.getName() %></h3>
-                    <p>Condition New With the boom of the swimwear market, there are so many places providing swimming
-                        costumes that you may not know where to look first. If you want to facilitate your search, drop
-                        in at our one-stop store, and you’ll be able to equip yourself properly for water
-                        activities.</p>
-                    <ul class="size">
-                        <h3>Size</h3>
-                        <li><a href="#">25</a></li>
-                        <li><a href="#">26</a></li>
-                        <li><a href="#">27</a></li>
-                        <li><a href="#">28</a></li>
-                        <li><a href="#">29</a></li>
-                        <li><a href="#">30</a></li>
-                        <li><a href="#">31</a></li>
-                        <li><a href="#">32</a></li>
-                        <li><a href="#">33</a></li>
-                    </ul>
-                    <ul class="size">
-                        <h3>Length</h3>
-                        <li><a href="#">32</a></li>
-                        <li><a href="#">34</a></li>
-                    </ul>
+                    <h3><%= p.getName() %>
+                    </h3>
+                    <p><%= p.getDescription() %>
+                    </p>
+
                     <div class="galry">
                         <div class="prices">
-                            <h5 class="item_price"><%= p.getPrice() %></h5>
+                            <h5 class="item_price"><%= p.getPrice() %>
+                            </h5>
                         </div>
                         <div class="rating">
                             <span>☆</span>
@@ -116,17 +156,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <p class="qty"> Qty : </p><input min="1" type="number" id="quantity" name="quantity" value="1"
-                                                     class="form-control input-small">
-                    <div class="btn_form">
-                        <form action="addtocart">
-                            <input type="hidden" name="productid" value="<%= p.getId() %>">
-                            <input type="submit">Add to cart</input>
-                        </form>
-                    </div>
+
+                    <br><br>
+                    <a class="acount-btn" onclick="location.href='addtocart?productid=<%= p.getId() %>';"
+                       style="cursor: pointer;">Add to cart</a>
+                    <br><br>
+
                     <div class="tag">
-                        <p>Category : <a href="#"> Bikinis </a></p>
-                        <p>Tag : <a href="#"> Lorem ipsum </a></p>
+                        <p>Category : <a href="#"> </a></p>
+                        <p>Ketwords : <a href="#"> Lorem ipsum </a></p>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -137,9 +175,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="collpse">
         <div class="container">
             <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
-
-
-
 
 
                 <div class="panel panel-default">
@@ -187,7 +222,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-
 
 
                 <div class="panel panel-default">
