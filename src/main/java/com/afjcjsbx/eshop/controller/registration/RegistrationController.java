@@ -1,5 +1,7 @@
 package com.afjcjsbx.eshop.controller.registration;
 
+import com.afjcjsbx.eshop.entity.login.Consumer;
+import com.afjcjsbx.eshop.entity.login.Producer;
 
 /**
  * Created by Richard on 07/02/2017.
