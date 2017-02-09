@@ -1,3 +1,7 @@
+<%@ page import="com.afjcjsbx.eshop.entity.catalog.CatalogueSingleton" %>
+<%@ page import="com.afjcjsbx.eshop.controller.catalogue.CatalogueController" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.afjcjsbx.eshop.entity.catalog.Category" %>
 <!--
 Au<!--
 Author: W3layouts
@@ -56,14 +60,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <form>
 
 
-
                     <div class="register-top-grid">
                         <h3>INSERT ADVERTISE</h3>
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Product Name<label>*</label></span>
                             <input type="text" rows="12">
                         </div>
-                        <div style="visibility: hidden" >
+                        <div style="visibility: hidden">
                             <span>Hidden<label>*</label></span>
                             <input type="text">
                         </div>
@@ -72,18 +75,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <textarea name="Text1" cols="100" rows="12"></textarea>
                         </div>
 
-                        <div style="visibility: hidden" >
+                        <div style="visibility: hidden">
                             <span>Hidden<label>*</label></span>
                             <input type="text">
                         </div>
 
 
-
                         <a class="news-letter" href="#">
-                            <label class="checkbox"><input type="checkbox" name="checkbox" ><i> </i>Is a charitable product ?</label>
+                            <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Is a charitable
+                                product ?</label>
                         </a>
-
-
 
 
                         <div class="clearfix"></div>
@@ -96,13 +97,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="text">
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
-                            <span>Confirm Password<label>*</label></span>
-                            <input type="text">
+                            <span>Category</span>
+                            <FORM>
+                                <SELECT NAME="category" id="category">
+
+                                    <%
+
+                                        CatalogueController catalogueController = new CatalogueController();
+
+                                        ArrayList<Category> categories = catalogueController.retrieveCategories();
+
+                                        for (int i = 0; i < categories.size(); i++) {
+                                    %>
+                                    <option value="<%= categories.get(i).getName() %>"><%= categories.get(i).getName() %></option>
+                                    <%
+                                        }
+
+                                    %>
+
+
+                                </SELECT>
+                            </FORM>
                         </div>
                     </div>
 
 
-                   <h3>PRICE INFORMATION</h3>
+                    <h3>PRICE INFORMATION</h3>
 
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
@@ -116,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
 
 
-                   <h3>SHIPMENT INFORMATION</h3>
+                    <h3>SHIPMENT INFORMATION</h3>
 
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
@@ -133,13 +153,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </form>
                 <div class="clearfix"></div>
                 <div class="register-but">
-                    <form>
+                    <form action="insertproduct">
                         <input type="submit" value="submit">
                         <div class="clearfix"></div>
                     </form>
                 </div>
-
-
 
 
             </div>
