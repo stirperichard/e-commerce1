@@ -1,8 +1,7 @@
-package com.afjcjsbx.eshop.entity.catalog;
+package com.afjcjsbx.eshop.entity.catalogue;
 
 import com.afjcjsbx.eshop.entity.Entity;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.login.Producer;
 import com.afjcjsbx.eshop.entity.review.Review;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class Product extends Entity{
 
 	private String name;
 	private String description;
-	private String SKU;
+	private String SKU; // Stock Keeping Unit
 	private String picture;
 	private Float price;
 	private Integer discountPercentage;

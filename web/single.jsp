@@ -1,5 +1,5 @@
 <%@ page import="com.afjcjsbx.eshop.controller.search.FilteredSearchController" %>
-<%@ page import="com.afjcjsbx.eshop.entity.catalog.Product" %>
+<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Product" %>
 <%@ page import="com.afjcjsbx.eshop.constants.Constants" %>
 <%@ page import="static com.afjcjsbx.eshop.utils.SessionUtil.getSessionAttribute" %>
 <%@ page import="com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart" %>

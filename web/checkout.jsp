@@ -1,4 +1,4 @@
-<%@ page import="com.afjcjsbx.eshop.entity.catalog.Product" %>
+<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Product" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>

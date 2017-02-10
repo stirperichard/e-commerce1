@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.entity.payment;
 
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.Consumer;
 import com.afjcjsbx.eshop.entity.login.Producer;
 

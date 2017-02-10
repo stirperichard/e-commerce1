@@ -5,7 +5,7 @@ import com.afjcjsbx.eshop.entity.Entity;
 /**
  * Created by afjcjsbx on 06/01/17.
  */
-public class Shippers extends Entity {
+public class CourierService extends Entity { // ad esempio: TNT, UPS
 
     private String name;
     private String telephone;

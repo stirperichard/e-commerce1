@@ -1,7 +1,7 @@
 package com.afjcjsbx.eshop.entity.shoppingcart;
 
 import com.afjcjsbx.eshop.entity.ShopEntity;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 
 import java.util.ArrayList;
 import java.util.List;

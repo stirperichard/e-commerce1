@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.controller.search;
 
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

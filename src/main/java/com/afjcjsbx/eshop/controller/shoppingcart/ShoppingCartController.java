@@ -1,13 +1,10 @@
 package com.afjcjsbx.eshop.controller.shoppingcart;
 
 import com.afjcjsbx.eshop.controller.AbstractController;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.Guest;
 import com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -104,7 +101,7 @@ public class ShoppingCartController extends AbstractController{
 
 		/*
 
-	public boolean deleteProductInCart(Product p, Consumer c) throws ProductNotFound {
+	public boolean deleteProductInCart(Product p, Consumer c) throws ProductNotFoundException {
 		if(c.getShoppingCart().deleteProduct(p.getPid())){
 			return true;
 		}else{
@@ -119,12 +116,12 @@ public class ShoppingCartController extends AbstractController{
 
 
 
-	public Product getProductFromCart(int pid) throws ProductNotFound {
+	public Product getProductFromCart(int pid) throws ProductNotFoundException {
 		for(Product p : cart){
 			if(p.getPid() == pid){
 				return p;
 			}else{
-				throw new ProductNotFound();
+				throw new ProductNotFoundException();
 			}
 		}
 		return null;
@@ -142,7 +139,7 @@ public class ShoppingCartController extends AbstractController{
 	}
 
 
-	public boolean deleteProduct(int pid) throws ProductNotFound {
+	public boolean deleteProduct(int pid) throws ProductNotFoundException {
 
 		for(int i = 0; i < cart.size(); i++){
 
@@ -156,7 +153,7 @@ public class ShoppingCartController extends AbstractController{
 				return true;
 			}
 		}
-		throw new ProductNotFound("Product with ID " + pid + " is not Found.");
+		throw new ProductNotFoundException("Product with ID " + pid + " is not Found.");
 	}
 
 
