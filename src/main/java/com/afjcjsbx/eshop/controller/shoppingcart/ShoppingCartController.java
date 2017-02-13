@@ -29,16 +29,25 @@ public class ShoppingCartController extends AbstractController{
 	}
 
 
-	public void addProduct(HttpServletRequest request, Product p){
+	public boolean addProduct(HttpServletRequest request, Product p){
 
 		AbstractUser user = getSessionAttribute("currentSessionUser", request);
 
 		if(user == null){
 			user = new Guest();
 		}
-		user.getShoppingCart().getShoppingCartItems().add(p);
 
+		for(int i=0; i < user.getShoppingCart().getShoppingCartItems().size(); i++){
+
+			if (p.getId() == user.getShoppingCart().getShoppingCartItems().get(i).getId()) {
+				System.err.println("PRODOTTO GIà PRESENTE NEL CARRELLO");
+				return false;
+			}
+		}
+
+		user.getShoppingCart().getShoppingCartItems().add(p);
 		setSessionAttribute("currentSessionUser", user, request);
+		return true;
 	}
 
 
