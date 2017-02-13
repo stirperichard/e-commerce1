@@ -2,7 +2,7 @@ package com.afjcjsbx.eshop.entity.catalogue;
 
 import com.afjcjsbx.eshop.entity.Entity;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.review.Review;
+import com.afjcjsbx.eshop.entity.feedback.Review;
 
 import java.util.List;
 

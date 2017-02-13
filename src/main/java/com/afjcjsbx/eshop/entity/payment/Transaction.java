@@ -4,27 +4,27 @@ import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.Consumer;
 import com.afjcjsbx.eshop.entity.login.Producer;
 
-/**
- * Created by afjcjsbx on 07/02/17.
- */
+
 public class Transaction {
 
-    private Producer producer;
+    private Producer seller;
     private Consumer consumer;
     private Product product;
+    private DeliveryMethod delivery; // TODO creare queste due interfacce? quando ho la conferma su applicazione pattern
+    private PaymentMethod payment;
 
-    public Transaction(Producer producer, Consumer consumer, Product product) {
-        this.producer = producer;
+    public Transaction(Producer producer, Consumer consumer, Product product, DeliveryMethod delivery, PaymentMethod payment) {
+        this.seller = producer;
         this.consumer = consumer;
         this.product = product;
     }
 
     public Producer getProducer() {
-        return producer;
+        return seller;
     }
 
     public void setProducer(Producer producer) {
-        this.producer = producer;
+        this.seller = producer;
     }
 
     public Consumer getConsumer() {

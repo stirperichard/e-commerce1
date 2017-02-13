@@ -10,7 +10,7 @@ import com.afjcjsbx.eshop.entity.catalogue.Keyword;
 import com.afjcjsbx.eshop.entity.catalogue.Manufacturer;
 import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.review.Review;
+import com.afjcjsbx.eshop.entity.feedback.Review;
 import com.afjcjsbx.eshop.utils.ConnectionManager;
 import com.afjcjsbx.eshop.utils.Query;
 

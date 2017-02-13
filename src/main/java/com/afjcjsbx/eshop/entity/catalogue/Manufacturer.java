@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.entity.catalogue;
 
-public class Manufacturer {
+public class Manufacturer { // TODO manufacturer vs producer?
 	
 
 	private String description;
