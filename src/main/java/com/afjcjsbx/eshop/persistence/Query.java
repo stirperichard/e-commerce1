@@ -1,4 +1,4 @@
-package com.afjcjsbx.eshop.utils;
+package com.afjcjsbx.eshop.persistence;
 
 
 public class Query {

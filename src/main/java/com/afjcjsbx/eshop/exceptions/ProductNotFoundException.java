@@ -1,4 +1,5 @@
 package com.afjcjsbx.eshop.exceptions;
+
 public class ProductNotFoundException extends Exception {
 	
     /**

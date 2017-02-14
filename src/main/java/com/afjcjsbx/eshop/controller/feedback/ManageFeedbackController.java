@@ -13,17 +13,17 @@ import java.util.List;
  *
  * Il Controllore è singleton
  */
-public class ManageFeedbackControl {
+public class ManageFeedbackController {
 
-	private static ManageFeedbackControl instance;
+	private static ManageFeedbackController instance;
 
-	public static ManageFeedbackControl getInstance() {
+	public static ManageFeedbackController getInstance() {
 		if (instance == null)
-			instance = new ManageFeedbackControl();
+			instance = new ManageFeedbackController();
 		return instance;
 	}
 
-	private ManageFeedbackControl() {
+	private ManageFeedbackController() {
 
 	}
 

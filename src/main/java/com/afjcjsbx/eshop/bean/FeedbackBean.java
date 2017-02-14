@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.bean;
 
-import com.afjcjsbx.eshop.controller.feedback.ManageFeedbackControl;
+import com.afjcjsbx.eshop.controller.feedback.ManageFeedbackController;
 import com.afjcjsbx.eshop.entity.feedback.Review;
 import com.afjcjsbx.eshop.entity.catalogue.Product;
 

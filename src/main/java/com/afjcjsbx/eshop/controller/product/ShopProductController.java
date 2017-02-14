@@ -5,8 +5,8 @@ import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
 import com.afjcjsbx.eshop.entity.catalogue.Keyword;
 import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.Producer;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.persistence.ConnectionManager;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -4,9 +4,8 @@ package com.afjcjsbx.eshop.controller.login;
 import com.afjcjsbx.eshop.controller.AbstractController;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.FactoryUsers;
-import com.afjcjsbx.eshop.entity.login.Guest;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.persistence.ConnectionManager;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

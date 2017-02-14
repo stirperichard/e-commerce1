@@ -1,9 +1,9 @@
-package com.afjcjsbx.eshop.utils;
+package com.afjcjsbx.eshop.persistence;
 
 import java.sql.*;
 
 
-public class ConnectionManager {
+public class ConnectionManager { // TODO sarebbe il DataSource
 
     private static final String JDBC_CONNECTION_URL =
             "jdbc:mysql://localhost/mydb";

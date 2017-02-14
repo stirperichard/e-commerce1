@@ -1,7 +1,6 @@
-package com.afjcjsbx.eshop.dao;
+package com.afjcjsbx.eshop.persistence;
 
 import com.afjcjsbx.eshop.entity.login.Guest;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
