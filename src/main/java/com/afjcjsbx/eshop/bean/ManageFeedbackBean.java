@@ -9,14 +9,17 @@ import java.util.List;
 /**
  * Created by Davide on 13/02/2017.
  */
-public class FeedbackBean {
+public class ManageFeedbackBean {
 	/**
 	 * La bean ha come attributi gli input dell'utente, inviatigli dallo strato view, in questo caso sarà una pagina JSP
 	 */
-	private String username; // TODO assumiamo ora di doverlo passare dalla view, possiamo fare in modo di saperlo già?
-    //private String password;
+    private int productId; // reviewed product
+	private String username; // TODO assumiamo ora di doverlo passare dalla view, possiamo fare in modo di saperlo già? Solo se non è difficile
+    private String password;
     private int rating;
     private String comment;
+
+    // TODO deve realizzare il controllo sintattico. Aggiungere solo i setters e i getters appropriati e il metodo validate()
 
 	/*private String username;
 	private String password;

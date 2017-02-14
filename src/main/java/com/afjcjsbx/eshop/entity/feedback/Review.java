@@ -5,7 +5,7 @@ import com.afjcjsbx.eshop.entity.Entity;
 /**
  * Created by Davide on 13/02/2017.
  */
-public class Review extends Entity { // TODO rinominare a ReviewBean?
+public class Review extends Entity { // TODO rinominare a ManageFeedbackBean? Cioè, entitè e bean sono la stessa cosa? Direi di no, vedi esempio Mastrofini
 
     private int productId; // reviewed product
     private String username; // the consumer who is providing his feedback
