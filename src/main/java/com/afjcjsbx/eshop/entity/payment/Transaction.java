@@ -8,18 +8,18 @@ import com.afjcjsbx.eshop.entity.login.Producer;
 public class Transaction {
 
     private Producer seller;
-    private Consumer consumer;
-    private Product product;
+    private Consumer buyer;
+    private Product productOnSale;
     private DeliveryMethod delivery; // TODO creare queste due interfacce? quando ho la conferma su applicazione pattern
     private PaymentMethod payment;
 
-    public Transaction(Producer producer, Consumer consumer, Product product, DeliveryMethod delivery, PaymentMethod payment) {
-        this.seller = producer;
-        this.consumer = consumer;
-        this.product = product;
+    public Transaction(Producer seller, Consumer buyer, Product productOnSale, DeliveryMethod delivery, PaymentMethod payment) {
+        this.seller = seller;
+        this.buyer = buyer;
+        this.productOnSale = productOnSale;
     }
 
-    public Producer getProducer() {
+    /*public Producer getProducer() {
         return seller;
     }
 
@@ -28,19 +28,19 @@ public class Transaction {
     }
 
     public Consumer getConsumer() {
-        return consumer;
+        return buyer;
     }
 
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
+    public void setConsumer(Consumer buyer) {
+        this.buyer = buyer;
     }
 
     public Product getProduct() {
-        return product;
+        return productForSale;
     }
 
     public void setProduct(Product product) {
-        this.product = product;
-    }
+        this.productForSale = product;
+    }*/
 
 }

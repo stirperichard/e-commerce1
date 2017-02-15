@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Davide on 13/02/2017.
  */
-public class ReviewDAOImpl implements ReviewDAO{
+public class ManageFeedbackDAOImpl implements ManageFeedbackDAO {
 
     @Override
     public void storeReview(Review review) {
@@ -15,7 +15,13 @@ public class ReviewDAOImpl implements ReviewDAO{
     }
 
     @Override
-    public List<Review> getReviews(int productId) {
+    public List<Review> findReviewsByProductId(int productId) {
         return null;
     }
+
+    @Override
+    public List<Review> findReviewsByUsername(String username) {
+        return null;
+    }
+
 }

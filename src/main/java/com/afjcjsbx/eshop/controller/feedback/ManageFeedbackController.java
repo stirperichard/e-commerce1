@@ -1,11 +1,8 @@
 package com.afjcjsbx.eshop.controller.feedback;
 
-import ispw.invenio.eccezioni.DatabaseException;
-import ispw.invenio.model.*;
-import ispw.invenio.model.bean.FeedbackBean;
-import ispw.invenio.model.dao.PrenotazioneDAO;
+import com.afjcjsbx.eshop.bean.ManageFeedbackBean;
+import com.afjcjsbx.eshop.entity.feedback.Review;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -23,11 +20,20 @@ public class ManageFeedbackController {
 		return instance;
 	}
 
-	private ManageFeedbackController() {
+    private ManageFeedbackController() {
+    }
 
-	}
+    public boolean addReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo il bean?
+        // chiama metodo interfaccia dao
+    }
 
-	/**
+    public List<Review> retrieveReviews(ManageFeedbackBean manageFeedbackBean) {
+        // chiama metodo interfaccia dao
+    }
+
+
+
+    /**
 	 * Aggiunge un commento alla locazione se l'utente ha effettuato almeno una
 	 * prenotazione
 	 * 
@@ -36,7 +42,7 @@ public class ManageFeedbackController {
 	 *            commentare e il commento
 	 * @return true se il commento viene effettuato correttamente, false
 	 *         altrimenti
-	 */
+	 *//*
 	public boolean commentaLocazione(FeedbackBean feedbackBean) {
 		if (feedbackBean.getCommento() == null || feedbackBean.getIdLocazione() == 0
 				|| feedbackBean.getNickname() == null)
@@ -75,13 +81,13 @@ public class ManageFeedbackController {
 
 	}
 
-	/**
+	*//**
 	 * Verifica se l'utente e la password sono corretti
 	 * 
 	 * @param feedbackBean
 	 *            bean contenente il nome utente e la password
 	 * @return true se la combinazione � corretta
-	 */
+	 *//*
 	public boolean verificaUtente(FeedbackBean feedbackBean) {
 		try {
 			if (feedbackBean.getNickname().equals("") || feedbackBean.getPassword().equals(""))
@@ -93,13 +99,13 @@ public class ManageFeedbackController {
 
 	}
 
-	/**
+	*//**
 	 * Ricerca della locazione corrispondente ad un determinato nome
 	 * 
 	 * @param nomeLocazione
 	 *            nome della locazione da cercare
 	 * @return la locazione corrispondente, null altrimenti
-	 */
+	 *//*
 	public Locazione cercaLocazioneDaNome(String nomeLocazione) {
 
 		try {
@@ -113,13 +119,13 @@ public class ManageFeedbackController {
 
 	}
 
-	/**
+	*//**
 	 * Controllo che restituisce la lista di feedback di una certa locazione
 	 * 
 	 * @param locazioneId
 	 *            id della locazione su cui cercare i feedback
 	 * @return la lista dei Feedback, null in caso non sono presenti
-	 */
+	 *//*
 	public List<Feedback> dammiFeedback(int locazioneId) {
 		try {
 			if (locazioneId == 0)
@@ -130,6 +136,6 @@ public class ManageFeedbackController {
 			return null;
 
 		}
-	}
+	}*/
 
 }

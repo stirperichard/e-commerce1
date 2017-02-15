@@ -11,7 +11,6 @@ public class Product extends Entity{
 
 	private String name;
 	private String description;
-	private String SKU; // Stock Keeping Unit
 	private String picture;
 	private Float price;
 	private Integer discountPercentage;
@@ -59,14 +58,6 @@ public class Product extends Entity{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getSKU() {
-		return SKU;
-	}
-
-	public void setSKU(String SKU) {
-		this.SKU = SKU;
 	}
 
 	public String getPicture() {

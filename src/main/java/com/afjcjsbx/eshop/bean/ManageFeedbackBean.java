@@ -56,7 +56,7 @@ public class ManageFeedbackBean {
 
 	public void setIdLocazione(int idLocazione) {
 		this.idLocazione = idLocazione;
-	}*/
+	}
 
 	/**
 	 * Metodo per lasciare un feedback su di una locazione

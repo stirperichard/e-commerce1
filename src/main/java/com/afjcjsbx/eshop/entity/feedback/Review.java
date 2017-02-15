@@ -1,14 +1,13 @@
 package com.afjcjsbx.eshop.entity.feedback;
 
-import com.afjcjsbx.eshop.entity.Entity;
-
 /**
  * Created by Davide on 13/02/2017.
  */
-public class Review extends Entity { // TODO rinominare a ManageFeedbackBean? Cioè, entitè e bean sono la stessa cosa? Direi di no, vedi esempio Mastrofini
+public class Review { // TODO rinominare a ManageFeedbackBean? Cioè, entitè e bean sono la stessa cosa? Direi di no, vedi esempio Mastrofini
 
+    private int reviewId;
     private int productId; // reviewed product
-    private String username; // the consumer who is providing his feedback
+    private String username; // the consumer who is providing his feedback. Users are identified by email username
     private int rating; // rating in number of stars
     private String comment; // comment of the user about the product
 
