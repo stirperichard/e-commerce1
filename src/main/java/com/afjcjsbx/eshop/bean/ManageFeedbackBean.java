@@ -21,17 +21,20 @@ public class ManageFeedbackBean {
 
     // TODO deve realizzare il controllo sintattico. Aggiungere solo i setters e i getters appropriati e il metodo validate()
 
-	/*private String username;
-	private String password;
-	private String commento;
-	private int idLocazione;
-
-	public String getNickname() {
-		return nickname;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -42,63 +45,82 @@ public class ManageFeedbackBean {
 		this.password = password;
 	}
 
-	public String getCommento() {
-		return commento;
+	public int getRating() {
+		return rating;
 	}
 
-	public void setCommento(String commento) {
-		this.commento = commento;
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
-	public int getIdLocazione() {
-		return idLocazione;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setIdLocazione(int idLocazione) {
-		this.idLocazione = idLocazione;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
-	/**
+	public boolean validate() {
+        // Controllo sintattico per la Review | l'utente | boh ?
+
+        ManageFeedbackController controller = ManageFeedbackController.getInstance();
+        return true;
+    }
+
+
+
+
+
+
+	/*private String username;
+	private String password;
+	private String commento;
+	private int idLocazione;
+
+	setters e getters
+
+	*//**
 	 * Metodo per lasciare un feedback su di una locazione
 	 * 
 	 * @return true se il feedback � stato inserito correttamente, false
 	 *         altrimenti
-	 */
+	 *//*
 	public boolean commentaLocazione() {
 		return ControllerFeedback.getInstance().commentaLocazione(this);
 	}
 
-	/**
+	*//**
 	 * Ricerca di una locazione passandogli il suo nome
 	 * 
 	 * @param nomeLocazione
 	 *            nome della locazione da ricercare
 	 * @return ritorna la locazione con quel nome, null altrimenti
-	 */
+	 *//*
 	public Locazione cercaLocazioneDaNome(String nomeLocazione) {
 		return ControllerFeedback.getInstance().cercaLocazioneDaNome(nomeLocazione);
 	}
 
-	/**
+	*//**
 	 * Metodo per cercare i feedback su una determinata locazione
 	 * 
 	 * @param locazioneId
 	 *            id della locazione su cui effettuare la ricerca
 	 * @return ritorna la lista dei feedback di una locazione, null altrimenti
-	 */
+	 *//*
 	public List<Feedback> dammiFeedback(int locazioneId) {
 
 		return ControllerFeedback.getInstance().dammiFeedback(locazioneId);
 	}
 
-	/**
+	*//**
 	 * Controllo sull'autenticazione di un'utente
 	 * 
 	 * @return true se le credenziali sono corrette, false altrimenti
-	 */
+	 *//*
 	public boolean verificaUtente() {
 
 		return ControllerFeedback.getInstance().verificaUtente(this);
-	}
+	}*/
 
 }

@@ -19,7 +19,7 @@ public class Product extends Entity{
 	private Category category;
 	private String manufacturer;
     private List<Keyword> keywords;
-    private List<Review> reviews;
+    private List<Review> reviews; // TODO traiamo qualche vantaggio ad implementare l'aggregazione anche in memoria oltre che nel db? Secondo me no, aumenta solo il coupling
     private boolean isCharitable;
     private boolean availability;
 

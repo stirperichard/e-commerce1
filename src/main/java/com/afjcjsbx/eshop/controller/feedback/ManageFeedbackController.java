@@ -23,7 +23,7 @@ public class ManageFeedbackController {
     private ManageFeedbackController() {
     }
 
-    public boolean addReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo il bean?
+    public boolean addReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
         // chiama metodo interfaccia dao
     }
 
