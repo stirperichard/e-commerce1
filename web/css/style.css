@@ -597,7 +597,8 @@ ul.rating li a:hover, .price_single a:hover, ul.size li a:hover {
     padding: 2em 0;
     border-top: 1px solid #CCC0C0;
     border-bottom: 1px solid #CCC0C0;
-    margin-top: 3em
+    margin-top: 0em;
+    margin-bottom: 2em;
 }
 
 .subscribe h4 {
@@ -2987,7 +2988,7 @@ address {
     }
 
     .subscribe {
-        margin-top: 1em;
+        margin-top: 0em;
     }
 
     .subscribe1 {
@@ -3305,6 +3306,14 @@ address {
     font-size: 32px;
     font-weight: bold;
 }
+
+.close_error {
+    color: #000000;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+}
+
 
 .close:hover,
 .close:focus {

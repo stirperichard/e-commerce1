@@ -16,7 +16,6 @@ public class PriceResearch extends FilteredSearchDecorator {
         super(filteredSearch);
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
-
     }
 
     private ArrayList<Product> filterResearchCity(ArrayList<Product> products) {
@@ -31,9 +30,9 @@ public class PriceResearch extends FilteredSearchDecorator {
     }
 
     @Override
-    public ArrayList<Product> search() throws SQLException {
+    public ArrayList<Product> search(String search) throws SQLException {
 
-        return filterResearchCity(super.search());
+        return filterResearchCity(super.search(search));
 
     }
 }

@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.afjcjsbx.eshop.controller.login.LoginServlet</servlet-class>
@@ -66,6 +73,7 @@
         <servlet-name>InsertProductServlet</servlet-name>
         <url-pattern>/insertproduct</url-pattern>
     </servlet-mapping>
+
 
 
 </web-app>

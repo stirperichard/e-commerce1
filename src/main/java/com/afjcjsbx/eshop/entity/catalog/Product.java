@@ -12,7 +12,6 @@ public class Product extends Entity{
 
 	private String name;
 	private String description;
-	private String SKU;
 	private String picture;
 	private Float price;
 	private Integer discountPercentage;
@@ -45,6 +44,22 @@ public class Product extends Entity{
 		this.availability = availability;
 	}
 
+	public Product(String name, String description, String picture, Float price, Integer discountPercentage, Float shipmentCost, AbstractUser producer, Category category, String manufacturer, List<Keyword> keywords, List<Review> reviews, boolean isCharitable, boolean availability) {
+		this.name = name;
+		this.description = description;
+		this.picture = picture;
+		this.price = price;
+		this.discountPercentage = discountPercentage;
+		this.shipmentCost = shipmentCost;
+		this.producer = producer;
+		this.category = category;
+		this.manufacturer = manufacturer;
+		this.keywords = keywords;
+		this.reviews = reviews;
+		this.isCharitable = isCharitable;
+		this.availability = availability;
+	}
+
 
 	public String getName() {
 		return name;
@@ -60,14 +75,6 @@ public class Product extends Entity{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getSKU() {
-		return SKU;
-	}
-
-	public void setSKU(String SKU) {
-		this.SKU = SKU;
 	}
 
 	public String getPicture() {

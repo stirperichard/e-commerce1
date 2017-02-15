@@ -17,7 +17,7 @@ public class DiscountResearch extends FilteredSearchDecorator {
         this.minDiscount = minDiscount;
     }
 
-    private ArrayList<Product> filterResearchCity(ArrayList<Product> products) {
+    private ArrayList<Product> filterResearchDiscount(ArrayList<Product> products) {
 
         ArrayList<Product> filteredProducts = new ArrayList<>();
 
@@ -29,9 +29,9 @@ public class DiscountResearch extends FilteredSearchDecorator {
     }
 
     @Override
-    public ArrayList<Product> search() throws SQLException {
+    public ArrayList<Product> search(String search) throws SQLException {
 
-        return filterResearchCity(super.search());
+        return filterResearchDiscount(super.search(search));
 
     }
 }

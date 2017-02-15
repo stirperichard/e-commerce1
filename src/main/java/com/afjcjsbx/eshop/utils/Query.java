@@ -21,7 +21,7 @@ public class Query {
             "FROM Products " +
             "WHERE Products.ProductID = ?";
 
-    public static final String INSERT_PRODUCT = "INSERT INTO Products (ProducerID, Category, ProductName, " +
+    public static final String INSERT_PRODUCT = "INSERT INTO Products (ProducerEmail, Category, ProductName, " +
             "ProductDescription, Picture, Price, Manufacturer, isCharitable, Keywords, DiscountPercentage, " +
             "ShipmentCost, Availability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

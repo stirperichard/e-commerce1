@@ -1,10 +1,8 @@
 package com.afjcjsbx.eshop.controller.product;
 
 import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
-import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
 import com.afjcjsbx.eshop.entity.catalog.Keyword;
 import com.afjcjsbx.eshop.entity.catalog.Product;
-import com.afjcjsbx.eshop.entity.login.Producer;
 import com.afjcjsbx.eshop.utils.ConnectionManager;
 import com.afjcjsbx.eshop.utils.Query;
 
@@ -39,24 +37,24 @@ public class ShopProductController {
     }
 
 
-    public boolean insertProduct(Product product, Producer producer) {
+    public boolean insertProduct(String producer_email, String category_name, String product_name, String description, String picture, String price, String discountPercentage, String shipmentCost, String manufacturer, String keywords, String isCharitable) {
 
         try {
 
             PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_PRODUCT);
 
-            statement.setString(1, producer.getEmail());
-            statement.setString(2, product.getCategory().getName());
-            statement.setString(3, product.getName());
-            statement.setString(4, product.getDescription());
-            statement.setString(5, product.getPicture());
-            statement.setString(6, Float.toString(product.getPrice()));
-            statement.setString(7, product.getManufacturer());
-            statement.setString(8, product.isCharitable() ? "1" : "0");
-            statement.setString(9, keywordsToString(product.getKeywords()));
-            statement.setString(10, Integer.toString(product.getDiscountPercentage()));
-            statement.setString(11, Float.toString(product.getShipmentCost()));
-            statement.setString(12, product.isAvailability() ? "1" : "0");
+            statement.setString(1, producer_email);
+            statement.setString(2, category_name);
+            statement.setString(3, product_name);
+            statement.setString(4, description);
+            statement.setString(5, picture);
+            statement.setFloat(6, Float.parseFloat(price));
+            statement.setString(7, manufacturer);
+            statement.setInt(8, Integer.parseInt(isCharitable));
+            statement.setString(9, keywords);
+            statement.setInt(10, Integer.parseInt(discountPercentage));
+            statement.setFloat(11, Float.parseFloat(shipmentCost));
+            statement.setInt(12, 1);
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {

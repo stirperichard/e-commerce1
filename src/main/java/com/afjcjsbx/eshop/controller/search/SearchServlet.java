@@ -21,12 +21,18 @@ public class SearchServlet extends HttpServlet {
 
             String search = request.getParameter("search");
 
+            Integer discount_percentage = request.getParameter("checkbox_discount") != null ? Integer.parseInt(request.getParameter("checkbox_discount")) : 0;
+            System.out.println("discount_percentage:" + discount_percentage);
+
+
             if (!search.isEmpty()) {
 
                 FilteredSearchController filteredSearchController = new FilteredSearchController();
-                List<Product> productlist = filteredSearchController.searchByString(search);
+                List<Product> productlist = filteredSearchController.startResearch(search, null, 0, 9999, discount_percentage, 0, null);
 
+                request.setAttribute("search", search);
                 request.setAttribute("productlist", productlist);
+
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/products.jsp");
                 dispatcher.forward(request, response);
 

@@ -14,7 +14,7 @@ public abstract class FilteredSearchDecorator extends FilteredSearchController {
     }
 
     @Override
-    public ArrayList<Product> search() throws SQLException {
-        return filteredSearch.search();
+    public ArrayList<Product> search(String search) throws SQLException {
+        return filteredSearch.search(search);
     }
 }

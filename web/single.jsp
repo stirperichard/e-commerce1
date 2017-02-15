@@ -77,11 +77,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                 <!-- The popup -->
-                <div id="myModal" class="modal">
+                <div id="myModal_error" class="modal">
 
                     <!-- Modal content -->
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close_error">&times;</span>
                         <div align="center"><p>Product already in cart</p>
                         </div>
                     </div>
@@ -91,10 +91,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <script>
                     // Get the modal
-                    var modal = document.getElementById('myModal');
+                    var modal = document.getElementById('myModal_error');
 
                     // Get the <span> element that closes the modal
-                    var span = document.getElementsByClassName("close")[0];
+                    var span = document.getElementsByClassName("close_error")[0];
 
                     // When the user clicks on <span> (x), close the modal
                     span.onclick = function () {

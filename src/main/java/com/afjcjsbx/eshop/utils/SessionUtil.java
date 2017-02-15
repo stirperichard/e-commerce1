@@ -6,11 +6,9 @@ package com.afjcjsbx.eshop.utils;
 import javax.servlet.http.HttpServletRequest;
 
 
-public class SessionUtil
-{
+public class SessionUtil {
 
 
-    
     @SuppressWarnings("unchecked")
 	public static <T> T getSessionAttribute(final String key, HttpServletRequest request) {
         return (T) request.getSession().getAttribute(key);

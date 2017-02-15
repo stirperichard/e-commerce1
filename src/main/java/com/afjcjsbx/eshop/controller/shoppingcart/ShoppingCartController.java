@@ -98,6 +98,9 @@ public class ShoppingCartController extends AbstractController {
     }
 
 
+    public AbstractUser retriveUserSession(HttpServletRequest request){
+        return getSessionAttribute("currentSessionUser", request);
+    }
 
     /*
 

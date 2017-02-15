@@ -30,9 +30,9 @@ public class ManufacturerResearch extends FilteredSearchDecorator {
     }
 
     @Override
-    public ArrayList<Product> search() throws SQLException {
+    public ArrayList<Product> search(String search) throws SQLException {
 
-        return filterResearchCity(super.search());
+        return filterResearchCity(super.search(search));
 
     }
 }

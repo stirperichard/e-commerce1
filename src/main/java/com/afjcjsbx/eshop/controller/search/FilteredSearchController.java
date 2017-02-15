@@ -28,10 +28,21 @@ import java.util.List;
 public class FilteredSearchController {
 
 
-    protected ArrayList<Product> search() throws SQLException {
+    protected ArrayList<Product> search(String search) throws SQLException {
 
-        PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet = null;
+
+        if(search.isEmpty()) {
+
+            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
+             statement.executeQuery();
+        }else{
+
+            PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
+            preparedStatement.setString(1, "%" + search + "%");
+            resultSet = preparedStatement.executeQuery();
+
+        }
 
         ArrayList<Product> products = new ArrayList<>();
 
@@ -113,19 +124,20 @@ public class FilteredSearchController {
 
 
 
-    public ArrayList<Product> startResearch(Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
+    public ArrayList<Product> startResearch(String search, Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
                                             Integer maxDisount, Manufacturer manufacturer) throws SQLException {
 
         FilteredSearchController fsc = new FilteredSearchController();
-        fsc = new PriceResearch(minPrice, maxPrice, fsc);
+        //fsc = new PriceResearch(minPrice, maxPrice, fsc);
 
         if (category != null) fsc = new CategoryResearch(category, fsc);
         if (minDiscount > 0) fsc = new DiscountResearch(minDiscount, fsc);
         if (manufacturer != null) fsc = new ManufacturerResearch(manufacturer, fsc);
 
-        return fsc.search();
+        return fsc.search(search);
 
     }
+
 
 
 }
