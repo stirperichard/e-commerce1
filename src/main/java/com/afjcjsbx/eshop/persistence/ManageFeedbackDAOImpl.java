@@ -11,10 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ConcreteDAO implemented via JDBC.
+ * ConcreteDAO implemented via JDBC. It is Singleton.
  */
 public class ManageFeedbackDAOImpl implements ManageFeedbackDAO {
 
+    private static ManageFeedbackDAOImpl instance;
+
+    public static ManageFeedbackDAOImpl getInstance() {
+        if (instance == null)
+            instance = new ManageFeedbackDAOImpl();
+        return instance;
+    }
+
+    private ManageFeedbackDAOImpl() {
+    }
 
     @Override
     public boolean storeReview(Review review) throws DatabaseException {

@@ -4,7 +4,7 @@ import com.afjcjsbx.eshop.entity.Entity;
 import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.Producer;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sale advertisement for a product.
@@ -14,8 +14,8 @@ public class Advertisement extends Entity{
     private Product productToSell;
     private Producer seller;
     private double price;
-    private ArrayList<DeliveryMethod> availableDeliveryMethods; // array di metodi di consegna disponibili per il productToSell
-    private ArrayList<PaymentMethod> availablePaymentMethods;
+    private List<DeliveryMethod> availableDeliveryMethods; // array di metodi di consegna disponibili per il productToSell
+    private List<PaymentMethod> availablePaymentMethods;
 
     public Advertisement(Product productToSell, Producer seller, double price, DeliveryMethod[] availableDeliveryMethods, PaymentMethod[] availablePaymentMethods) {
         this.productToSell = productToSell;

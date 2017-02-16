@@ -2,13 +2,13 @@ package com.afjcjsbx.eshop.controller.feedback;
 
 import com.afjcjsbx.eshop.bean.ManageFeedbackBean;
 import com.afjcjsbx.eshop.entity.feedback.Review;
+import com.afjcjsbx.eshop.persistence.ManageFeedbackDAO;
+import com.afjcjsbx.eshop.persistence.ManageFeedbackDAOImpl;
 
 import java.util.List;
 
 /**
- * Created by Davide on 13/02/2017.
- *
- * Il Controllore è singleton
+ * Controller is Singleton.
  */
 public class ManageFeedbackController {
 
@@ -23,13 +23,25 @@ public class ManageFeedbackController {
     private ManageFeedbackController() {
     }
 
-    public boolean addReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
-        // chiama metodo interfaccia dao
+    public boolean addProductReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
+        ManageFeedbackDAO dao = ManageFeedbackDAOImpl.getInstance();
+
+        dao.storeReview();
     }
 
-    public List<Review> retrieveReviews(ManageFeedbackBean manageFeedbackBean) {
-        // chiama metodo interfaccia dao
+    public List<Review> retrieveProductReviews(ManageFeedbackBean manageFeedbackBean) {
+        ManageFeedbackDAO dao = ManageFeedbackDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+
+        dao.findReviewsByProductId();
     }
+
+    public List<Review> retrieveReviewsFromUser(ManageFeedbackBean manageFeedbackBean) {
+        ManageFeedbackDAO dao = ManageFeedbackDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+
+        dao.findReviewsByUsername();
+    }
+
+
 
 
 
