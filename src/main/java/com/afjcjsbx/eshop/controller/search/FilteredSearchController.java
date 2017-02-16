@@ -11,7 +11,7 @@ import com.afjcjsbx.eshop.entity.catalogue.Manufacturer;
 import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.feedback.Review;
-import com.afjcjsbx.eshop.persistence.ConnectionManager;
+import com.afjcjsbx.eshop.persistence.DataSource;
 import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
@@ -25,7 +25,7 @@ public class FilteredSearchController {
 
     protected ArrayList<Product> search() throws SQLException {
 
-        PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
+        PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
         ResultSet resultSet = statement.executeQuery();
 
         ArrayList<Product> products = new ArrayList<>();
@@ -65,7 +65,7 @@ public class FilteredSearchController {
 
     public Product searchProductByID(String pid) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
         preparedStatement.setString(1, pid);
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -85,7 +85,7 @@ public class FilteredSearchController {
         List<Product> result = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
+            PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
             preparedStatement.setString(1, "%" + search + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
 

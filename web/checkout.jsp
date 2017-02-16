@@ -67,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     Date lastAccessTime = new Date(session.getLastAccessedTime());
 
 
-    //Connection c = ConnectionManager.getConnection();
+    //Connection c = DataSource.getConnection();
 
     System.out.println("Cart price: " + shoppingCartController.getCartPrice(request));
     System.out.println("Cart count: " + shoppingCartController.productCount(request));

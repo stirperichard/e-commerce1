@@ -32,7 +32,7 @@ public class UserDAO {
 
         try {
             //connect to DB
-            currentCon = ConnectionManager.getConnection();
+            currentCon = DataSource.getConnection();
             stmt = currentCon.createStatement();
             rs = stmt.executeQuery(searchQuery);
             boolean more = rs.next();

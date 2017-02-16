@@ -1,9 +1,8 @@
 package com.afjcjsbx.eshop.persistence;
 
 import com.afjcjsbx.eshop.entity.feedback.Review;
+import com.afjcjsbx.eshop.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -11,11 +10,11 @@ import java.util.List;
  */
 public interface ManageFeedbackDAO {
 
-    void storeReview(Review review);
+    boolean storeReview(Review review) throws DatabaseException;
 
-    List<Review> findReviewsByProductId(int productId);
+    List<Review> findReviewsByProductId(int productId) throws DatabaseException;
 
-    List<Review> findReviewsByUsername(String username);
+    List<Review> findReviewsByUsername(String username) throws DatabaseException;
 
     //void inizializzaDB(Connection conn) throws SQLException;
     // TODO serve inizializzare? Siamo sicuri di avere sempre il db sulla macchina?
