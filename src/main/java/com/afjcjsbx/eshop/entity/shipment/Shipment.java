@@ -8,27 +8,28 @@ import java.util.Date;
 /**
  * Created by afjcjsbx on 06/01/17.
  */
+
 public class Shipment extends Entity {
 
-    private DeliveryStatus deliveryStatus;
-    private String track;
+    private DeliveryStatus DeliveryStatus;
+    private String trackingNumber;
     private Date date;
 
 
     public DeliveryStatus getDeliveryStatus() {
-        return deliveryStatus;
+        return DeliveryStatus;
     }
 
     public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
-        this.deliveryStatus = deliveryStatus;
+        this.DeliveryStatus = deliveryStatus;
     }
 
-    public String getTrack() {
-        return track;
+    public String getTrackingNumber() {
+        return trackingNumber;
     }
 
-    public void setTrack(String track) {
-        this.track = track;
+    public void setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
     }
 
     public Date getDate() {
@@ -38,5 +39,4 @@ public class Shipment extends Entity {
     public void setDate(Date date) {
         this.date = date;
     }
-
 }

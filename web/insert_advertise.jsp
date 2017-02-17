@@ -1,3 +1,7 @@
+<%@ page import="com.afjcjsbx.eshop.controller.catalogue.CatalogueController" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Category" %>
+
 <!--
 Au<!--
 Author: W3layouts
@@ -53,63 +57,86 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="main-1">
         <div class="container">
             <div class="register">
-                <form>
 
+
+
+                <form action="insertproduct" method="post">
 
 
                     <div class="register-top-grid">
                         <h3>INSERT ADVERTISE</h3>
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Product Name<label>*</label></span>
-                            <input type="text" rows="12">
+                            <input type="text" name="product_name" required>
+                            <p id="error_product_name"></p>
                         </div>
-                        <div style="visibility: hidden" >
+                        <div style="visibility: hidden">
                             <span>Hidden<label>*</label></span>
                             <input type="text">
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Product Description<label>*</label></span>
-                            <textarea name="Text1" cols="100" rows="12"></textarea>
+                            <textarea name="product_description" cols="100" rows="12" required></textarea>
                         </div>
 
-                        <div style="visibility: hidden" >
+                        <div style="visibility: hidden">
                             <span>Hidden<label>*</label></span>
                             <input type="text">
                         </div>
 
 
-
                         <a class="news-letter" href="#">
-                            <label class="checkbox"><input type="checkbox" name="checkbox" ><i> </i>Is a charitable product ?</label>
+                            <label class="checkbox"><input type="checkbox" name="isCharitable" value="1"><i> </i>Is a
+                                charitable
+                                product ?</label>
                         </a>
-
-
 
 
                         <div class="clearfix"></div>
 
                     </div>
 
+
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Picture Link<label></label></span>
-                            <input type="text">
+                            <input type="text" name="picture_link" required>
                         </div>
-                        <div style="visibility: hidden">
-                            <span>Hidden div<label>*</label></span>
-                            <input type="text">
+                        <div class="wow fadeInRight" data-wow-delay="0.4s">
+                            <span>Category</span>
+                            <SELECT NAME="category" id="category">
+
+                                <%
+
+                                    CatalogueController catalogueController = new CatalogueController();
+
+                                    ArrayList<Category> categories = catalogueController.retrieveCategories();
+
+                                    for (int i = 0; i < categories.size(); i++) {
+                                %>
+                                <option value="<%= categories.get(i).getName() %>"><%= categories.get(i).getName() %>
+                                </option>
+                                <%
+                                    }
+
+                                %>
+
+
+                            </SELECT>
                         </div>
                     </div>
 
+
                     <h3>PRICE INFORMATION</h3>
+
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Price<label>*</label></span>
-                            <input type="text">
+                            <input type="text" name="price" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
-                            <span>Discount percentage<label style="visibility:hidden">*</label></span>
-                            <input type="text">
+                            <span>Discount percentage<label></label></span>
+                            <input type="text" value="0" name="discount_percentage">
                         </div>
                     </div>
 
@@ -119,26 +146,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="register-bottom-grid">
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Shipment cost<label>*</label></span>
-                            <input type="text">
+                            <input type="text" name="shipment_cost" required>
                         </div>
-                        <div style="visibility: hidden">
-                            <span>Hidden div<label>*</label></span>
+                        <div class="wow fadeInRight" data-wow-delay="0.4s">
+                            <span>Confirm Password<label>*</label></span>
                             <input type="text">
                         </div>
                     </div>
 
+                    <input type="submit" value="submit">
+                    <div class="clearfix"></div>
 
                 </form>
-                <div class="clearfix"></div>
-                <div class="register-but">
-                    <form>
-                        <input type="submit" value="submit">
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-
-
-
 
             </div>
         </div>

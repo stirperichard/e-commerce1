@@ -2,9 +2,8 @@ package com.afjcjsbx.eshop.controller.search.decoration;
 
 import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
 import com.afjcjsbx.eshop.controller.search.FilteredSearchDecorator;
-import com.afjcjsbx.eshop.entity.catalog.Category;
-import com.afjcjsbx.eshop.entity.catalog.Manufacturer;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Manufacturer;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,9 +29,9 @@ public class ManufacturerResearch extends FilteredSearchDecorator {
     }
 
     @Override
-    public ArrayList<Product> search() throws SQLException {
+    public ArrayList<Product> search(String search) throws SQLException {
 
-        return filterResearchCity(super.search());
+        return filterResearchCity(super.search(search));
 
     }
 }

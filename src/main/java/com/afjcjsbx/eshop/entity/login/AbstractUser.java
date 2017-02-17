@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class AbstractUser {
 
-    private int id;
+    private int id; // TODO serve l'id? c'è già lo username per identificare univocamente gli utenti. Oppure usiamo l'email?
     private String email;
     private String username;
     private String password;

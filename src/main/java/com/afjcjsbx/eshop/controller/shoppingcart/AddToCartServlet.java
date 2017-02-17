@@ -1,7 +1,7 @@
 package com.afjcjsbx.eshop.controller.shoppingcart;
 
 import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,11 +31,11 @@ public class AddToCartServlet extends HttpServlet {
 
         ShoppingCartController scc = new ShoppingCartController();
 
-        if (scc.addProduct(request, p)) {
+/*        if (scc.addProduct(request, p)) {
             response.sendRedirect("checkout.jsp"); //error page
         }else{
             response.sendRedirect("single.jsp?pid=" + product_id + "&option=alreadyInCart"); //error page
-        }
+        }*/
 
     }
 

@@ -18,10 +18,80 @@
 
     if (session.getAttribute("currentSessionUser") != null) {
         u = (AbstractUser) session.getAttribute("currentSessionUser");
-    }else{
+    } else {
         u = new Guest();
     }
 %>
+
+<!-- The popup -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content-login">
+        <span class="close">&times;</span>
+
+
+        <div class="login-right">
+            <h2>Login</h2>
+            <br>
+            <p><b>I'm already an ESHOP user</b><br>Enter your e-mail address and password to log into the website.</p>
+            <form action="login">
+                <input type="text" name="email">
+                <br><br>
+                <input type="password" name="password">
+                <br><br>
+                <a class="forgot" href="#">Forgot Your Password?</a>
+                <br>
+                <br>
+                <div class="contact-right">
+                    <input type="submit" value="Login">
+                </div>
+
+            </form>
+
+
+            <h2>Registration</h2>
+            <br>
+            <p><b>I want to be a ESHOP user</b><br>
+                If you still don't have an user account, use this option to access the Registration form.</p>
+            <form action="registration.jsp">
+                <div class="contact-right">
+
+                    <input type="submit" value="Create Account">
+                </div>
+            </form>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    function showDiv() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 
 <!--header-->
@@ -40,18 +110,17 @@
 
             <div class="top-right">
 
-
                 <ul>
-
 
                     <li class="text">
 
                         <% if (u.getType() == Roles.GUEST) { %>
-                        <a href="login.jsp">login</a>
+                        <a href="javascript:showDiv();">login</a>
                         <% } else { %>
 
                         <div class="dropdown">
-                            <button class="dropbtn"><%= u.getUsername().toUpperCase() %></button>
+                            <button class="dropbtn"><%= u.getUsername().toUpperCase() %>
+                            </button>
 
                             <div class="dropdown-content">
                                 <% if (u.getType() == Roles.PRODUCER) { %>
@@ -63,8 +132,9 @@
                             </div>
                         </div>
                         <% } %>
-
                     </li>
+
+
                     <li>
                         <div class="cart box_1">
                             <a href="checkout.jsp">
@@ -72,10 +142,11 @@
                                 (<span id="simpleCart_quantity"
                                        class="simpleCart_quantity"><% out.print(shoppingCartController.productCount(request)); %></span>)
                             </a>
-                            <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
                             <div class="clearfix"></div>
                         </div>
                     </li>
+
+
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -102,100 +173,107 @@
                         <ul class="nav navbar-nav">
                             <li><a href="index.jsp">Home</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Elettronica <b
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Electronics<b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Main categories</a></li>
-                                                <li><a class="list1" href="products.jsp">Smartphones</a></li>
-                                                <li><a class="list1" href="products.jsp">Informatics</a></li>
-                                                <li><a class="list1" href="products.jsp">Tv & entertainment</a></li>
+                                                <li><a class="list1" href="products.jsp">Cell Phones & Accessories</a>
+                                                </li>
+                                                <li><a class="list1" href="products.jsp">Cameras & Photo</a></li>
+                                                <li><a class="list1" href="products.jsp">Computers & Tablets</a></li>
+                                                <li><a class="list1" href="products.jsp">TV & Home Theater</a></li>
+                                                <li><a class="list1" href="products.jsp">Video Games & Consoles</a></li>
                                             </ul>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Other categories</a></li>
-                                                <li><a class="list1" href="products.jsp">River Island</a></li>
-                                                <li><a class="list1" href="products.jsp">Penny</a></li>
-                                                <li><a class="list1" href="products.jsp">Nidhi Munim</a></li>
-                                                <li><a class="list1" href="products.jsp">Divaat</a></li>
-                                            </ul>
-                                        </div>
+
                                     </div>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">women <b
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Motors<b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Women</a></li>
-                                                <li><a class="list1" href="products.jsp">PrettySecrets</a></li>
-                                                <li><a class="list1" href="products.jsp">N-Gal</a></li>
-                                                <li><a class="list1" href="products.jsp">Lobster</a></li>
-                                                <li><a class="list1" href="products.jsp">Citypret</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Kids</a></li>
-                                                <li><a class="list1" href="products.jsp">River Island</a></li>
-                                                <li><a class="list1" href="products.jsp">Penny</a></li>
-                                                <li><a class="list1" href="products.jsp">Nidhi Munim</a></li>
-                                                <li><a class="list1" href="products.jsp">Divaat</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Men</a></li>
-                                                <li><a class="list1" href="products.jsp">Fiesta Clara</a></li>
-                                                <li><a class="list1" href="products.jsp">Quiksilver</a></li>
-                                                <li><a class="list1" href="products.jsp">Incult</a></li>
-                                                <li><a class="list1" href="products.jsp">Proline</a></li>
+                                                <li><a class="list1" href="products.jsp">Vehicles</a></li>
+                                                <li><a class="list1" href="products.jsp">Cars & Trucks</a></li>
+                                                <li><a class="list1" href="products.jsp">Motorcycles</a></li>
+                                                <li><a class="list1" href="products.jsp">Parts & Accessories</a></li>
+                                                <li><a class="list1" href="products.jsp">Car & Truck Parts</a></li>
+                                                <li><a class="list1" href="products.jsp">Motorcycle Parts</a></li>
+
                                             </ul>
                                         </div>
                                     </div>
                                 </ul>
                             </li>
+
+
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">kids <b
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fashion<b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Women</a></li>
-                                                <li><a class="list1" href="products.jsp">PrettySecrets</a></li>
-                                                <li><a class="list1" href="products.jsp">N-Gal</a></li>
-                                                <li><a class="list1" href="products.jsp">Lobster</a></li>
-                                                <li><a class="list1" href="products.jsp">Citypret</a></li>
+                                                <li><a class="list1" href="products.jsp">Women's Clothing</a></li>
+                                                <li><a class="list1" href="products.jsp">Women's Shoes</a></li>
+                                                <li><a class="list1" href="products.jsp">Men's Clothing</a></li>
+                                                <li><a class="list1" href="products.jsp">Men's Shoes</a></li>
+                                                <li><a class="list1" href="products.jsp">Handbags & Accessories</a></li>
+                                                <li><a class="list1" href="products.jsp">Luxury Handbags</a></li>
+
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Kids</a></li>
-                                                <li><a class="list1" href="products.jsp">River Island</a></li>
-                                                <li><a class="list1" href="products.jsp">Penny</a></li>
-                                                <li><a class="list1" href="products.jsp">Nidhi Munim</a></li>
-                                                <li><a class="list1" href="products.jsp">Divaat</a></li>
+                                                <li><a class="list1" href="products.jsp">Kids & Baby</a></li>
+                                                <li><a class="list1" href="products.jsp">Jewelry</a></li>
+                                                <li><a class="list1" href="products.jsp">Watches</a></li>
+                                                <li><a class="list1" href="products.jsp">Beauty</a></li>
+                                                <li><a class="list1" href="products.jsp">Health</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Music<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a class="list1" href="products.jsp">Guitars</a></li>
+                                                <li><a class="list1" href="products.jsp">Pro-Audio</a></li>
+                                                <li><a class="list1" href="products.jsp">Vinyl, CDs, & More</a></li>
+                                                <li><a class="list1" href="products.jsp">Orchestra & Band</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a class="list" href="products.jsp">Men</a></li>
-                                                <li><a class="list1" href="products.jsp">Fiesta Clara</a></li>
-                                                <li><a class="list1" href="products.jsp">Quiksilver</a></li>
-                                                <li><a class="list1" href="products.jsp">Incult</a></li>
-                                                <li><a class="list1" href="products.jsp">Proline</a></li>
+                                                <li><a class="list1" href="products.jsp">Drums</a></li>
+                                                <li><a class="list1" href="products.jsp">DJ</a></li>
+                                                <li><a class="list1" href="products.jsp">Concert Tickets</a></li>
+                                                <li><a class="list1" href="products.jsp">Bass Guitars</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a class="list1" href="products.jsp">Amps</a></li>
+                                                <li><a class="list1" href="products.jsp">Effects & Pedals</a></li>
+                                                <li><a class="list1" href="products.jsp">Musical Instruments</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </ul>
                             </li>
+
                             <li><a href="products.jsp">Top</a></li>
                             <li><a href="products.jsp">Bikini</a></li>
                         </ul>
@@ -206,7 +284,8 @@
             </div>
             <div class="search-box">
                 <div id="sb-search" class="sb-search">
-                    <form>
+                    <form action="search">
+
                         <input class="sb-search-input" placeholder="Enter your search term..." type="search"
                                name="search" id="search">
                         <input class="sb-search-submit" type="submit" value="">
@@ -223,6 +302,7 @@
             </script>
             <!-- //search-scripts -->
             <div class="clearfix"></div>
+
         </div>
     </div>
 </div>

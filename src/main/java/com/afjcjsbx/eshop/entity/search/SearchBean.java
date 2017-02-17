@@ -1,8 +1,7 @@
 package com.afjcjsbx.eshop.entity.search;
 
 
-import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 
 import java.util.ArrayList;
 

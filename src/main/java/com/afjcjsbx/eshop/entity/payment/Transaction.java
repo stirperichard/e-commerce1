@@ -1,46 +1,49 @@
 package com.afjcjsbx.eshop.entity.payment;
 
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.Consumer;
 import com.afjcjsbx.eshop.entity.login.Producer;
 
-/**
- * Created by afjcjsbx on 07/02/17.
- */
+
 public class Transaction {
 
-    private Producer producer;
-    private Consumer consumer;
-    private Product product;
+    private Producer seller;
+    private Consumer buyer;
+    private Product productOnSale;
+    /*
+    private DeliveryMethod delivery; // TODO creare queste due interfacce? Mi sa che è meglio il Decorator
+    private PaymentMethod payment;
 
-    public Transaction(Producer producer, Consumer consumer, Product product) {
-        this.producer = producer;
-        this.consumer = consumer;
-        this.product = product;
+
+    public Transaction(Producer seller, Consumer buyer, Product productOnSale, DeliveryMethod delivery, PaymentMethod payment) {
+        this.seller = seller;
+        this.buyer = buyer;
+        this.productOnSale = productOnSale;
     }
+    */
 
-    public Producer getProducer() {
-        return producer;
+    /*public Producer getProducer() {
+        return seller;
     }
 
     public void setProducer(Producer producer) {
-        this.producer = producer;
+        this.seller = producer;
     }
 
     public Consumer getConsumer() {
-        return consumer;
+        return buyer;
     }
 
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
+    public void setConsumer(Consumer buyer) {
+        this.buyer = buyer;
     }
 
     public Product getProduct() {
-        return product;
+        return productForSale;
     }
 
     public void setProduct(Product product) {
-        this.product = product;
-    }
+        this.productForSale = product;
+    }*/
 
 }
