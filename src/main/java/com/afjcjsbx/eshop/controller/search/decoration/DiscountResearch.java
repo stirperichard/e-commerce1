@@ -22,9 +22,12 @@ public class DiscountResearch extends FilteredSearchDecorator {
         ArrayList<Product> filteredProducts = new ArrayList<>();
 
         for (Product product : products) {
-            if (product.getDiscountPercentage() > minDiscount)
+            if (product.getDiscountPercentage() >= minDiscount) {
                 filteredProducts.add(product);
+            }
         }
+
+
         return filteredProducts;
     }
 

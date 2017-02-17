@@ -1091,13 +1091,23 @@ p span.overline {
     text-transform: uppercase;
 }
 
-input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+input[type="text"], input[type="email"], input[type="tel"] {
     border: 1px solid #555;
     outline-color: #08538C;
     width: 100%;
     font-size: 0.8125em;
     padding: 0.5em;
 }
+
+input[type="password"] {
+    border: 1px solid #555;
+    outline-color: #08538C;
+    width: 100%;
+    font-size: 0.8125em;
+    padding: 0.5em;
+}
+
+
 
 .login-right input[type="submit"] {
     border: 2px solid #000;
@@ -1141,7 +1151,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
     text-transform: uppercase;
 }
 
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+.register-top-grid input[type="text"], .register-bottom-grid input[type="text"], .register-bottom-grid input[type="password"], .register-bottom-grid input[type="tel"]{
     border: 1px solid #555;
     outline-color: #FD9F3E;
     width: 96%;

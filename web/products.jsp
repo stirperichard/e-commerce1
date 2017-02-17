@@ -48,32 +48,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---728x90--->
 <div class="content">
 
-    <div class="subscribe">
-        <div class="container">
-            <div class="subscribe1">
-                <h4>Search in eshop</h4>
-            </div>
-            <div class="subscribe2">
-                <form id="submit_search" action="search">
+    <form id="submit_search" action="search" method="get">
+
+        <div class="subscribe">
+            <div class="container">
+                <div class="subscribe1">
+                    <h4>Search in eshop</h4>
+                </div>
+                <div class="subscribe2">
                     <input type="text" class="text" name="search" value="<%= request.getAttribute("search") %>"
                            onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}">
                     <input type="submit" value="SEARCH">
-                </form>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
         </div>
-    </div>
 
-    <div class="product-model">
-
-
-        <div class="main">
+        <div class="product-model">
 
 
-            <div class="top"></div>
-            <div class="left">
+            <div class="main">
 
-                <form id="submit_search" action="search" method="get">
+
+                <div class="top"></div>
+                <div class="left">
+
 
                     <div class="rsidebar span_1_of_left">
                         <section class="sky-form">
@@ -183,31 +182,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="col col-4">
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="10"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 10%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 10%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="20"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 20%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 20%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="30"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 30%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 30%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="40"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 40%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 40%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="50"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 50%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 50%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="60"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 60%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 60%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="70"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 70%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 70%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="80"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 80%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 80%</label>
 
                                     <label class="checkbox"><input type="checkbox" name="checkbox_discount" value="90"
-                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up to 90%</label>
+                                                                   onchange="document.getElementById('submit_search').submit()"><i></i>Up
+                                        to 90%</label>
 
                                 </div>
                             </div>
@@ -300,68 +308,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </section>
                     </div>
 
-                </form>
-            </div>
-            <div class="right">
-                <div class="container_products">
-
-
-                    <%
-
-                        List productlist = (ArrayList) request.getAttribute("productlist");
-
-                        if (productlist != null && productlist.size() > 0) {
-
-                            for (int i = 0; i < productlist.size(); i++) {
-
-                                Product product = (Product) productlist.get(i);
-
-                    %>
-
-                    <div class="product-grid" onclick="location.href='single.jsp?pid=<%= product.getId() %>';"
-                         style="cursor: pointer;">
-                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-
-                            <img src="<%= product.getPicture() %>" class="img-responsive" alt=""/>
-
-                            <div class="product-info simpleCart_shelfItem">
-                                <div class="product-info-cust prt_name">
-                                    <h4><%= product.getName() %>
-                                    </h4>
-                                    <span class="item_price"><%= product.getPrice() %></span>
-                                    <div class="ofr">
-                                        <p class="pric1">
-                                            <del></del>
-                                        </p>
-                                        <p class="disc">[<%= product.getDiscountPercentage() %>% Off]</p>
-                                    </div>
-                                </div>
-                                <div class="b-wrapper">
-                                    <h4 class="b-animate b-from-left  b-delay03">
-                                        <button> +</button>
-                                    </h4>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                    <%
-                            }
-                        }
-                    %>
-
-
                 </div>
+                <div class="right">
+                    <div class="container_products">
+
+
+                        <%
+
+                            List productlist = (ArrayList) request.getAttribute("productlist");
+
+                            if (productlist != null && productlist.size() > 0) {
+
+                                for (int i = 0; i < productlist.size(); i++) {
+
+                                    Product product = (Product) productlist.get(i);
+
+                        %>
+
+                        <div class="product-grid" onclick="location.href='single.jsp?pid=<%= product.getId() %>';"
+                             style="cursor: pointer;">
+                            <div class="product-img b-link-stripe b-animate-go  thickbox">
+
+                                <img src="<%= product.getPicture() %>" class="img-responsive" alt=""/>
+
+                                <div class="product-info simpleCart_shelfItem">
+                                    <div class="product-info-cust prt_name">
+                                        <h4><%= product.getName() %>
+                                        </h4>
+                                        <span class="item_price"><%= product.getPrice() %></span>
+                                        <div class="ofr">
+                                            <p class="pric1">
+                                                <del></del>
+                                            </p>
+                                            <p class="disc">[<%= product.getDiscountPercentage() %>% Off]</p>
+                                        </div>
+                                    </div>
+                                    <div class="b-wrapper">
+                                        <h4 class="b-animate b-from-left  b-delay03">
+                                            <button> +</button>
+                                        </h4>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <%
+                                }
+                            }
+                        %>
+
+
+                    </div>
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="clear"></div>
+
+
         </div>
 
+    </form>
 
-    </div>
 </div>
 
 

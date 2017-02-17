@@ -4,25 +4,19 @@ import com.afjcjsbx.eshop.controller.login.LoginController;
 import com.afjcjsbx.eshop.controller.search.decoration.CategoryResearch;
 import com.afjcjsbx.eshop.controller.search.decoration.DiscountResearch;
 import com.afjcjsbx.eshop.controller.search.decoration.ManufacturerResearch;
-import com.afjcjsbx.eshop.controller.search.decoration.PriceResearch;
 import com.afjcjsbx.eshop.entity.catalog.Category;
 import com.afjcjsbx.eshop.entity.catalog.Keyword;
 import com.afjcjsbx.eshop.entity.catalog.Manufacturer;
 import com.afjcjsbx.eshop.entity.catalog.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.login.FactoryUsers;
-import com.afjcjsbx.eshop.entity.login.Producer;
 import com.afjcjsbx.eshop.entity.review.Review;
-import com.afjcjsbx.eshop.entity.search.SearchBean;
 import com.afjcjsbx.eshop.utils.ConnectionManager;
 import com.afjcjsbx.eshop.utils.Query;
 
-import java.security.Key;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class FilteredSearchController {

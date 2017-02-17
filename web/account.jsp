@@ -66,11 +66,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Email Address<label>*</label></span>
-                            <input type="email" name="mail" id="mail">
+                            <input type="text" name="mail" id="mail">
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Confirm Email Address<label>*</label></span>
-                            <input type="email" name="confirm_mail" id="confirm_mail">
+                            <input type="text" name="confirm_mail" id="confirm_mail">
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Password<label>*</label></span>
