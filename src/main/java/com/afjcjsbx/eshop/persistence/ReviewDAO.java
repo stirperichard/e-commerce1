@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ReviewDAO {
 
-    boolean storeReview(Review review) throws DatabaseException;
+    void storeReview(Review review) throws DatabaseException;
 
     List<Review> findReviewsByProductId(int productId) throws DatabaseException;
 

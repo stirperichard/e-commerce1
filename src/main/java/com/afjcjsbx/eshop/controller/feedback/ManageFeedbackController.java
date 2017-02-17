@@ -2,6 +2,7 @@ package com.afjcjsbx.eshop.controller.feedback;
 
 import com.afjcjsbx.eshop.bean.ManageFeedbackBean;
 import com.afjcjsbx.eshop.entity.feedback.Review;
+import com.afjcjsbx.eshop.exceptions.DatabaseException;
 import com.afjcjsbx.eshop.persistence.ReviewDAO;
 import com.afjcjsbx.eshop.persistence.ReviewDAOImpl;
 
@@ -23,25 +24,29 @@ public class ManageFeedbackController {
     private ManageFeedbackController() {
     }
 
-    public boolean addProductReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
+    public void addProductReview(int reviewId, int productId, String email, int rating, String comment) throws DatabaseException { // parametri passati attraverso i bean del feedback e del login
         ReviewDAO dao = ReviewDAOImpl.getInstance();
 
-        //dao.storeReview();
-		return true;
+        Review review = new Review(reviewId, productId, email, rating, comment);
+
+        dao.storeReview(review);
+
     }
 
-    public List<Review> retrieveProductReviews(ManageFeedbackBean manageFeedbackBean) {
+    public List<Review> retrieveProductReviews(int productId) throws DatabaseException {
         ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
 
-        //dao.findReviewsByProductId();
-		return null;
+        List<Review> reviewsList = dao.findReviewsByProductId(productId);
+
+		return reviewsList;
     }
 
-    public List<Review> retrieveReviewsFromUser(ManageFeedbackBean manageFeedbackBean) {
+    public List<Review> retrieveReviewsFromUser(String username) throws DatabaseException {
         ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
 
-        //dao.findReviewsByUsername();
-		return null;
+        List<Review> reviewsList = dao.findReviewsByUsername(username);
+
+		return reviewsList;
     }
 
 

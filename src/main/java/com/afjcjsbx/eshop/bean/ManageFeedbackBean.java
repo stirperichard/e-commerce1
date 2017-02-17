@@ -14,7 +14,7 @@ public class ManageFeedbackBean {
 	 * La bean ha come attributi gli input dell'utente, inviatigli dallo strato view, in questo caso sarà una pagina JSP
 	 */
     private int productId; // reviewed product
-	private String username; // TODO assumiamo ora di doverlo passare dalla view, possiamo fare in modo di saperlo già? Solo se non è difficile
+	private String username; // TODO assumiamo ora di doverlo passare dalla view, possiamo fare in modo di saperlo già? Sì, tramite session
     private String password;
     private int rating;
     private String comment;

@@ -3,18 +3,18 @@ package com.afjcjsbx.eshop.entity.feedback;
 /**
  * Created by Davide on 13/02/2017.
  */
-public class Review { // TODO rinominare a ManageFeedbackBean? Cioè, entità e bean sono la stessa cosa? Direi di no, vedi esempio Mastrofini
+public class Review {
 
     private int reviewId;
     private int productId; // reviewed product
-    private String username; // the consumer who is providing his feedback. Users are identified by email username
+    private String email; // the consumer who is providing his feedback. Users are identified by email username
     private int rating; // rating in number of stars
     private String comment; // comment of the user about the product
 
-    public Review(int reviewId, int productId, String username, int rating, String comment) {
+    public Review(int reviewId, int productId, String email, int rating, String comment) {
         this.reviewId = reviewId;
         this.productId = productId;
-        this.username = username;
+        this.email = email;
         this.rating = rating;
         this.comment = comment;
     }
@@ -27,8 +27,8 @@ public class Review { // TODO rinominare a ManageFeedbackBean? Cioè, entità e 
         return productId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
     public int getRating() {

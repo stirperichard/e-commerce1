@@ -27,14 +27,14 @@ public class ReviewDAOImpl implements ReviewDAO {
     }
 
     @Override
-    public boolean storeReview(Review review) throws DatabaseException {
+    public void storeReview(Review review) throws DatabaseException {
 
         try {
             PreparedStatement stm = DataSource.getConnection().prepareStatement(Query.ADD_REVIEW);
             // setta i parametri della query
-            stm.setInt(1, review.getReviewId());
+            //stm.setInt(1, review.getReviewId());
             stm.setInt(2, review.getProductId());
-            stm.setString(3, review.getUsername());
+            stm.setString(3, review.getEmail());
             stm.setInt(4, review.getRating());
             stm.setString(5, review.getComment());
 
@@ -54,7 +54,6 @@ public class ReviewDAOImpl implements ReviewDAO {
         } catch (SQLException e) {
             throw new DatabaseException("Cannot write on database");
         }
-        return true;
     }
 
     @Override
@@ -71,7 +70,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             while (rs.next()) {
                 Review review = new Review(rs.getInt("reviewId"),
                         rs.getInt("productId"),
-                        rs.getString("username"),
+                        rs.getString("email"),
                         rs.getInt("rating"),
                         rs.getString("comment"));
                 /*lista.add(new Review(rs.getInt(FEEDBACK_ID), rs.getInt(LocazioneDAO.ID),
@@ -100,7 +99,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             while (rs.next()) {
                 Review review = new Review(rs.getInt("reviewId"),
                         rs.getInt("productId"),
-                        rs.getString("username"),
+                        rs.getString("email"),
                         rs.getInt("rating"),
                         rs.getString("comment"));
                 reviewsList.add(review);
