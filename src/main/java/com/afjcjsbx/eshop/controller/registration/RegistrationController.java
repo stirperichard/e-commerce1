@@ -3,8 +3,8 @@ package com.afjcjsbx.eshop.controller.registration;
 import com.afjcjsbx.eshop.controller.AbstractController;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.FactoryUsers;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,7 +43,7 @@ public class RegistrationController extends AbstractController {
 
     public static AbstractUser retrieveUserInfoByEmail(String email) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
         preparedStatement.setString(1, email);
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -57,7 +57,7 @@ public class RegistrationController extends AbstractController {
 
     public static AbstractUser retrieveUserInfoByUsername(String username) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
         preparedStatement.setString(1, username);
 
         ResultSet resultSet = preparedStatement.executeQuery();

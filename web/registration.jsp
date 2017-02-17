@@ -60,21 +60,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p>By creating an account with our store, you will be able to move through the checkout process
                             faster, store multiple shipping addresses, view and track your orders in your account and
                             more.</p>
-                        <a class="acount-btn" href="account.jsp">Create an Account Consumer</a>
+                        <a class="acount-btn" href="account.jsp" name="type" value="Consumer">Create an Account Consumer</a>
                         <br><br><br>
                         <h3>NEW PRODUCERS</h3>
                         <p>By creating an account with our store, you will be able to move through the checkout process
                             faster, store multiple shipping addresses, view and track your orders in your account and
                             more.</p>
-                        <a class="acount-btn" href="account.jsp">Create an Account Producer</a>
+                        <a class="acount-btn" href="account.jsp" name="type" value="Producer">Create an Account Producer</a>
                     </div>
 
                     <div class="col-md-6 login-right">
-                        <h3>NEW CUSTOMERS</h3>
+                        <h3>NEW CHARITY</h3>
                         <p>By creating an account with our store, you will be able to move through the checkout process
                             faster, store multiple shipping addresses, view and track your orders in your account and
                             more.</p>
-                        <a class="acount-btn" href="account.jsp">Create an Account Consumer</a>
+                        <a class="acount-btn" href="account.jsp" name="type" value="Charity">Create an Account Charity</a>
                         <br><br><br>
 
                     </div>

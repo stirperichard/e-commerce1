@@ -5,6 +5,9 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%
+    String tipo = request.getParameter("type");
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -53,36 +56,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="main-1">
         <div class="container">
             <div class="register">
-                <form>
+                <form action="send_registration.jsp">
                     <div class="register-top-grid">
                         <h3>PERSONAL INFORMATION</h3>
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>First Name<label>*</label></span>
-                            <input type="text" name="name" id="name">
+                            <input type="text" name="name" id="name" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Last Name<label>*</label></span>
-                            <input type="text" name="surname" id="surname">
+                            <input type="text" name="surname" id="surname" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Email Address<label>*</label></span>
-                            <input type="text" name="mail" id="mail">
+                            <input type="text" name="mail" id="mail" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Confirm Email Address<label>*</label></span>
-                            <input type="text" name="confirm_mail" id="confirm_mail">
+                            <input type="text" name="confirm_mail" id="confirm_mail" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Password<label>*</label></span>
-                            <input type="password" name="password" id="password">
+                            <input type="password" name="password" id="password" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Confirm Password<label>*</label></span>
-                            <input type="password" name="confirm_password" id="confirm_password">
+                            <input type="password" name="confirm_password" id="confirm_password" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Username<label>*</label></span>
-                            <input type="text" name="username" id="username">
+                            <input type="text" name="username" id="username" required>
                         </div>
                         <div style="visibility: hidden">
                             <span>Hidden div<label>*</label></span>
@@ -90,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Address<label>*</label></span>
-                            <input type="text" name="address" id="address">
+                            <input type="text" name="address" id="address" required>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Address 2<label>*</label></span>
@@ -99,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Country<label>*</label></span>
                             <form name="country" id="country">
-                                <select name="country">
+                                <select name="country" required>
                                     <option value="">Select your country</option>
                                     <option value="Afganistan">Afghanistan</option>
                                     <option value="Albania">Albania</option>
@@ -354,7 +357,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>State<label>*</label></span>
                             <FORM>
-                                <SELECT NAME="state" id="state">
+                                <SELECT NAME="state" id="state" required>
                                     <option value="">Select your state</option>
                                     <option value=”AG”>Agrigento</option>
                                     <option value=”AL”>Alessandria</option>
@@ -471,15 +474,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>City<label>*</label></span>
-                            <input type="text" name="city" id="city">
+                            <input type="text" name="city" id="city" required>
                         </div>
                         <div style="visibility: hidden">
-                            <span>Hidden div<label>*</label></span>
-                            <input type="text">
+                            <span>Type<label>*</label></span>
+                            <input type="text" name="type" id="type" value=<%=tipo%>>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Postal Code CAP<label>*</label></span>
-                            <input type="tel" name="cap" id="cap">
+                            <input type="tel" name="cap" id="cap" required>
                         </div>
                         <div style="visibility: hidden">
                             <span>Hidden div<label>*</label></span>
