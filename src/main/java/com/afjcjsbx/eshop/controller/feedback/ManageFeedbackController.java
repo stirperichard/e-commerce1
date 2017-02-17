@@ -2,8 +2,8 @@ package com.afjcjsbx.eshop.controller.feedback;
 
 import com.afjcjsbx.eshop.bean.ManageFeedbackBean;
 import com.afjcjsbx.eshop.entity.feedback.Review;
-import com.afjcjsbx.eshop.persistence.ManageFeedbackDAO;
-import com.afjcjsbx.eshop.persistence.ManageFeedbackDAOImpl;
+import com.afjcjsbx.eshop.persistence.ReviewDAO;
+import com.afjcjsbx.eshop.persistence.ReviewDAOImpl;
 
 import java.util.List;
 
@@ -24,19 +24,19 @@ public class ManageFeedbackController {
     }
 
     public boolean addProductReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
-        ManageFeedbackDAO dao = ManageFeedbackDAOImpl.getInstance();
+        ReviewDAO dao = ReviewDAOImpl.getInstance();
 
         dao.storeReview();
     }
 
     public List<Review> retrieveProductReviews(ManageFeedbackBean manageFeedbackBean) {
-        ManageFeedbackDAO dao = ManageFeedbackDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+        ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
 
         dao.findReviewsByProductId();
     }
 
     public List<Review> retrieveReviewsFromUser(ManageFeedbackBean manageFeedbackBean) {
-        ManageFeedbackDAO dao = ManageFeedbackDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+        ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
 
         dao.findReviewsByUsername();
     }

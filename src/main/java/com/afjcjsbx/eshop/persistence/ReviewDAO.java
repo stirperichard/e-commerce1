@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Davide on 13/02/2017.
  */
-public interface ManageFeedbackDAO {
+public interface ReviewDAO {
 
     boolean storeReview(Review review) throws DatabaseException;
 

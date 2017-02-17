@@ -13,17 +13,17 @@ import java.util.List;
 /**
  * ConcreteDAO implemented via JDBC. It is Singleton.
  */
-public class ManageFeedbackDAOImpl implements ManageFeedbackDAO {
+public class ReviewDAOImpl implements ReviewDAO {
 
-    private static ManageFeedbackDAOImpl instance;
+    private static ReviewDAOImpl instance;
 
-    public static ManageFeedbackDAOImpl getInstance() {
+    public static ReviewDAOImpl getInstance() {
         if (instance == null)
-            instance = new ManageFeedbackDAOImpl();
+            instance = new ReviewDAOImpl();
         return instance;
     }
 
-    private ManageFeedbackDAOImpl() {
+    private ReviewDAOImpl() {
     }
 
     @Override
@@ -54,8 +54,7 @@ public class ManageFeedbackDAOImpl implements ManageFeedbackDAO {
         } catch (SQLException e) {
             throw new DatabaseException("Cannot write on database");
         }
-        return false;
-
+        return true;
     }
 
     @Override
@@ -65,10 +64,16 @@ public class ManageFeedbackDAOImpl implements ManageFeedbackDAO {
 
             Connection conn = DataSource.getConnection();
             PreparedStatement stm = conn.prepareStatement(Query.FIND_REVIEWS_BY_PRODUCT_ID);
+            stm.setInt(1, productId);
+
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
-                Review review = new Review();
+                Review review = new Review(rs.getInt("reviewId"),
+                        rs.getInt("productId"),
+                        rs.getString("username"),
+                        rs.getInt("rating"),
+                        rs.getString("comment"));
                 /*lista.add(new Review(rs.getInt(FEEDBACK_ID), rs.getInt(LocazioneDAO.ID),
                         new UtenteCliente(rs.getString(UtenteGenericoDAO.CAMPO_NICKNAME)), rs.getString(COMMENTO)));
                 */
@@ -88,13 +93,16 @@ public class ManageFeedbackDAOImpl implements ManageFeedbackDAO {
 
             Connection conn = DataSource.getConnection();
             PreparedStatement stm = conn.prepareStatement(Query.FIND_REVIEWS_BY_USERNAME);
+            stm.setString(1, username);
+
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
-                Review review = new Review();
-                /*lista.add(new Review(rs.getInt(FEEDBACK_ID), rs.getInt(LocazioneDAO.ID),
-                        new UtenteCliente(rs.getString(UtenteGenericoDAO.CAMPO_NICKNAME)), rs.getString(COMMENTO)));
-                */
+                Review review = new Review(rs.getInt("reviewId"),
+                        rs.getInt("productId"),
+                        rs.getString("username"),
+                        rs.getInt("rating"),
+                        rs.getString("comment"));
                 reviewsList.add(review);
             }
             stm.close();

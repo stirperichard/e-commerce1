@@ -26,10 +26,10 @@ public class Query {
 
     public static final String DELETE_ADVERTISE = "DELETE FROM Products WHERE ProductID=?";
 
-    public static final String ADD_REVIEW = "INSERT INTO Reviews(rating,description,username,location) VALUES (?,?,?,?) ON CONFLICT (username,location) DO UPDATE SET rating=EXCLUDED.rating, description=EXCLUDED.description";
+    public static final String ADD_REVIEW = "INSERT INTO Reviews(reviewId, productId, username, rating, comment) VALUES (?,?,?,?,?) ON CONFLICT (productId,username) DO UPDATE SET rating=EXCLUDED.rating, comment=EXCLUDED.comment";
 
-    public static final String FIND_REVIEWS_BY_PRODUCT_ID = "SELECT * FROM public.feedback WHERE location = ?";
+    public static final String FIND_REVIEWS_BY_PRODUCT_ID = "SELECT * FROM Reviews WHERE productId = ?";
 
-    public static final String FIND_REVIEWS_BY_USERNAME = "SELECT";
+    public static final String FIND_REVIEWS_BY_USERNAME = "SELECT * FROM Reviews WHERE username = ?";
 
 }
