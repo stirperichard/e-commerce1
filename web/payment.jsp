@@ -407,7 +407,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
-    <!--footer-->
+</div>
+<!--footer-->
 
 </body>
 </html>

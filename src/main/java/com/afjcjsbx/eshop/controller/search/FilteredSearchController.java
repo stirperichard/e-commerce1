@@ -4,14 +4,15 @@ import com.afjcjsbx.eshop.controller.login.LoginController;
 import com.afjcjsbx.eshop.controller.search.decoration.CategoryResearch;
 import com.afjcjsbx.eshop.controller.search.decoration.DiscountResearch;
 import com.afjcjsbx.eshop.controller.search.decoration.ManufacturerResearch;
-import com.afjcjsbx.eshop.entity.catalog.Category;
-import com.afjcjsbx.eshop.entity.catalog.Keyword;
-import com.afjcjsbx.eshop.entity.catalog.Manufacturer;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.controller.search.decoration.PriceResearch;
+import com.afjcjsbx.eshop.entity.catalogue.Category;
+import com.afjcjsbx.eshop.entity.catalogue.Keyword;
+import com.afjcjsbx.eshop.entity.catalogue.Manufacturer;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.review.Review;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.entity.feedback.Review;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,21 +23,10 @@ import java.util.List;
 public class FilteredSearchController {
 
 
-    protected ArrayList<Product> search(String search) throws SQLException {
+    protected ArrayList<Product> search() throws SQLException {
 
-        ResultSet resultSet = null;
-
-        if(search.isEmpty()) {
-
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
-             statement.executeQuery();
-        }else{
-
-            PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
-            preparedStatement.setString(1, "%" + search + "%");
-            resultSet = preparedStatement.executeQuery();
-
-        }
+        PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
+        ResultSet resultSet = statement.executeQuery();
 
         ArrayList<Product> products = new ArrayList<>();
 
@@ -75,7 +65,7 @@ public class FilteredSearchController {
 
     public Product searchProductByID(String pid) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
         preparedStatement.setString(1, pid);
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -95,7 +85,7 @@ public class FilteredSearchController {
         List<Product> result = new ArrayList<>();
 
         try {
-            PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
+            PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
             preparedStatement.setString(1, "%" + search + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -118,20 +108,19 @@ public class FilteredSearchController {
 
 
 
-    public ArrayList<Product> startResearch(String search, Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
+    public ArrayList<Product> startResearch(Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
                                             Integer maxDisount, Manufacturer manufacturer) throws SQLException {
 
         FilteredSearchController fsc = new FilteredSearchController();
-        //fsc = new PriceResearch(minPrice, maxPrice, fsc);
+        fsc = new PriceResearch(minPrice, maxPrice, fsc);
 
         if (category != null) fsc = new CategoryResearch(category, fsc);
         if (minDiscount > 0) fsc = new DiscountResearch(minDiscount, fsc);
         if (manufacturer != null) fsc = new ManufacturerResearch(manufacturer, fsc);
 
-        return fsc.search(search);
+        return fsc.search();
 
     }
-
 
 
 }

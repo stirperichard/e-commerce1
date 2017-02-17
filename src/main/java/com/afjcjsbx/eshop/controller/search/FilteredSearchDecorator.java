@@ -1,6 +1,6 @@
 package com.afjcjsbx.eshop.controller.search;
 
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -1,16 +1,16 @@
-package com.afjcjsbx.eshop.controller.pay;
+package com.afjcjsbx.eshop.controller.payment;
 
 import com.afjcjsbx.eshop.entity.login.*;
-import com.afjcjsbx.eshop.entity.catalog.*;
+import com.afjcjsbx.eshop.entity.catalogue.*;
 import com.afjcjsbx.eshop.entity.payment.Transaction;
-import com.afjcjsbx.eshop.exceptions.TransactionNotValid;
+import com.afjcjsbx.eshop.exceptions.TransactionNotValidException;
 
 
 public class PaymentController {
     private Transaction transaction;
     private PaymentObserver observer;
 
-    public PaymentController(Producer producer, Consumer consumer, Product product) throws TransactionNotValid {
+    public PaymentController(Producer producer, Consumer consumer, Product product) throws TransactionNotValidException {
         this.transaction = new Transaction(producer, consumer, product);
     }
 

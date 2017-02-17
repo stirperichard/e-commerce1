@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.afjcjsbx.eshop.entity.catalog.Product" %>
+<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Product" %>
 <!--
 Au<!--
 Author: W3layouts

@@ -1,9 +1,9 @@
-package com.afjcjsbx.eshop.utils;
+package com.afjcjsbx.eshop.persistence;
 
 import java.sql.*;
 
 
-public class ConnectionManager {
+public class DataSource {
 
     private static final String JDBC_CONNECTION_URL =
             "jdbc:mysql://localhost/mydb";
@@ -22,6 +22,11 @@ public class ConnectionManager {
             e.printStackTrace();
         }
         return connection;
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 20; i++)
+            getConnection();
     }
 
 }

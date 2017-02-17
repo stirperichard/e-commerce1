@@ -1,10 +1,12 @@
 package com.afjcjsbx.eshop.controller.product;
 
 import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
-import com.afjcjsbx.eshop.entity.catalog.Keyword;
-import com.afjcjsbx.eshop.entity.catalog.Product;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
+import com.afjcjsbx.eshop.entity.catalogue.Keyword;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
+import com.afjcjsbx.eshop.entity.login.Producer;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +27,7 @@ public class ShopProductController {
 
     public Product displayProduct(String pid) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
         preparedStatement.setString(1, pid);
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -37,24 +39,24 @@ public class ShopProductController {
     }
 
 
-    public boolean insertProduct(String producer_email, String category_name, String product_name, String description, String picture, String price, String discountPercentage, String shipmentCost, String manufacturer, String keywords, String isCharitable) {
+    public boolean insertProduct(Product product, Producer producer) {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_PRODUCT);
+            PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.INSERT_ADVERTISE);
 
-            statement.setString(1, producer_email);
-            statement.setString(2, category_name);
-            statement.setString(3, product_name);
-            statement.setString(4, description);
-            statement.setString(5, picture);
-            statement.setFloat(6, Float.parseFloat(price));
-            statement.setString(7, manufacturer);
-            statement.setInt(8, Integer.parseInt(isCharitable));
-            statement.setString(9, keywords);
-            statement.setInt(10, Integer.parseInt(discountPercentage));
-            statement.setFloat(11, Float.parseFloat(shipmentCost));
-            statement.setInt(12, 1);
+            statement.setString(1, producer.getEmail());
+            statement.setString(2, product.getCategory().getName());
+            statement.setString(3, product.getName());
+            statement.setString(4, product.getDescription());
+            statement.setString(5, product.getPicture());
+            statement.setString(6, Float.toString(product.getPrice()));
+            statement.setString(7, product.getManufacturer());
+            statement.setString(8, product.isCharitable() ? "1" : "0");
+            statement.setString(9, keywordsToString(product.getKeywords()));
+            statement.setString(10, Integer.toString(product.getDiscountPercentage()));
+            statement.setString(11, Float.toString(product.getShipmentCost()));
+            statement.setString(12, product.isAvailability() ? "1" : "0");
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -70,16 +72,16 @@ public class ShopProductController {
     }
 
 
-    public boolean updateproduct(Product p) {
+    public boolean updateproduct(Advertisement advertisement) {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.UPDATE_PRODUCT);
+            PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.UPDATE_ADVERTISE);
 
-            statement.setString(1, p.getName());
-            statement.setString(2, p.getDescription());
-            statement.setString(3, Float.toString(p.getPrice()));
-            statement.setString(4, Integer.toString(p.getDiscountPercentage()));
+            statement.setString(1, advertisement.getProduct().getName());
+            statement.setString(2, advertisement.getProduct().getDescription());
+            statement.setString(3, Float.toString(advertisement.getProduct().getPrice()));
+            statement.setString(4, Integer.toString(advertisement.getProduct().getDiscountPercentage()));
 
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -100,16 +102,17 @@ public class ShopProductController {
     }
 
 
-    public boolean deleteProduct(Product p) {
+    public boolean deleteProduct(Advertisement advertisement) {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.DELETE_PRODUCT);
+            PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.DELETE_ADVERTISE);
 
-            statement.setString(1, Integer.toString(p.getId()));
+            statement.setString(1, Integer.toString(advertisement.getProduct().getId()));
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
+                System.out.println("A new user was inserted successfully!");
                 return true;
             }
 
