@@ -3,6 +3,7 @@ package com.afjcjsbx.eshop.controller.customer;
 
 import com.afjcjsbx.eshop.controller.AbstractController;
 
+// TODO rinominare queste classi a Consumer?
 public class CustomerAccountController extends AbstractController {
 	
 

@@ -6,5 +6,5 @@ package com.afjcjsbx.eshop.enums.shipment;
 public enum DeliveryStatus {
     SENT,
     NOTSENT,
-    DELIVERED
+    DELIVERED // consegnato al consumer
 }

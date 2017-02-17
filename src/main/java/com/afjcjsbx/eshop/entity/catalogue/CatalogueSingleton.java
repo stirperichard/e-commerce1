@@ -1,4 +1,4 @@
-package com.afjcjsbx.eshop.entity.catalog;
+package com.afjcjsbx.eshop.entity.catalogue;
 
 import java.util.ArrayList;
 

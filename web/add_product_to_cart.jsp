@@ -1,5 +1,5 @@
 <%@ page import="com.afjcjsbx.eshop.controller.shoppingcart.ShoppingCartController" %>
-<%@ page import="com.afjcjsbx.eshop.entity.catalog.Product" %><%--
+<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Product" %><%--
   Created by IntelliJ IDEA.
   Guest: afjcjsbx
   Date: 03/02/17

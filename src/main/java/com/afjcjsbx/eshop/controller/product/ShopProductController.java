@@ -2,11 +2,11 @@ package com.afjcjsbx.eshop.controller.product;
 
 import com.afjcjsbx.eshop.controller.search.FilteredSearchController;
 import com.afjcjsbx.eshop.entity.advertisement.Advertisement;
-import com.afjcjsbx.eshop.entity.catalog.Keyword;
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Keyword;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.Producer;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public class ShopProductController {
 
     public Product displayProduct(String pid) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRDUCT_BY_ID);
         preparedStatement.setString(1, pid);
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -43,7 +43,7 @@ public class ShopProductController {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.INSERT_ADVERTISE);
+            PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.INSERT_ADVERTISE);
 
             statement.setString(1, producer.getEmail());
             statement.setString(2, product.getCategory().getName());
@@ -76,7 +76,7 @@ public class ShopProductController {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.UPDATE_ADVERTISE);
+            PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.UPDATE_ADVERTISE);
 
             statement.setString(1, advertisement.getProduct().getName());
             statement.setString(2, advertisement.getProduct().getDescription());
@@ -106,7 +106,7 @@ public class ShopProductController {
 
         try {
 
-            PreparedStatement statement = ConnectionManager.getConnection().prepareStatement(Query.DELETE_ADVERTISE);
+            PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.DELETE_ADVERTISE);
 
             statement.setString(1, Integer.toString(advertisement.getProduct().getId()));
 

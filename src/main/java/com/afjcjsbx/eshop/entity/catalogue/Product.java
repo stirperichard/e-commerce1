@@ -1,9 +1,8 @@
-package com.afjcjsbx.eshop.entity.catalog;
+package com.afjcjsbx.eshop.entity.catalogue;
 
 import com.afjcjsbx.eshop.entity.Entity;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.login.Producer;
-import com.afjcjsbx.eshop.entity.review.Review;
+import com.afjcjsbx.eshop.entity.feedback.Review;
 
 import java.util.List;
 
@@ -12,7 +11,6 @@ public class Product extends Entity{
 
 	private String name;
 	private String description;
-	private String SKU;
 	private String picture;
 	private Float price;
 	private Integer discountPercentage;
@@ -21,7 +19,7 @@ public class Product extends Entity{
 	private Category category;
 	private String manufacturer;
     private List<Keyword> keywords;
-    private List<Review> reviews;
+    private List<Review> reviews; // TODO traiamo qualche vantaggio ad implementare l'aggregazione anche in memoria oltre che nel db? Secondo me no, aumenta solo il coupling
     private boolean isCharitable;
     private boolean availability;
 
@@ -60,14 +58,6 @@ public class Product extends Entity{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getSKU() {
-		return SKU;
-	}
-
-	public void setSKU(String SKU) {
-		this.SKU = SKU;
 	}
 
 	public String getPicture() {

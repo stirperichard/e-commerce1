@@ -1,7 +1,6 @@
-package com.afjcjsbx.eshop.dao.login;
+package com.afjcjsbx.eshop.persistence;
 
 import com.afjcjsbx.eshop.entity.login.Guest;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,7 +32,7 @@ public class UserDAO {
 
         try {
             //connect to DB
-            currentCon = ConnectionManager.getConnection();
+            currentCon = DataSource.getConnection();
             stmt = currentCon.createStatement();
             rs = stmt.executeQuery(searchQuery);
             boolean more = rs.next();

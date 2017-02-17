@@ -1,4 +1,4 @@
-package com.afjcjsbx.eshop.boundary;
+package com.afjcjsbx.eshop.entity.payment;
 
 import com.afjcjsbx.eshop.entity.payment.Transaction;
 

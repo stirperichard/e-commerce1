@@ -4,9 +4,8 @@ package com.afjcjsbx.eshop.controller.login;
 import com.afjcjsbx.eshop.controller.AbstractController;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.FactoryUsers;
-import com.afjcjsbx.eshop.entity.login.Guest;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,7 +52,7 @@ public class LoginController extends AbstractController {
 
     public static AbstractUser retrieveOwnerInfoByEmail(String email) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_USER_BY_EMAIL);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_USER_BY_EMAIL);
         preparedStatement.setString(1, email);
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -68,7 +67,7 @@ public class LoginController extends AbstractController {
 
     static AbstractUser retrieveUserInfoByEmailAndPassword(String email, String password) throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_REGISTERED_USER);
         preparedStatement.setString(1, email);
         preparedStatement.setString(2, password);
 

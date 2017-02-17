@@ -1,4 +1,4 @@
-package com.afjcjsbx.eshop.controller.pay;
+package com.afjcjsbx.eshop.controller.payment;
 
 import com.afjcjsbx.eshop.enums.payment.PaymentStatus;
 
