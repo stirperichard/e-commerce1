@@ -1,7 +1,8 @@
 <%@ page import="com.afjcjsbx.eshop.controller.registration.RegistrationController" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.Consumer" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.Producer" %>
-<%@ page import="com.afjcjsbx.eshop.entity.login.Charity" %><%--
+<%@ page import="com.afjcjsbx.eshop.entity.login.Charity" %>
+<%--
   Created by IntelliJ IDEA.
   User: Richard
   Date: 17/02/2017
@@ -9,20 +10,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Richard
-  Date: 19/01/2017
-  Time: 10:47
-  To change this template use File | Settings | File Templates.
---%>
-<%--
-  Created by IntelliJ IDEA.
-  User: Richard
-  Date: 18/01/2017
-  Time: 11:55
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" session="true"%>
 
 <%
@@ -112,6 +99,12 @@
             charity.setPayPalAccount(paypal);
             charity.setWebsite(website);
             session.setAttribute("currentSessionUser", charity);
+
+            if (controller.register_charity(charity)) {
+                response.sendRedirect("userRegistered.jsp");
+            } else {
+                response.sendRedirect("InvalidRegistration.jsp");
+            }
         }
     }
 %>

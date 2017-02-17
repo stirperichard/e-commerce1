@@ -10,6 +10,8 @@ public class Query {
 
     public static final String FIND_USER_BY_EMAIL = "SELECT * FROM Users WHERE Mail = ?";
 
+    public static final String FIND_USER_BY_USERNAME = "SELECT * FROM Users WHERE Username = ?"; //Creato da Richard
+
     public static final String SEARCH_PRODUCTS_BY_NAME = "SELECT * " +
             "FROM Products " +
             "WHERE Availability = 1 AND Products.ProductName LIKE ?";
