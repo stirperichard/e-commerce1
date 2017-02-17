@@ -26,19 +26,22 @@ public class ManageFeedbackController {
     public boolean addProductReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
         ReviewDAO dao = ReviewDAOImpl.getInstance();
 
-        dao.storeReview();
+        //dao.storeReview();
+		return true;
     }
 
     public List<Review> retrieveProductReviews(ManageFeedbackBean manageFeedbackBean) {
         ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
 
-        dao.findReviewsByProductId();
+        //dao.findReviewsByProductId();
+		return null;
     }
 
     public List<Review> retrieveReviewsFromUser(ManageFeedbackBean manageFeedbackBean) {
         ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
 
-        dao.findReviewsByUsername();
+        //dao.findReviewsByUsername();
+		return null;
     }
 
 

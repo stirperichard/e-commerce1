@@ -1,15 +1,13 @@
 package com.afjcjsbx.eshop.controller.product;
 
-import com.afjcjsbx.eshop.entity.catalog.Product;
+import com.afjcjsbx.eshop.entity.catalogue.Product;
 import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.Producer;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import static com.afjcjsbx.eshop.utils.SessionUtil.getSessionAttribute;
 
@@ -42,11 +40,14 @@ public class InsertProductServlet extends HttpServlet {
         String discount_percentage = request.getParameter("discount_percentage");
         String shipment_cost = request.getParameter("shipment_cost");
 
-        AbstractUser producer = retriveUserSession(request);
+        Product product = new Product();
+        product.setPicture(picture_link);
+        product.setPrice(Float.parseFloat(price));
 
-        ShopProductController shopProductController = new ShopProductController();
-        shopProductController.insertProduct(producer.getEmail(), category_name, product_name, product_description, picture_link, price, discount_percentage, shipment_cost, "", "", isCharitable);
+        Producer producer = (Producer) retriveUserSession(request);
 
+        ManageSaleController manageSaleController = new ManageSaleController();
+        manageSaleController.insertProduct(product, producer);
         // do something to produce a response
     }
 

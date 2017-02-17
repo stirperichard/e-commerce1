@@ -11,7 +11,7 @@ public class PaymentController {
     private PaymentObserver observer;
 
     public PaymentController(Producer producer, Consumer consumer, Product product) throws TransactionNotValidException {
-        this.transaction = new Transaction(producer, consumer, product);
+        //this.transaction = new Transaction(producer, consumer, product);
     }
 
 

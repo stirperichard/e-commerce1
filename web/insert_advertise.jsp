@@ -1,7 +1,7 @@
-<%@ page import="com.afjcjsbx.eshop.entity.catalog.CatalogueSingleton" %>
 <%@ page import="com.afjcjsbx.eshop.controller.catalogue.CatalogueController" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.afjcjsbx.eshop.entity.catalog.Category" %>
+<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Category" %>
+
 <!--
 Au<!--
 Author: W3layouts

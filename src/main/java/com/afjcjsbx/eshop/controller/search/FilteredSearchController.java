@@ -23,10 +23,11 @@ import java.util.List;
 public class FilteredSearchController {
 
 
-    protected ArrayList<Product> search() throws SQLException {
+    protected ArrayList<Product> search(String search) throws SQLException {
 
-        PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRODUCT);
-        ResultSet resultSet = statement.executeQuery();
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.SEARCH_PRODUCTS_BY_NAME);
+        preparedStatement.setString(1, "%" + search + "%");
+        ResultSet resultSet = preparedStatement.executeQuery();
 
         ArrayList<Product> products = new ArrayList<>();
 
@@ -108,7 +109,7 @@ public class FilteredSearchController {
 
 
 
-    public ArrayList<Product> startResearch(Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
+    public ArrayList<Product> startResearch(String search, Category category, Integer minPrice, Integer maxPrice, Integer minDiscount,
                                             Integer maxDisount, Manufacturer manufacturer) throws SQLException {
 
         FilteredSearchController fsc = new FilteredSearchController();
@@ -118,7 +119,7 @@ public class FilteredSearchController {
         if (minDiscount > 0) fsc = new DiscountResearch(minDiscount, fsc);
         if (manufacturer != null) fsc = new ManufacturerResearch(manufacturer, fsc);
 
-        return fsc.search();
+        return fsc.search(search);
 
     }
 

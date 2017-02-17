@@ -1,13 +1,10 @@
 package com.afjcjsbx.eshop.controller.catalogue;
 
-import com.afjcjsbx.eshop.controller.login.LoginController;
-import com.afjcjsbx.eshop.entity.catalog.Category;
-import com.afjcjsbx.eshop.entity.catalog.Keyword;
-import com.afjcjsbx.eshop.entity.catalog.Product;
-import com.afjcjsbx.eshop.entity.login.AbstractUser;
-import com.afjcjsbx.eshop.entity.review.Review;
-import com.afjcjsbx.eshop.utils.ConnectionManager;
-import com.afjcjsbx.eshop.utils.Query;
+
+
+import com.afjcjsbx.eshop.entity.catalogue.Category;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +29,7 @@ public class CatalogueController {
 
     public ArrayList<Category> retrieveCategories() throws SQLException {
 
-        PreparedStatement preparedStatement = ConnectionManager.getConnection().prepareStatement(Query.RETRIEVE_CATEGORIES);
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.RETRIEVE_CATEGORIES);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         System.err.println("query:" + preparedStatement.toString());

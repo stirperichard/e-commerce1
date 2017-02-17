@@ -9,11 +9,14 @@ import java.util.List;
 /**
  * Sale advertisement for a product.
  */
-public class Advertisement extends Entity{
+public class Advertisement extends Entity {
+
 
     private Product productToSell;
     private Producer seller;
     private double price;
+
+    /*
     private List<DeliveryMethod> availableDeliveryMethods; // array di metodi di consegna disponibili per il productToSell
     private List<PaymentMethod> availablePaymentMethods;
 
@@ -25,6 +28,7 @@ public class Advertisement extends Entity{
         this.availablePaymentMethods = availablePaymentMethods;
     }
 
+*/
     public Product getProduct() {
         return productToSell;
     }
@@ -32,4 +36,5 @@ public class Advertisement extends Entity{
     public void setProduct(Product product) {
         this.productToSell = product;
     }
+
 }
