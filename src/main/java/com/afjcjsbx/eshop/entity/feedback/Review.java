@@ -7,14 +7,14 @@ public class Review {
 
     private int reviewId;
     private int productId; // reviewed product
-    private String email; // the consumer who is providing his feedback. Users are identified by email username
+    private String username; // the consumer who is providing his feedback. Users are identified by email username
     private int rating; // rating in number of stars
     private String comment; // comment of the user about the product
 
-    public Review(int reviewId, int productId, String email, int rating, String comment) {
+    public Review(int reviewId, int productId, String username, int rating, String comment) {
         this.reviewId = reviewId;
         this.productId = productId;
-        this.email = email;
+        this.username = username;
         this.rating = rating;
         this.comment = comment;
     }
@@ -27,8 +27,8 @@ public class Review {
         return productId;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
     public int getRating() {

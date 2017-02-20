@@ -34,7 +34,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             // setta i parametri della query
             //stm.setInt(1, review.getReviewId());
             stm.setInt(2, review.getProductId());
-            stm.setString(3, review.getEmail());
+            stm.setString(3, review.getUsername());
             stm.setInt(4, review.getRating());
             stm.setString(5, review.getComment());
 
@@ -70,7 +70,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             while (rs.next()) {
                 Review review = new Review(rs.getInt("reviewId"),
                         rs.getInt("productId"),
-                        rs.getString("email"),
+                        rs.getString("username"),
                         rs.getInt("rating"),
                         rs.getString("comment"));
                 /*lista.add(new Review(rs.getInt(FEEDBACK_ID), rs.getInt(LocazioneDAO.ID),
@@ -99,7 +99,7 @@ public class ReviewDAOImpl implements ReviewDAO {
             while (rs.next()) {
                 Review review = new Review(rs.getInt("reviewId"),
                         rs.getInt("productId"),
-                        rs.getString("email"),
+                        rs.getString("username"),
                         rs.getInt("rating"),
                         rs.getString("comment"));
                 reviewsList.add(review);

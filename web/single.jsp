@@ -236,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                            Review review = (Review) reviewsList.get(i);
                                 %>
                                 <tr>
-                                    <td data-title="ID"><%= review.getEmail()%></td>
+                                    <td data-title="ID"><%= review.getUsername()%></td>
                                     <td data-title="Name"><%= review.getRating()%></td>
                                     <td data-title="Link"><%= review.getComment()%></td>
                                 </tr>

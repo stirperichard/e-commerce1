@@ -24,10 +24,10 @@ public class ManageFeedbackController {
     private ManageFeedbackController() {
     }
 
-    public void addProductReview(int reviewId, int productId, String email, int rating, String comment) throws DatabaseException { // parametri passati attraverso i bean del feedback e del login
+    public void addProductReview(int reviewId, int productId, String username, int rating, String comment) throws DatabaseException { // parametri passati attraverso i bean del feedback e del login
         ReviewDAO dao = ReviewDAOImpl.getInstance();
 
-        Review review = new Review(reviewId, productId, email, rating, comment);
+        Review review = new Review(reviewId, productId, username, rating, comment);
 
         dao.storeReview(review);
 
