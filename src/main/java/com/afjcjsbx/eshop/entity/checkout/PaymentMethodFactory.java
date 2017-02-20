@@ -6,13 +6,13 @@ import com.afjcjsbx.eshop.entity.checkout.paymentServices.Visa;
 
 public class PaymentMethodFactory {
 	
-	public PaymentMethod creaServizioPagamento(int tipo) throws Exception{
-        switch (tipo)
+	public PaymentMethod createPaymentMethod(int type) throws Exception{
+        switch (type)
         {
-            case 1: return new Paypal();
-            case 2: return new Visa();
-            case 3: return new Mastercard();
-            default: throw new Exception("Invalid type : " + tipo);
+            case 1: return new Visa();
+            case 2: return new Mastercard();
+            case 3: return new Paypal();
+            default: throw new Exception("Invalid type : " + type);
         }
-  }
+    }
 }

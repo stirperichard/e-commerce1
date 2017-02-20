@@ -15,7 +15,7 @@ public class ManageFeedbackController {
 
 	private static ManageFeedbackController instance;
 
-	public static ManageFeedbackController getInstance() {
+	public synchronized static ManageFeedbackController getInstance() {
 		if (instance == null)
 			instance = new ManageFeedbackController();
 		return instance;

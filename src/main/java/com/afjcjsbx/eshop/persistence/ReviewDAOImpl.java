@@ -17,7 +17,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
     private static ReviewDAOImpl instance;
 
-    public static ReviewDAOImpl getInstance() {
+    public synchronized static ReviewDAOImpl getInstance() {
         if (instance == null)
             instance = new ReviewDAOImpl();
         return instance;

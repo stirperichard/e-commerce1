@@ -15,8 +15,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Swim Wear a E-Commerce online Shopping Category Flat Bootstrap Responsive Website Template| Single ::
-        w3layouts</title>
+    <title>Product details</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/owl.carousel.css" rel="stylesheet">

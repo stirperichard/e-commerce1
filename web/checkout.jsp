@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Swim Wear a E-Commerce online Shopping Category Flat Bootstrap Responsive Website Template | Contact :: w3layouts</title>
+    <title>Checkout</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/owl.carousel.css" rel="stylesheet">
@@ -83,7 +83,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <h1 class="navbar-brand"><a  href="index.jsp">swim wear</a></h1>
                     </div>
                     <!--/.navbar-header-->
 

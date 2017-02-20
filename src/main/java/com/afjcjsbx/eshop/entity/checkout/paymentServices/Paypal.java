@@ -5,12 +5,13 @@ import com.afjcjsbx.eshop.entity.checkout.PaymentMethod;
 public class Paypal implements PaymentMethod {
 
 	@Override
-	public void validatePaymentService() {
+	public boolean validatePaymentService() {
 		System.out.println("Validated payment service: Paypal");
+		return true;
 	}
 
 	@Override
 	public double calculateAdditionalPaymentFees() {
-		return 10.4;
+		return 0.5;
 	}
 }

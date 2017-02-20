@@ -2,7 +2,7 @@ package com.afjcjsbx.eshop.entity.checkout;
 
 public interface PaymentMethod {
 	
-	void validatePaymentService();
+	boolean validatePaymentService();
 	
 	double calculateAdditionalPaymentFees();
 

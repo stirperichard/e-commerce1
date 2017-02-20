@@ -5,12 +5,13 @@ import com.afjcjsbx.eshop.entity.checkout.PaymentMethod;
 public class Visa implements PaymentMethod {
 
 	@Override
-	public void validatePaymentService() {
+	public boolean validatePaymentService() {
 		System.out.println("Validated payment service: Visa");
+		return true;
 	}
 
 	@Override
 	public double calculateAdditionalPaymentFees() {
-		return 7.3;
+		return 0.9;
 	}
 }

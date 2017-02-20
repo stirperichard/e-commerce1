@@ -1,19 +1,32 @@
-package com.afjcjsbx.eshop.controller.payment;
+package com.afjcjsbx.eshop.controller.checkout;
 
+import com.afjcjsbx.eshop.boundary.ExternalPaymentService;
 import com.afjcjsbx.eshop.entity.login.*;
 import com.afjcjsbx.eshop.entity.catalogue.*;
 import com.afjcjsbx.eshop.entity.checkout.Transaction;
 import com.afjcjsbx.eshop.exceptions.TransactionNotValidException;
 
 
-public class PaymentController {
+public class PaymentController implements Runnable{
     private Transaction transaction;
-    private PaymentObserver observer;
 
-    public PaymentController(Producer producer, Consumer consumer, Product product) throws TransactionNotValidException {
-        //this.transaction = new Transaction(producer, consumer, product);
+    public PaymentController(Transaction transaction) throws TransactionNotValidException {
+        this.transaction = transaction;
     }
 
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    @Override
+    public void run() {
+        if (transaction.getPayment().validatePaymentService()){
+            //transaction.getPayment().calculateAdditionalPaymentFees();
+            ExternalPaymentService externalPaymentService = new ExternalPaymentService(transaction);
+            if (externalPaymentService.forwardPayment())
+                System.out.println("Payment completed");
+        }
+    }
 
 /*    public void confirmForm(String cardNumber, String ownerFirstName, String ownerLastName, String expirationDate) {
         try {
@@ -29,9 +42,9 @@ public class PaymentController {
         }
     }*/
 
-    public void attachObserver(PaymentObserver observer) {
+   /* public void attachObserver(PaymentObserver observer) {
         this.observer = observer;
-    }
+    }*/
 
     /*
     public void detachObserver(){
@@ -48,7 +61,4 @@ public class PaymentController {
         }
     }*/
 
-    public Transaction getTransaction() {
-        return transaction;
-    }
 }
