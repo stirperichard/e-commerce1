@@ -1,7 +1,7 @@
 package com.afjcjsbx.eshop.entity.login;
 
 
-import com.afjcjsbx.eshop.entity.payment.CreditCard;
+import com.afjcjsbx.eshop.entity.checkout.CreditCard;
 import com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart;
 import com.afjcjsbx.eshop.enums.Roles;
 

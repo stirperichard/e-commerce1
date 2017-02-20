@@ -19,7 +19,7 @@ public class RemoveToCartServlet extends HttpServlet {
         ShoppingCartController scc = new ShoppingCartController();
         scc.removeProduct(request, Integer.parseInt(product_id));
 
-        response.sendRedirect("checkout.jsp"); //error page
+        response.sendRedirect("shoppingbag.jsp"); //error page
 
     }
 }

@@ -17,10 +17,10 @@ public class Advertisement extends Entity {
     private double price;
 
     /*
-    private List<DeliveryMethod> availableDeliveryMethods; // array di metodi di consegna disponibili per il productToSell
-    private List<PaymentMethod> availablePaymentMethods;
+    private List<metodoconsegna> availableDeliveryMethods; // array di metodi di consegna disponibili per il productToSell
+    private List<Metododipagamento> availablePaymentMethods;
 
-    public Advertisement(Product productToSell, Producer seller, double price, DeliveryMethod[] availableDeliveryMethods, PaymentMethod[] availablePaymentMethods) {
+    public Advertisement(Product productToSell, Producer seller, double price, metodoconsegna[] availableDeliveryMethods, Metododipagamento[] availablePaymentMethods) {
         this.productToSell = productToSell;
         this.seller = seller;
         this.price = price;

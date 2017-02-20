@@ -2,7 +2,7 @@ package com.afjcjsbx.eshop.controller.payment;
 
 import com.afjcjsbx.eshop.entity.login.*;
 import com.afjcjsbx.eshop.entity.catalogue.*;
-import com.afjcjsbx.eshop.entity.payment.Transaction;
+import com.afjcjsbx.eshop.entity.checkout.Transaction;
 import com.afjcjsbx.eshop.exceptions.TransactionNotValidException;
 
 
