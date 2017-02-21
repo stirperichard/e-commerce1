@@ -1,10 +1,38 @@
-<%--
+<%@ page import="com.afjcjsbx.eshop.enums.shipment.DeliveryStatus" %>
+<%@ page import="com.afjcjsbx.eshop.controller.shipment.ShipmentController" %><%--
   Created by IntelliJ IDEA.
   User: Richard
   Date: 17/02/2017
   Time: 22:02
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String string_date = request.getParameter("date");
+    String tracking = request.getParameter("tracking");
+    DeliveryStatus s_type = null;
+    String label = "";
+
+    if (tracking != null || string_date != null) {
+        ShipmentController controller = new ShipmentController();
+        s_type = controller.shipment(tracking, string_date);
+
+        if (s_type != null) {
+            if (s_type == DeliveryStatus.NOT_FOUND) {
+                label = "Username o ShipID non validi";
+            } else if (s_type == DeliveryStatus.NOTSENT) {
+                label = "Da spedire";
+            } else if (s_type == DeliveryStatus.SENT) {
+                label = "Spedito";
+            } else if (s_type == DeliveryStatus.DELIVERED) {
+                label = "Consegnato";
+            }
+        }
+    }
+%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html>
@@ -54,13 +82,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="login-page">
                 <div class="account_grid">
                     <h1 align="center">Check your shipment</h1>
-                    <form method="post" action="send_shipment.jsp" name="nomeform">
+                    <form method="post" action="shipment.jsp" name="nomeform">
                         <fieldset>
-                            <label for="tracking">Tracking ID : </label>
+                            <label for="tracking">Tracking ID : </label><br>
                             <input type="text" NAME="tracking" id="tracking" required><br>
-                            <label for="date">Date: </label>
-                            <input type="date" NAME="date" id="date" required><br> <br>
-                            <input type="submit" value="Login"><br>
+                            <label for="date">Date: </label><br>
+                            <input type="date" NAME="date" id="date" required><br><br>
+                            <input type="submit" value="Login"><br><br><br>
+                            <% if (s_type != null){ %>
+                            <label>Stato : </label> <%= label %>
+                            <% } %>
                         </fieldset><br>
                     </form>
                     <div class="clearfix"></div>

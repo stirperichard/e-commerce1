@@ -2,20 +2,47 @@ package com.afjcjsbx.eshop.controller.shipment;
 
 import com.afjcjsbx.eshop.entity.shipment.Shipment;
 import com.afjcjsbx.eshop.enums.shipment.DeliveryStatus;
+import com.afjcjsbx.eshop.persistence.DataSource;
+import com.afjcjsbx.eshop.persistence.Query;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Richard on 07/02/2017.
  */
 public class ShipmentController {
 
-    /*private DatabaseShipmentSingleton database_shipment_singleton = DatabaseShipmentSingleton.getInstance();
+    private static DeliveryStatus retrieveShipmentStatus(ResultSet resultSet) throws SQLException, ParseException {
 
-    public DeliveryStatus shipment(Shipment s){
-        for (int i=0; i < database_shipment_singleton.getSize(); i++){
-            if (s.getTrack().equals(database_shipment_singleton.get(i).getTrack())){
-                return database_shipment_singleton.get(i).getSType();
-            }
+        String s_tracking = resultSet.getString("Tracking"),
+                s_data = resultSet.getString("Data");
+
+        Shipment shipment = new Shipment();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        Date date = (Date) formatter.parse(s_data);
+
+        shipment.setTrackingNumber(s_tracking);
+        shipment.setDate(date);
+
+        return shipment.getDeliveryStatus();
+    }
+
+    public static DeliveryStatus shipment(String tracking, String date) throws SQLException, ParseException {
+        PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_SHIPMENT_STATUS);
+        preparedStatement.setString(1, tracking);
+        preparedStatement.setString(2, date);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            return retrieveShipmentStatus(resultSet);
         }
-        return s.getDeliveryStatus();
-    }*/
+
+        return DeliveryStatus.NOT_FOUND;
+    }
 }

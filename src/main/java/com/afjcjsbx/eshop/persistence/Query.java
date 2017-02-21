@@ -10,8 +10,6 @@ public class Query {
 
     public static final String FIND_USER_BY_EMAIL = "SELECT * FROM Users WHERE Mail = ?";
 
-    public static final String FIND_USER_BY_USERNAME = "SELECT * FROM Users WHERE Username = ?"; //Creato da Richard
-
     public static final String SEARCH_PRODUCTS_BY_NAME = "SELECT * " +
             "FROM Products " +
             "WHERE Availability = 1 AND Products.ProductName LIKE ?";
@@ -37,4 +35,9 @@ public class Query {
 
     public static final String FIND_REVIEWS_BY_USERNAME = "SELECT * FROM Reviews WHERE username = ?";
 
+    public static final String FIND_SHIPMENT_STATUS = "SELECT * FROM Shipment WHERE ShipmentTrack = ? and ShipmentDate = ?"; //Creato da Richard
+
+    public static final String FIND_USER_BY_USERNAME = "SELECT * FROM Users WHERE Username = ?"; //Creato da Richard
+
+    public static final String INSERT_USER = "INSERT INTO Users (Mail, Username, Password, Name, Surname, Address1, Address2, City, State, PostalCode, Country, Phone, Website, PayPalAccount, Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //Creato da Richard
 }
