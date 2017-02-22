@@ -1,4 +1,6 @@
 <%@ page import="com.afjcjsbx.eshop.controller.checkout.CheckoutController" %>
+<%@ page import="com.afjcjsbx.eshop.entity.login.AbstractUser" %>
+<%@ page import="com.afjcjsbx.eshop.entity.login.Consumer" %>
 
 <jsp:useBean id="checkoutBean" scope="session"
              class="com.afjcjsbx.eshop.bean.CheckoutBean" />
@@ -8,7 +10,10 @@
 %>
 
 <%
-    checkoutController.createTransaction();
+    Consumer user = (Consumer) session.getAttribute("currentSessionUser");
+    String delivery = request.getParameter("deliveryMethod");
+    String payment = request.getParameter("paymentMethod");
+    /*checkoutController.createTransaction();*/
 %>
 
 
@@ -245,9 +250,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--contact-->
     <div class="content">
         <div class="contact">
-            <div class="container">
+            <div class="col-md-6 contact-right">
                 <h3>Greetings! Your checkout was successful</h3>
 
+                <br><br>
+                <%
+                    if (request.getParameter("deliveryMethod").equals("byCourier")) {
+                %>
+                <h4>Do you want to pay now?</h4>
+                <br>
+                <input type="submit" value="Pay">
+
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>

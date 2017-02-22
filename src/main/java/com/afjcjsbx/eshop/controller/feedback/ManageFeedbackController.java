@@ -37,15 +37,15 @@ public class ManageFeedbackController {
     }
 
     public List<Review> retrieveProductReviews(int productId) throws DatabaseException {
-        ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+        ReviewDAO dao = ReviewDAOImpl.getInstance();
 
         List<Review> reviewsList = dao.findReviewsByProductId(productId);
 
-		return reviewsList;
+        return reviewsList;
     }
 
     public List<Review> retrieveReviewsFromUser(String username) throws DatabaseException {
-        ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+        ReviewDAO dao = ReviewDAOImpl.getInstance();
 
         List<Review> reviewsList = dao.findReviewsByUsername(username);
 

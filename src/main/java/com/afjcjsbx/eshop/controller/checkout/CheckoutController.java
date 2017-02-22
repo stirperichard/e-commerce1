@@ -24,6 +24,7 @@ public class CheckoutController {
     private CheckoutController() {
     }
 
+    // TODO deve prendere tutte stringhe e istanziare gli oggetti associati, per poi scrivere nel db
     public void createTransaction(Producer seller, Consumer buyer, Product productOnSale, DeliveryMethod delivery, PaymentMethod payment) throws DatabaseException {
         Transaction transaction = new Transaction(seller, buyer, productOnSale, delivery, payment);
 
