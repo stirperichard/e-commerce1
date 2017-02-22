@@ -19,6 +19,14 @@ public class Review {
         this.comment = comment;
     }
 
+    // costruttore usato nelle operazioni di creazione review perchè il db mi fa l'autoincrement
+    public Review(int productId, String username, int rating, String comment) {
+        this.productId = productId;
+        this.username = username;
+        this.rating = rating;
+        this.comment = comment;
+    }
+
     public int getReviewId() {
         return reviewId;
     }

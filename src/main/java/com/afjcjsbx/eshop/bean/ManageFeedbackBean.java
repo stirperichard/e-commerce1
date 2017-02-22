@@ -19,8 +19,6 @@ public class ManageFeedbackBean {
     private int rating;
     private String comment;
 
-    // TODO deve realizzare il controllo sintattico. Aggiungere solo i setters e i getters appropriati e il metodo validate()
-
 	public int getProductId() {
 		return productId;
 	}
@@ -62,9 +60,10 @@ public class ManageFeedbackBean {
 	}
 
 	public boolean validate() {
-        // Controllo sintattico per la Review | l'utente | boh ?
+        // Controllo sintattico per la Review
+		if (this.comment == null || this.rating == 0)
+			return false;
 
-        ManageFeedbackController controller = ManageFeedbackController.getInstance();
         return true;
     }
 
