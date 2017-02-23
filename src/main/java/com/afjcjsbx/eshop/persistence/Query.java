@@ -29,7 +29,7 @@ public class Query {
 
     public static final String DELETE_PRODUCT = "DELETE FROM products WHERE ProductID=?";
 
-    public static final String ADD_REVIEW = "INSERT INTO reviews(productId, username, rating, comment) VALUES (?,?,?,?) ON CONFLICT (productId,username) DO UPDATE SET rating=EXCLUDED.rating, comment=EXCLUDED.comment";
+    public static final String ADD_REVIEW = "INSERT INTO reviews(productId, username, rating, comment) VALUES (?,?,?,?)";
 
     public static final String FIND_REVIEWS_BY_PRODUCT_ID = "SELECT * FROM reviews WHERE productId = ?";
 

@@ -16,7 +16,4 @@ public interface ReviewDAO {
 
     List<Review> findReviewsByUsername(String username) throws DatabaseException;
 
-    //void inizializzaDB(Connection conn) throws SQLException;
-    // TODO serve inizializzare? Siamo sicuri di avere sempre il db sulla macchina?
-
 }

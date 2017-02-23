@@ -13,18 +13,17 @@ public class ManageFeedbackBean {
 	/**
 	 * La bean ha come attributi gli input dell'utente, inviatigli dallo strato view, in questo caso sarà una pagina JSP
 	 */
-    private int productName; // reviewed product
-	private String username; // TODO assumiamo ora di doverlo passare dalla view, possiamo fare in modo di saperlo già? Sì, tramite session
-    private String password;
+    private int productId; // reviewed product
+	private String username;
     private int rating;
     private String comment;
 
 	public int getProductId() {
-		return productName;
+		return productId;
 	}
 
 	public void setProductId(int productName) {
-		this.productName = productName;
+		this.productId = productName;
 	}
 
 	public String getUsername() {
@@ -33,14 +32,6 @@ public class ManageFeedbackBean {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public int getRating() {
@@ -61,8 +52,9 @@ public class ManageFeedbackBean {
 
 	public boolean validate() {
         // Syntax check
-		if (this.comment == null || (this.rating < 1 || this.rating > 5))
+		if (this.productId == 0 || this.comment == "" || this.rating < 1 || this.rating > 5)
 			return false;
+
 
         return true;
     }

@@ -31,14 +31,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 
         try {
             PreparedStatement stm = DataSource.getConnection().prepareStatement(Query.ADD_REVIEW);
-            // setta i parametri della query
-            //stm.setInt(1, review.getReviewId());
-            stm.setInt(2, review.getProductId());
-            stm.setString(3, review.getUsername());
-            stm.setInt(4, review.getRating());
-            stm.setString(5, review.getComment());
+            // setta i parametri della query. Assumiamo auto-increment
+            stm.setInt(1, review.getProductId());
+            stm.setString(2, review.getUsername());
+            stm.setInt(3, review.getRating());
+            stm.setString(4, review.getComment());
 
-            stm.execute();
+            stm.executeUpdate();
 
             stm.close();
 

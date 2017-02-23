@@ -1,6 +1,5 @@
 package com.afjcjsbx.eshop.controller.feedback;
 
-import com.afjcjsbx.eshop.bean.ManageFeedbackBean;
 import com.afjcjsbx.eshop.entity.feedback.Review;
 import com.afjcjsbx.eshop.exceptions.DatabaseException;
 import com.afjcjsbx.eshop.persistence.ReviewDAO;
@@ -24,16 +23,13 @@ public class ManageFeedbackController {
     private ManageFeedbackController() {
     }
 
-    public void addProductReview(ManageFeedbackBean manageFeedbackBean) throws DatabaseException { // parametri passati attraverso i bean del feedback e del login
-        //TODO da mettere il controllo che l'utente che vuole commentare il prodotto associato al productId del bean abbia effettivamente acquistato quel prodotto
+    public void addProductReview(int productId, String username, int rating, String comment) throws DatabaseException { // parametri passati attraverso i bean del feedback e del login
 
 		ReviewDAO dao = ReviewDAOImpl.getInstance();
 
-        Review review = new Review(manageFeedbackBean.getProductId(),
-				manageFeedbackBean.getUsername(), manageFeedbackBean.getRating(), manageFeedbackBean.getComment());
+        Review review = new Review(productId, username, rating, comment);
 
         dao.storeReview(review);
-
     }
 
     public List<Review> retrieveProductReviews(int productId) throws DatabaseException {
@@ -52,7 +48,11 @@ public class ManageFeedbackController {
 		return reviewsList;
     }
 
+	public static void main(String[] args) throws DatabaseException {
+        ManageFeedbackController.getInstance().addProductReview(2, "Luca", 4, "PROVA");
+	}
 
+}
 
 
 
@@ -160,5 +160,3 @@ public class ManageFeedbackController {
 
 		}
 	}*/
-
-}

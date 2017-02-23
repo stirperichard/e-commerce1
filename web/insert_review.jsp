@@ -1,28 +1,24 @@
-<%@ page import="com.afjcjsbx.eshop.controller.catalogue.CatalogueController" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.afjcjsbx.eshop.entity.catalogue.Category" %>
-<%@ page import="com.afjcjsbx.eshop.bean.ManageFeedbackBean" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 
 <jsp:useBean id="feedbackBean" scope="session"
              class="com.afjcjsbx.eshop.bean.ManageFeedbackBean" />
 
+<jsp:setProperty name="feedbackBean" property="*" />
+
 <%
     if (request.getParameter("submit") != null) {
+/*        System.out.println(feedbackBean.getProductId());
+        System.out.println(feedbackBean.getRating());
+        System.out.println(feedbackBean.getComment());*/
         if (feedbackBean.validate()) {
 %>
 <!-- Syntax check is successful -> pass to new page -->
 <jsp:forward page="insert_review_success.jsp" />
 <%
-        } else {
-%>
-<jsp:forward page="insert_review_failure.jsp" />
-
-<%
         }
     }
 %>
-
-
 
 
 <!--
@@ -82,22 +78,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h2>Insert review</h2>
             </div>
             <div class="col-md-6 contact-right">
-                <form name="formInsertReview" action="insert_review_success.jsp" method="get">
-                        <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                            <span>Choose a product that you bought to review</span>
-                            <input type="text" name="productName" placeholder="Product name" id="productName">
-                        </div>
-                        <br>
-                        <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                            <span>Rate between 1 and 5</span>
-                            <input type="text" name="rating" placeholder="Rating" id="rating">
-                        </div>
-                        <br>
-                        <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                            <span>Provide your feedback</span>
-                            <textarea name="comment" cols="62" rows="8" placeholder="Comment" id="comment"></textarea>
-                        </div>
+                <form name="formInsertReview" action="insert_review.jsp" method="get">
+                    <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                        <span>Choose a product that you bought to review</span>
+                        <input type="text" name="productId" placeholder="Product id" id="productId">
+                    </div>
+                    <br>
+                    <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                        <span>Rate between 1 and 5</span>
+                        <input type="text" name="rating" placeholder="Rating" id="rating">
+                    </div>
+                    <br>
+                    <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                        <span>Provide your feedback</span>
+                        <textarea name="comment" cols="62" rows="8" placeholder="Comment" id="comment"></textarea>
+                    </div>
                     <input name="submit" type="submit" value="Submit">
+                    <%
+                        if (request.getParameter("submit") != null) {
+                    %>
+                            <tr>
+                                <td colspan=20 align="center">
+                                    <span style="color: red; ">Invalid data. Try again</span>
+                                </td>
+                            </tr>
+                    <%
+                        }
+                    %>
                 </form>
             </div>
         </div>

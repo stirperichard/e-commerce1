@@ -1,5 +1,3 @@
-<%@ page import="com.afjcjsbx.eshop.controller.checkout.CheckoutController" %>
-<%@ page import="com.afjcjsbx.eshop.entity.login.AbstractUser" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.Consumer" %>
 <%@ page import="com.afjcjsbx.eshop.controller.feedback.ManageFeedbackController" %>
 
@@ -12,10 +10,27 @@
     ManageFeedbackController feedbackController = ManageFeedbackController.getInstance();
 %>
 
-<%--<%
 
-    feedbackController.addProductReview(feedbackBean);
-%>--%>
+<%
+    /**
+     * L'utente (compratore) lo ricavo dalla session, ma avrei potuto benissimo farlo inserire dall'utente
+     * e cosi' rendere la View completamente indipendente dal Model.
+     */
+    Consumer user = (Consumer) session.getAttribute("currentSessionUser");
+
+    /*System.out.println(feedbackBean.getProductId());
+    System.out.println(feedbackBean.getRating());
+    System.out.println(user.getUsername());
+    System.out.println(feedbackBean.getComment());*/
+
+
+    feedbackController.addProductReview(feedbackBean.getProductId(),
+            user.getUsername(),
+            feedbackBean.getRating(),
+            feedbackBean.getComment());
+
+%>
+
 
 
 
