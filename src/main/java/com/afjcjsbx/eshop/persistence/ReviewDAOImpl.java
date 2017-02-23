@@ -111,4 +111,10 @@ public class ReviewDAOImpl implements ReviewDAO {
         }
     }
 
+    public static void main(String[] args) throws DatabaseException {
+        List<Review> reviews= ReviewDAOImpl.getInstance().findReviewsByProductId(2);
+
+        System.out.println(reviews);
+    }
+
 }
