@@ -32,7 +32,7 @@ public class AddToCartServlet extends HttpServlet {
         ShoppingCartController scc = new ShoppingCartController();
 
 /*        if (scc.addProduct(request, p)) {
-            response.sendRedirect("checkout.jsp"); //error page
+            response.sendRedirect("checkout_old.jsp"); //error page
         }else{
             response.sendRedirect("single.jsp?pid=" + product_id + "&option=alreadyInCart"); //error page
         }*/

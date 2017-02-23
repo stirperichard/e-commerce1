@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Swim Wear a E-Commerce online Shopping Category Flat Bootstrap Responsive Website Template | Contact :: w3layouts</title>
+    <title>Checkout</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/owl.carousel.css" rel="stylesheet">
@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <ul>
                     <li class="text"><a href="login.jsp">login</a>
                     <li><div class="shoppingCart box_1">
-                        <a href="checkout.jsp">
+                        <a href="shoppingbag.jsp">
                             <span class="simpleCart_total"> ciaoo $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
                         </a>
                         <p><a href="javascript:;" class="simpleCart_empty">Empty shoppingCart</a></p>
@@ -83,7 +83,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <h1 class="navbar-brand"><a  href="index.jsp">swim wear</a></h1>
                     </div>
                     <!--/.navbar-header-->
 
@@ -228,10 +227,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="content">
         <div class="contact">
             <div class="container">
-                <h2>Pagamento</h2>
+                <h2>Checkout</h2>
 
                 <div class="contact-grids">
-                    <div class="col-md-6 contact-left">
+                    <%--<div class="col-md-6 contact-left">
                         <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
                             for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum
                             et Malorum" by Cicero are also reproduced in their exact original form,
@@ -244,7 +243,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <p>FAX : +1 800 889 9898</p>
                             <p>E-mail : <a href="mailto:example@mail.com">example@mail.com</a></p>
                         </address>
-                    </div>
+                    </div>--%>
                     <script type="text/javascript">
                         function Reveal(it, box) {
                             var vis = (box.checked) ? "block" : "none";
@@ -258,17 +257,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </script>
                     <div class="col-md-6 contact-right">
                         <div id="shipment_div">
-                            <form>
+                            <form name="formDelivery" action="checkout_success.jsp" method="get">
                                 <fieldset>
-                                    <legend>Scegli il tipo di consegna</legend>
-                                    <input type="radio" name="shipment_type" value="spedizione" id="spedizione" checked onClick="Reveal('box_div', this)"/> Spedizione da corriere <br>
-                                    <input type="radio" name="shipment_type" value="ritiro" id="ritiro" onClick="Hide('box_div', this);"/> Ritiro a mano
+                                    <legend>Choose delivery method</legend>
+                                    <input type="radio" name="shipment_type" value="byCourier" id="radioCourier" checked onClick="Reveal('box_div', this)"/>Delivery by courier<br>
+                                    <input type="radio" name="shipment_type" value="warehouse" id="radioWarehouse" onClick="Hide('box_div', this);"/>Warehouse withdrawal<br>
+                                    <input type="radio" name="shipment_type" value="hand" id="radioHand" onClick="Hide('box_div', this);"/>Hand delivery
                                 </fieldset>
                             </form>
                         </div><br><br>
                         <div id="box_div">
                             <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                                <span>Indirizzo di consegna <label>*</label></span>
+                                <span>Delivery address<label>*</label></span>
                                 <input type="text">
                             </div><br><br>
                             <script>
@@ -278,25 +278,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 });
                             </script>
                             <div id="payment_div">
-                                <form>
+                                <form name="formPayment" action="checkout_success.jsp" method="get">
                                     <fieldset>
-                                        <legend>Scegli il tipo di consegna</legend>
-                                        <input type="radio" name="payment_type" value="visa" id="visa" onClick="Hide('paypal_div', this); Reveal('visa_div', this)" checked/>
+                                        <legend>Choose payment method</legend>
+                                        <input type="radio" name="payment_type" value="visa" id="visa" onClick="Hide('paypal_div', this); Hide('mastercard_div', this); Reveal('visa_div', this)" checked/>
                                         <label for="visa" alt="Visa"><IMG src="https://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0018/8364/brand.gif?itok=ODUqzu9Q" width="30" height="30"></label>
-                                        <input type="radio" name="payment_type" value="paypal" id="paypal" onClick="Hide('visa_div', this); Reveal('paypal_div', this)"/>
-                                        <label for="paypal" alt="Paypal"><IMG src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png" width="30" height="30"></label>
+                                        <input type="radio" name="payment_type" value="mastercard" id="mastercard" onClick="Hide('paypal_div', this); Hide('visa_div', this); Reveal('mastercard_div', this)"/>
+                                        <label for="mastercard" alt="Mastercard"><IMG src="https://www.penfinancial.com/SharedContent/images/1aMastercard.jpg" width="50" height="30"></label>
+                                        <input type="radio" name="payment_type" value="paypal" id="paypal" onClick="Hide('mastercard_div', this); Hide('visa_div', this); Reveal('paypal_div', this)"/>
+                                        <label for="paypal" alt="Paypal"><IMG src="http://www.underconsideration.com/brandnew/archives/paypal_2014_logo_detail.png" width="30" height="30"></label>
                                     </fieldset>
                                 </form>
                             </div>
                             <div id="visa_div">
                                 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                                    <span>Numero carta: <label>*</label></span>
+                                    <span>Card number: <label>*</label></span>
                                     <input type="number">
                                 </div><br>
                                 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                                    <span>Mese di scadenza: <label>*</label></span>
+                                    <span>Expiration month: <label>*</label></span>
                                     <FORM>
-                                        <SELECT NAME="month_expiration" id="month_expiration">
+                                        <SELECT NAME="expiration_month_visa" id="expiration_month_visa">
                                             <option value=”1”>1</option>
                                             <option value=”2”>2</option>
                                             <option value=”3”>4</option>
@@ -312,9 +314,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </FORM>
                                 </div><br>
                                 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                                    <span>Anno di scadenza: <label>*</label></span>
+                                    <span>Expiration year: <label>*</label></span>
                                     <FORM>
-                                        <SELECT NAME="date_expiration" id="date_expiration">
+                                        <SELECT NAME="expiration_year_visa" id="expiration_year_visa">
                                             <option value=”2017”>2017</option>
                                             <option value=”2018”>2018</option>
                                             <option value=”2019”>2019</option>
@@ -333,19 +335,65 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <span>CVV: <label>*</label></span>
                                     <input type="number">
                                 </div><br>
-                                <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                                    <span>Titolare carta: <label>*</label></span>
-                                    <input type="text">
-                                </div>
                             </div>
+
+                            <div id="mastercard_div" style="display:none">
+                                <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                                    <span>Card number: <label>*</label></span>
+                                    <input type="number">
+                                </div><br>
+                                <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                                    <span>Expiration month: <label>*</label></span>
+                                    <FORM>
+                                        <SELECT NAME="expiration_month_mastercard" id="expiration_month_mastercard">
+                                            <option value=”1”>1</option>
+                                            <option value=”2”>2</option>
+                                            <option value=”3”>4</option>
+                                            <option value=”5”>5</option>
+                                            <option value=”6”>6</option>
+                                            <option value=”7”>7</option>
+                                            <option value=”8”>8</option>
+                                            <option value=”9”>9</option>
+                                            <option value=”10”>10</option>
+                                            <option value=”11”>11</option>
+                                            <option value=”12”>12</option>
+                                        </SELECT>
+                                    </FORM>
+                                </div><br>
+                                <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                                    <span>Expiration year: <label>*</label></span>
+                                    <FORM>
+                                        <SELECT NAME="expiration_year_mastercard" id="expiration_year_mastercard">
+                                            <option value=”2017”>2017</option>
+                                            <option value=”2018”>2018</option>
+                                            <option value=”2019”>2019</option>
+                                            <option value=”2020”>2020</option>
+                                            <option value=”2021”>2021</option>
+                                            <option value=”2022”>2022</option>
+                                            <option value=”2023”>2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value=”2025”>2025</option>
+                                            <option value=”2026”>2026</option>
+                                            <option value=”2027”>2027</option>
+                                        </SELECT>
+                                    </FORM>
+                                </div><br>
+                                <div class="wow fadeInLeft" data-wow-delay="0.4s">
+                                    <span>CVV: <label>*</label></span>
+                                    <input type="number">
+                                </div><br>
+                            </div>
+
                             <div id="paypal_div" class="wow fadeInLeft" data-wow-delay="0.4s" style="display: none">
-                                <form action="">
+                                <%--<form action="">
                                     <fieldset>
-                                        <input type="checkbox" name="html" value="html"/> Accetto i termini.......
+                                        <input type="checkbox" name="html" value="html"/> I aggre with Terms & Conditions
                                     </fieldset>
-                                </form>
+                                </form>--%>
                             </div>
                         </div>
+
+                        <input type="submit" value="Proceed">
                     </div>
                     <div class="clearfix"></div>
                 </div>

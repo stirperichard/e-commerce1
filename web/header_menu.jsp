@@ -137,7 +137,7 @@
 
                     <li>
                         <div class="cart box_1">
-                            <a href="checkout.jsp">
+                            <a href="shoppingbag.jsp">
                                 <span class="simpleCart_total"> <% out.print(shoppingCartController.getCartPrice(request)); %> </span>
                                 (<span id="simpleCart_quantity"
                                        class="simpleCart_quantity"><% out.print(shoppingCartController.productCount(request)); %></span>)

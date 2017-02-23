@@ -1,9 +1,12 @@
 <%@ page import="com.afjcjsbx.eshop.controller.search.FilteredSearchController" %>
+<%@ page import="com.afjcjsbx.eshop.controller.feedback.ManageFeedbackController" %>
 <%@ page import="com.afjcjsbx.eshop.entity.catalogue.Product" %>
 <%@ page import="com.afjcjsbx.eshop.constants.Constants" %>
 <%@ page import="static com.afjcjsbx.eshop.utils.SessionUtil.getSessionAttribute" %>
 <%@ page import="com.afjcjsbx.eshop.entity.shoppingcart.ShoppingCart" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.afjcjsbx.eshop.entity.feedback.Review" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     FilteredSearchController filteredSearchController = new FilteredSearchController();
@@ -12,8 +15,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Swim Wear a E-Commerce online Shopping Category Flat Bootstrap Responsive Website Template| Single ::
-        w3layouts</title>
+    <title>Product details</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/owl.carousel.css" rel="stylesheet">
@@ -62,6 +64,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             request.setAttribute(Constants.PRODUCT, p);
         }
 
+    %>
+
+    <%!
+        ManageFeedbackController manageFeedbackController = ManageFeedbackController.getInstance();
     %>
 
 
@@ -205,20 +211,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                reviews (5)
+                                reviews (<%= manageFeedbackController.retrieveProductReviews(p.getId()).size() %>)
                             </a>
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                          aria-labelledby="headingThree">
                         <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                            nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                            single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                            beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                            lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-                            probably haven't heard of them accusamus labore sustainable VHS.
+                            <% List reviewsList = manageFeedbackController.retrieveProductReviews(p.getId()); %>
+
+                            <table id="table" class="table table-hover table-mc-light-blue">
+                                <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Rating</th>
+                                    <th>Comment</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <%
+                                    if (reviewsList != null && reviewsList.size() > 0) {
+                                        for (int i = 0; i < reviewsList.size(); i++) {
+                                            Object aReviewsList = reviewsList.get(i);
+                                            Review review = (Review) aReviewsList;
+                                %>
+                                <tr>
+                                    <td data-title="ID"><%= review.getUsername()%>
+                                    </td>
+                                    <td data-title="Name"><%= review.getRating()%>
+                                    </td>
+                                    <td data-title="Link"><%= review.getComment()%>
+                                    </td>
+                                </tr>
+                                <%
+                                        }
+                                    }
+                                %>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

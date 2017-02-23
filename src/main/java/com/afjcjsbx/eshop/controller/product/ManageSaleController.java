@@ -111,7 +111,7 @@ public class ManageSaleController {
 
             PreparedStatement statement = DataSource.getConnection().prepareStatement(Query.DELETE_PRODUCT);
 
-            statement.setString(1, Integer.toString(advertisement.getProduct().getId()));
+            statement.setString(1, Integer.toString(advertisement.getProductToSell().getId()));
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {

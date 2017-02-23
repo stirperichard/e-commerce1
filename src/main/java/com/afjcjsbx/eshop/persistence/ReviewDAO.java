@@ -10,13 +10,10 @@ import java.util.List;
  */
 public interface ReviewDAO {
 
-    boolean storeReview(Review review) throws DatabaseException;
+    void storeReview(Review review) throws DatabaseException;
 
     List<Review> findReviewsByProductId(int productId) throws DatabaseException;
 
     List<Review> findReviewsByUsername(String username) throws DatabaseException;
-
-    //void inizializzaDB(Connection conn) throws SQLException;
-    // TODO serve inizializzare? Siamo sicuri di avere sempre il db sulla macchina?
 
 }

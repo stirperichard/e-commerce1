@@ -1,6 +1,4 @@
-package com.afjcjsbx.eshop.entity.payment;
-
-import com.afjcjsbx.eshop.entity.payment.Transaction;
+package com.afjcjsbx.eshop.entity.checkout;
 
 
 public class CreditCardSociety {

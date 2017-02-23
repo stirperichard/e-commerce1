@@ -1,4 +1,4 @@
-package com.afjcjsbx.eshop.entity.payment;
+package com.afjcjsbx.eshop.entity.checkout;
 
 import com.afjcjsbx.eshop.entity.Entity;
 import com.afjcjsbx.eshop.enums.payment.PaymentStatus;

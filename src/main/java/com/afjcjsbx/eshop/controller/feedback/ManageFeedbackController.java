@@ -1,7 +1,7 @@
 package com.afjcjsbx.eshop.controller.feedback;
 
-import com.afjcjsbx.eshop.bean.ManageFeedbackBean;
 import com.afjcjsbx.eshop.entity.feedback.Review;
+import com.afjcjsbx.eshop.exceptions.DatabaseException;
 import com.afjcjsbx.eshop.persistence.ReviewDAO;
 import com.afjcjsbx.eshop.persistence.ReviewDAOImpl;
 
@@ -14,7 +14,7 @@ public class ManageFeedbackController {
 
 	private static ManageFeedbackController instance;
 
-	public static ManageFeedbackController getInstance() {
+	public synchronized static ManageFeedbackController getInstance() {
 		if (instance == null)
 			instance = new ManageFeedbackController();
 		return instance;
@@ -23,28 +23,36 @@ public class ManageFeedbackController {
     private ManageFeedbackController() {
     }
 
-    public boolean addProductReview(ManageFeedbackBean manageFeedbackBean) { // TODO passo tutto il bean o posso passare solo i suoi parametri presi tramite getters? Ora starei violando la legge di Demetra
+    public void addProductReview(int productId, String username, int rating, String comment) throws DatabaseException { // parametri passati attraverso i bean del feedback e del login
+
+		ReviewDAO dao = ReviewDAOImpl.getInstance();
+
+        Review review = new Review(productId, username, rating, comment);
+
+        dao.storeReview(review);
+    }
+
+    public List<Review> retrieveProductReviews(int productId) throws DatabaseException {
         ReviewDAO dao = ReviewDAOImpl.getInstance();
 
-        //dao.storeReview();
-		return true;
+        List<Review> reviewsList = dao.findReviewsByProductId(productId);
+
+        return reviewsList;
     }
 
-    public List<Review> retrieveProductReviews(ManageFeedbackBean manageFeedbackBean) {
-        ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+    public List<Review> retrieveReviewsFromUser(String username) throws DatabaseException {
+        ReviewDAO dao = ReviewDAOImpl.getInstance();
 
-        //dao.findReviewsByProductId();
-		return null;
+        List<Review> reviewsList = dao.findReviewsByUsername(username);
+
+		return reviewsList;
     }
 
-    public List<Review> retrieveReviewsFromUser(ManageFeedbackBean manageFeedbackBean) {
-        ReviewDAO dao = ReviewDAOImpl.getInstance(); // TODO è un errore duplicare in questo modo?
+	public static void main(String[] args) throws DatabaseException {
+        ManageFeedbackController.getInstance().addProductReview(2, "Luca", 4, "PROVA");
+	}
 
-        //dao.findReviewsByUsername();
-		return null;
-    }
-
-
+}
 
 
 
@@ -152,5 +160,3 @@ public class ManageFeedbackController {
 
 		}
 	}*/
-
-}
