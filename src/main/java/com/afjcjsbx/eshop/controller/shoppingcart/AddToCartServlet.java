@@ -18,6 +18,7 @@ public class AddToCartServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
 
+        
         String product_id = request.getParameter("productid");
 
         FilteredSearchController sc = new FilteredSearchController();
