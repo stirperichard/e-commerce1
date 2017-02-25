@@ -1,12 +1,29 @@
 <%@ page import="com.afjcjsbx.eshop.constants.Constants" %>
 <%@ page import="com.afjcjsbx.eshop.controller.search.FilteredSearchController" %>
 <%@ page import="com.afjcjsbx.eshop.entity.catalogue.Product" %>
-<%@ page import="static com.afjcjsbx.eshop.utils.SessionUtil.getSessionAttribute" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <%
     FilteredSearchController filteredSearchController = new FilteredSearchController();
+
+    Product p = null;
+
+    if (request.getParameter("pid") == null) {
+        out.println("Error in product");
+    } else {
+        try {
+            p = filteredSearchController.searchProductByID(request.getParameter("pid"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        request.setAttribute(Constants.PRODUCT, p);
+    }
+
 %>
+
 
 <!DOCTYPE HTML>
 <html>
@@ -46,28 +63,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
 
-    <%
-        Product p = null;
-
-        if (request.getParameter("pid") == null) {
-            out.println("Error in product");
-        } else {
-            try {
-                p = filteredSearchController.searchProductByID(request.getParameter("pid"));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            request.setAttribute(Constants.PRODUCT, p);
-        }
-
-    %>
-
 
 </head>
 <body>
 <!--header-->
 <%@ include file="header_menu.jsp" %>
+
+
+<%
+    if (request.getParameter("submit_add_to_cart") != null) {
+
+        if (shoppingCartController.addProduct(request, p)) {
+            response.sendRedirect("wishlist.jsp"); //error page
+        } else {
+            response.sendRedirect("single.jsp?pid=" + p.getId() + "&option=alreadyInCart"); //error page
+        }
+
+    }
+%>
+
 <!--header-->
 <div class="content">
     <div class="single">
@@ -90,20 +104,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <script>
                     // Get the modal
-                    var modal = document.getElementById('myModal_error');
+                    var modal_error = document.getElementById('myModal_error');
 
                     // Get the <span> element that closes the modal
-                    var span = document.getElementsByClassName("close_error")[0];
+                    var span_error = document.getElementsByClassName("close_error")[0];
 
                     // When the user clicks on <span> (x), close the modal
-                    span.onclick = function () {
-                        modal.style.display = "none";
+                    span_error.onclick = function () {
+                        modal_error.style.display = "none";
                     }
 
                     // When the user clicks anywhere outside of the modal, close it
                     window.onclick = function (event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
+                        if (event.target == modal_error) {
+                            modal_error.style.display = "none";
                         }
                     }
                 </script>
@@ -116,10 +130,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         var url = window.location.href;
                         option = url.match(/option=(.*)/)[1];
                         if (option == 'alreadyInCart') {
-                            showDiv();
+                            showDiv_error();
                         }
                     });
-                    function showDiv() {
+                    function showDiv_error() {
                         modal.style.display = "block";
                     }
                 </script>
@@ -157,8 +171,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
 
                     <br><br>
-                    <a class="acount-btn" onclick="location.href='addtocart?productid=<%= p.getId() %>';"
-                       style="cursor: pointer;">Add to cart</a>
+
+
+                    <form id="submit_add_to_cart" action="" method="post">
+
+                        <a class="acount-btn" onclick="document.getElementById('submit_add_to_cart').submit();"
+                           style="cursor: pointer;">Add to cart</a>
+                        <input type="hidden" name="submit_add_to_cart"/>
+
+                    </form>
                     <br><br>
 
                     <div class="tag">
@@ -174,9 +195,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="collpse">
         <div class="container">
             <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
-
-
-
 
 
                 <div class="panel panel-default">
@@ -201,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-<br><br><br>
+                <br><br><br>
 
             </div>
         </div>

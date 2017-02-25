@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.afjcjsbx.eshop.entity.catalogue.Category" %>
 <%@ page import="com.afjcjsbx.eshop.controller.product.ManageSaleController" %>
+<%@ page import="com.afjcjsbx.eshop.entity.login.Producer" %>
 
 <!--
 Au<!--
@@ -98,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                     <div class="register-top-grid">
-                        <h3>INSERT ADVERTISE</h3>
+                        <h3>insert Product</h3>
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Product Name<label>*</label></span>
                             <input type="text" name="name" required>
