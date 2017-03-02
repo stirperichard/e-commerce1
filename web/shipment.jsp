@@ -1,5 +1,8 @@
 <%@ page import="com.afjcjsbx.eshop.enums.shipment.DeliveryStatus" %>
-<%@ page import="com.afjcjsbx.eshop.controller.shipment.ShipmentController" %><%--
+<%@ page import="com.afjcjsbx.eshop.controller.shipment.ShipmentController" %>
+<%@ page import="com.afjcjsbx.eshop.entity.shipment.Shipment" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.text.ParseException" %><%--
   Created by IntelliJ IDEA.
   User: Richard
   Date: 17/02/2017
@@ -12,21 +15,29 @@
 <%
     String string_date = request.getParameter("date");
     String tracking = request.getParameter("tracking");
-    DeliveryStatus s_type = null;
     String label = "";
+    DeliveryStatus s = null;
+    System.out.println(string_date);
+    System.out.println(tracking);
 
-    if (tracking != null || string_date != null) {
-        ShipmentController controller = new ShipmentController();
-        s_type = controller.shipment(tracking, string_date);
+    if (tracking != null && string_date != null) {
 
-        if (s_type != null) {
-            if (s_type == DeliveryStatus.NOT_FOUND) {
+        System.out.println(string_date);
+        System.out.println(tracking);
+
+        ShipmentController shipmentController = new ShipmentController();
+        s = shipmentController.shipment(tracking, string_date);
+
+        System.out.println(s);
+
+        if (s != null) {
+            if (s == DeliveryStatus.NOT_FOUND) {
                 label = "Username o ShipID non validi";
-            } else if (s_type == DeliveryStatus.NOTSENT) {
+            } else if (s == DeliveryStatus.NOTSENT) {
                 label = "Da spedire";
-            } else if (s_type == DeliveryStatus.SENT) {
+            } else if (s == DeliveryStatus.SENT) {
                 label = "Spedito";
-            } else if (s_type == DeliveryStatus.DELIVERED) {
+            } else if (s == DeliveryStatus.DELIVERED) {
                 label = "Consegnato";
             }
         }
@@ -88,8 +99,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="text" NAME="tracking" id="tracking" required><br>
                             <label for="date">Date: </label><br>
                             <input type="date" NAME="date" id="date" required><br><br>
-                            <input type="submit" value="Login"><br><br><br>
-                            <% if (s_type != null){ %>
+                            <input type="submit" value="Check"><br><br><br>
+                            <% if (s != null){ %>
                             <label>Stato : </label> <%= label %>
                             <% } %>
                         </fieldset><br>

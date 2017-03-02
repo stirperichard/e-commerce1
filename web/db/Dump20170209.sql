@@ -265,6 +265,7 @@ DROP TABLE IF EXISTS `Shipments`;
 CREATE TABLE `Shipments` (
   `ShipmentID` int(11) NOT NULL AUTO_INCREMENT,
   `ShipmentTrack` varchar(20) DEFAULT NULL,
+  `ShipmentStatus` varchar(15) DEFAULT NULL,
   `ShippingDate` datetime DEFAULT NULL,
   `Shipper` int(11) DEFAULT NULL,
   PRIMARY KEY (`ShipmentID`),

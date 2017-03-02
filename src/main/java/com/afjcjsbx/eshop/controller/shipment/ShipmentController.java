@@ -17,23 +17,37 @@ import java.text.SimpleDateFormat;
  */
 public class ShipmentController {
 
-    private static DeliveryStatus retrieveShipmentStatus(ResultSet resultSet) throws SQLException, ParseException {
-
-        String s_tracking = resultSet.getString("Tracking"),
-                s_data = resultSet.getString("Data");
+    private DeliveryStatus retrieveShipmentStatus(ResultSet resultSet) throws SQLException, ParseException {
+        DeliveryStatus ds = null;
+        String s_tracking = resultSet.getString("ShipmentTracking"),
+                s_data = resultSet.getString("ShipmentDate"),
+                s_status = resultSet.getString("ShipmentStatus");
 
         Shipment shipment = new Shipment();
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
         Date date = (Date) formatter.parse(s_data);
 
+        if (s_status == "NOT_FOUND"){
+            ds = DeliveryStatus.NOT_FOUND;
+        } else if (s_status == "NOTSENT"){
+            ds = DeliveryStatus.NOTSENT;
+        } else if (s_status == "SENT"){
+            ds = DeliveryStatus.SENT;
+        } else if (s_status == "DELIVERED"){
+            ds = DeliveryStatus.DELIVERED;
+        }
+
         shipment.setTrackingNumber(s_tracking);
         shipment.setDate(date);
+        shipment.setDeliveryStatus(ds);
 
         return shipment.getDeliveryStatus();
     }
 
-    public static DeliveryStatus shipment(String tracking, String date) throws SQLException, ParseException {
+    public DeliveryStatus shipment(String tracking, String date) throws SQLException, ParseException {
+        System.out.println(tracking);
+        System.out.println(date);
         PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_SHIPMENT_STATUS);
         preparedStatement.setString(1, tracking);
         preparedStatement.setString(2, date);

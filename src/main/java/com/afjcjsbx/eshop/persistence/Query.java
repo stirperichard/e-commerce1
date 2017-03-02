@@ -35,7 +35,7 @@ public class Query {
 
     public static final String FIND_REVIEWS_BY_USERNAME = "SELECT * FROM Reviews WHERE username = ?";
 
-    public static final String FIND_SHIPMENT_STATUS = "SELECT * FROM Shipment WHERE ShipmentTrack = ? and ShipmentDate = ?"; //Creato da Richard
+    public static final String FIND_SHIPMENT_STATUS = "SELECT ShipmentStatus FROM Shipment WHERE ShipmentTrack = ? and ShipmentDate = ?"; //Creato da Richard
 
     public static final String FIND_USER_BY_USERNAME = "SELECT * FROM Users WHERE Username = ?"; //Creato da Richard
 
