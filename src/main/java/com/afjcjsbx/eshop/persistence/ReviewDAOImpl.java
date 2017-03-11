@@ -17,7 +17,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
     private static ReviewDAOImpl instance;
 
-    public static ReviewDAOImpl getInstance() {
+    public synchronized static ReviewDAOImpl getInstance() {
         if (instance == null)
             instance = new ReviewDAOImpl();
         return instance;
@@ -27,18 +27,17 @@ public class ReviewDAOImpl implements ReviewDAO {
     }
 
     @Override
-    public boolean storeReview(Review review) throws DatabaseException {
+    public void storeReview(Review review) throws DatabaseException {
 
         try {
             PreparedStatement stm = DataSource.getConnection().prepareStatement(Query.ADD_REVIEW);
-            // setta i parametri della query
-            stm.setInt(1, review.getReviewId());
-            stm.setInt(2, review.getProductId());
-            stm.setString(3, review.getUsername());
-            stm.setInt(4, review.getRating());
-            stm.setString(5, review.getComment());
+            // setta i parametri della query. Assumiamo auto-increment
+            stm.setInt(1, review.getProductId());
+            stm.setString(2, review.getUsername());
+            stm.setInt(3, review.getRating());
+            stm.setString(4, review.getComment());
 
-            stm.execute();
+            stm.executeUpdate();
 
             stm.close();
 
@@ -54,7 +53,6 @@ public class ReviewDAOImpl implements ReviewDAO {
         } catch (SQLException e) {
             throw new DatabaseException("Cannot write on database");
         }
-        return true;
     }
 
     @Override
@@ -110,6 +108,12 @@ public class ReviewDAOImpl implements ReviewDAO {
         } catch (SQLException e) {
             throw new DatabaseException("Cannot fetch from database", e);
         }
+    }
+
+    public static void main(String[] args) throws DatabaseException {
+        List<Review> reviews= ReviewDAOImpl.getInstance().findReviewsByProductId(2);
+
+        System.out.println(reviews);
     }
 
 }

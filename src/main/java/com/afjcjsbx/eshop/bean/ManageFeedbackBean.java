@@ -14,19 +14,16 @@ public class ManageFeedbackBean {
 	 * La bean ha come attributi gli input dell'utente, inviatigli dallo strato view, in questo caso sarà una pagina JSP
 	 */
     private int productId; // reviewed product
-	private String username; // TODO assumiamo ora di doverlo passare dalla view, possiamo fare in modo di saperlo già? Solo se non è difficile
-    private String password;
+	private String username;
     private int rating;
     private String comment;
-
-    // TODO deve realizzare il controllo sintattico. Aggiungere solo i setters e i getters appropriati e il metodo validate()
 
 	public int getProductId() {
 		return productId;
 	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setProductId(int productName) {
+		this.productId = productName;
 	}
 
 	public String getUsername() {
@@ -35,14 +32,6 @@ public class ManageFeedbackBean {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public int getRating() {
@@ -62,9 +51,11 @@ public class ManageFeedbackBean {
 	}
 
 	public boolean validate() {
-        // Controllo sintattico per la Review | l'utente | boh ?
+        // Syntax check
+		if (this.productId == 0 || this.comment == "" || this.rating < 1 || this.rating > 5)
+			return false;
 
-        ManageFeedbackController controller = ManageFeedbackController.getInstance();
+
         return true;
     }
 
