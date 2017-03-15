@@ -17,16 +17,15 @@ import java.text.SimpleDateFormat;
  */
 public class ShipmentController {
 
-    private DeliveryStatus retrieveShipmentStatus(ResultSet resultSet) throws SQLException, ParseException {
+    private static DeliveryStatus retrieveShipmentStatus(ResultSet resultSet) throws SQLException, ParseException {
         DeliveryStatus ds = null;
         String s_tracking = resultSet.getString("ShipmentTracking"),
                 s_data = resultSet.getString("ShipmentDate"),
                 s_status = resultSet.getString("ShipmentStatus");
 
-        Shipment shipment = new Shipment();
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        Date date = (Date) formatter.parse(s_data);
+        System.out.println(s_tracking);
+        System.out.println(s_data);
+        System.out.println(s_status);
 
         if (s_status == "NOT_FOUND"){
             ds = DeliveryStatus.NOT_FOUND;
@@ -38,20 +37,35 @@ public class ShipmentController {
             ds = DeliveryStatus.DELIVERED;
         }
 
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        Date date_f = (Date) formatter.parse(s_data);
+
+        System.out.println(date_f);
+
+        Shipment shipment = new Shipment();
+
         shipment.setTrackingNumber(s_tracking);
-        shipment.setDate(date);
+        shipment.setDate(date_f);
         shipment.setDeliveryStatus(ds);
 
         return shipment.getDeliveryStatus();
     }
 
-    public DeliveryStatus shipment(String tracking, String date) throws SQLException, ParseException {
+    public static DeliveryStatus shipment(String tracking, String date) throws SQLException, ParseException {
         System.out.println(tracking);
         System.out.println(date);
+        System.out.println("A");
+
         PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.FIND_SHIPMENT_STATUS);
+        System.out.println("B");
         preparedStatement.setString(1, tracking);
+        System.out.println("C");
         preparedStatement.setString(2, date);
+        System.out.println("D");
+
         ResultSet resultSet = preparedStatement.executeQuery();
+
+        System.out.println("E");
 
         if (resultSet.next()) {
             return retrieveShipmentStatus(resultSet);

@@ -11,34 +11,33 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%! private String label;
+private DeliveryStatus s; %>
 <%
-    String string_date = request.getParameter("date");
-    String tracking = request.getParameter("tracking");
-    String label = "";
-    DeliveryStatus s = null;
-    System.out.println(string_date);
-    System.out.println(tracking);
+    if (request.getParameter("check") != null){
+        String string_date = request.getParameter("date");
+        String tracking = request.getParameter("tracking");
 
-    if (tracking != null && string_date != null) {
+        if (tracking != null && string_date != null) {
 
-        System.out.println(string_date);
-        System.out.println(tracking);
+            try {
+                s = ShipmentController.shipment(tracking, string_date);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-        ShipmentController shipmentController = new ShipmentController();
-        s = shipmentController.shipment(tracking, string_date);
+            System.out.println(s);
 
-        System.out.println(s);
-
-        if (s != null) {
-            if (s == DeliveryStatus.NOT_FOUND) {
-                label = "Username o ShipID non validi";
-            } else if (s == DeliveryStatus.NOTSENT) {
-                label = "Da spedire";
-            } else if (s == DeliveryStatus.SENT) {
-                label = "Spedito";
-            } else if (s == DeliveryStatus.DELIVERED) {
-                label = "Consegnato";
+            if (s != null) {
+                if (s == DeliveryStatus.NOT_FOUND) {
+                    label = "Username o ShipID non validi";
+                } else if (s == DeliveryStatus.NOTSENT) {
+                    label = "Da spedire";
+                } else if (s == DeliveryStatus.SENT) {
+                    label = "Spedito";
+                } else if (s == DeliveryStatus.DELIVERED) {
+                    label = "Consegnato";
+                }
             }
         }
     }
@@ -99,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="text" NAME="tracking" id="tracking" required><br>
                             <label for="date">Date: </label><br>
                             <input type="date" NAME="date" id="date" required><br><br>
-                            <input type="submit" value="Check"><br><br><br>
+                            <input type="submit" name="check" value="Check"><br><br><br>
                             <% if (s != null){ %>
                             <label>Stato : </label> <%= label %>
                             <% } %>

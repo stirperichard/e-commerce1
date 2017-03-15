@@ -102,13 +102,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>Country<label>*</label></span>
-                            <form>
+                            <form id="countryform">
                                 <select id="country" name="country" required></select>
                             </form>
                         </div>
                         <div class="wow fadeInRight" data-wow-delay="0.4s">
                             <span>State<label>*</label></span>
-                            <form>
+                            <form id="stateform">
                                 <select name="state" id="state" required></select>
                             </form>
                         </div>
