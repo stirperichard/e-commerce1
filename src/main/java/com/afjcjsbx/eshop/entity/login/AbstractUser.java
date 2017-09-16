@@ -29,17 +29,9 @@ public abstract class AbstractUser {
     private String website;
     private String payPalAccount;
     private List<CreditCard> creditcards;
+    private Roles type;
 
     public abstract Roles getType();
-
-
-    /*
-    public AbstractUser(ResultSet resultSet) throws SQLException {
-        this.username = resultSet.getString("username");
-        this.password = resultSet.getString("password");
-    }
-    */
-
 
     public void update(Guest toUpdate) {
         this.id = toUpdate.getId();
@@ -199,5 +191,9 @@ public abstract class AbstractUser {
 
     public void setCreditcards(List<CreditCard> creditcards) {
         this.creditcards = creditcards;
+    }
+
+    public void setType(Roles type) {
+        this.type = type;
     }
 }

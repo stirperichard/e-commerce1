@@ -60,13 +60,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p>By creating an account with our store, you will be able to move through the checkout process
                             faster, store multiple shipping addresses, view and track your orders in your account and
                             more.</p>
-                        <a class="acount-btn" href="account.jsp">Create an Account Consumer</a>
+                        <a class="acount-btn" href="account.jsp?type=Consumer">Create an Account Consumer</a>
                         <br><br><br>
                         <h3>Register as Company</h3>
                         <p>By creating an account with our store, you will be able to move through the checkout process
                             faster, store multiple shipping addresses, view and track your orders in your account and
                             more.</p>
-                        <a class="acount-btn" href="account.jsp">Create an Account Producer</a>
+                        <a class="acount-btn" href="account.jsp?type=Producer">Create an Account Producer</a>
                     </div>
 
                     <div class="col-md-6 login-right">
@@ -74,12 +74,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p>By creating an account with our store, you will be able to move through the checkout process
                             faster, store multiple shipping addresses, view and track your orders in your account and
                             more.</p>
-                        <a class="acount-btn" href="account.jsp">Create an Account Consumer</a>
+                        <a class="acount-btn" href="account.jsp?type=Charity">Create an Account Consumer</a>
                         <br><br><br>
 
                     </div>
-
-
                     <div class="clearfix"></div>
                 </div>
             </div>

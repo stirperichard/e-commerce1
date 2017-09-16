@@ -2,6 +2,8 @@
 <%@ page import="com.afjcjsbx.eshop.entity.login.Consumer" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.Producer" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.Charity" %>
+<%@ page import="com.afjcjsbx.eshop.entity.login.AbstractUser" %>
+<%@ page import="com.afjcjsbx.eshop.enums.Roles" %>
 <%--
   Created by IntelliJ IDEA.
   User: Richard
@@ -32,76 +34,93 @@
     String type = request.getParameter("type");
 
 
-    if ((mail == confirm_mail) && (password == confirm_password)) {
+    if ( !(mail.isEmpty()) && !(password.isEmpty()) && (mail == confirm_mail) && (password == confirm_password)) {
 
         RegistrationController controller = new RegistrationController();
 
-        if ((type.equals("Consumer"))) {
-            Consumer consumer = new Consumer();
-            consumer.setName(name);
-            consumer.setSurname(surname);
-            consumer.setEmail(mail);
-            consumer.setUsername(username);
-            consumer.setPassword(password);
-            consumer.setAddress1(address);
-            consumer.setAddress2(address2);
-            consumer.setCountry(country);
-            consumer.setState(state);
-            consumer.setCity(city);
-            consumer.setZip_code(cap);
-            consumer.setPhone(telephone);
-            consumer.setPayPalAccount(paypal);
-            consumer.setWebsite(website);
-            session.setAttribute("currentSessionUser", consumer);
+        if(type.equals("Consumer")){
+            Consumer user = new Consumer();
+            user.setName(name);
+            user.setSurname(surname);
+            user.setEmail(mail);
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setAddress1(address);
+            user.setAddress2(address2);
+            user.setCountry(country);
+            user.setState(state);
+            user.setCity(city);
+            user.setZip_code(cap);
+            user.setPhone(telephone);
+            user.setPayPalAccount(paypal);
+            user.setWebsite(website);
 
-            if (controller.register_consumer(consumer)) {
-                response.sendRedirect("userRegistered.jsp");
+            session.setAttribute("currentSessionUser", user);
+
+            if (controller.FindByEmail(mail) && controller.FindByUsername(username)) {
+                if(controller.register_user(user)){
+                    response.sendRedirect("userRegistered.jsp");
+                } else {
+                    response.sendRedirect("InvalidRegistration.jsp");
+                }
             } else {
                 response.sendRedirect("InvalidRegistration.jsp");
             }
-        } else if (type.equals("Producer")) {
-            Producer producer = new Producer();
-            producer.setName(name);
-            producer.setSurname(surname);
-            producer.setEmail(mail);
-            producer.setUsername(username);
-            producer.setPassword(password);
-            producer.setAddress1(address);
-            producer.setAddress2(address2);
-            producer.setCountry(country);
-            producer.setState(state);
-            producer.setCity(city);
-            producer.setZip_code(cap);
-            producer.setPhone(telephone);
-            producer.setPayPalAccount(paypal);
-            producer.setWebsite(website);
-            session.setAttribute("currentSessionUser", producer);
 
-            if (controller.register_producer(producer)) {
-                response.sendRedirect("userRegistered.jsp");
+        } else if(type.equals("Producer")){
+            Producer user = new Producer();
+            user.setName(name);
+            user.setSurname(surname);
+            user.setEmail(mail);
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setAddress1(address);
+            user.setAddress2(address2);
+            user.setCountry(country);
+            user.setState(state);
+            user.setCity(city);
+            user.setZip_code(cap);
+            user.setPhone(telephone);
+            user.setPayPalAccount(paypal);
+            user.setWebsite(website);
+
+            session.setAttribute("currentSessionUser", user);
+
+            if (controller.FindByEmail(mail) && controller.FindByUsername(username)) {
+                if(controller.register_user(user)){
+                    response.sendRedirect("userRegistered.jsp");
+                } else {
+                    response.sendRedirect("InvalidRegistration.jsp");
+                }
             } else {
                 response.sendRedirect("InvalidRegistration.jsp");
             }
-        } else if(type.equals("Charity")) {
-            Charity charity = new Charity();
-            charity.setName(name);
-            charity.setSurname(surname);
-            charity.setEmail(mail);
-            charity.setUsername(username);
-            charity.setPassword(password);
-            charity.setAddress1(address);
-            charity.setAddress2(address2);
-            charity.setCountry(country);
-            charity.setState(state);
-            charity.setCity(city);
-            charity.setZip_code(cap);
-            charity.setPhone(telephone);
-            charity.setPayPalAccount(paypal);
-            charity.setWebsite(website);
-            session.setAttribute("currentSessionUser", charity);
 
-            if (controller.register_charity(charity)) {
-                response.sendRedirect("userRegistered.jsp");
+        }else if(type.equals("Charity")){
+            Charity user = new Charity();
+            user.setName(name);
+            user.setSurname(surname);
+            user.setEmail(mail);
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setAddress1(address);
+            user.setAddress2(address2);
+            user.setCountry(country);
+            user.setState(state);
+            user.setCity(city);
+            user.setZip_code(cap);
+            user.setPhone(telephone);
+            user.setPayPalAccount(paypal);
+            user.setWebsite(website);
+
+            session.setAttribute("currentSessionUser", user);
+
+            if (controller.FindByEmail(mail) && controller.FindByUsername(username)) {
+                if(controller.register_user(user)){
+                    response.sendRedirect("userRegistered.jsp");
+                } else {
+                    response.sendRedirect("InvalidRegistration.jsp");
+                }
             } else {
                 response.sendRedirect("InvalidRegistration.jsp");
             }

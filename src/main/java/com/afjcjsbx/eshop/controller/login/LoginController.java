@@ -12,19 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginController extends AbstractController {
-
-	/*
-	private AjaxResponse logon(){}
-
-
-	public @ResponseBody String jsonLogon(){
-	}
-	
-    private ShoppingCartData populateShoppingCartData(){}
-
-*/
-
-
     private static AbstractUser retrieveUserInfoFromDatabaseQuery(ResultSet resultSet) throws SQLException {
 
         String u_name = resultSet.getString("Name"),

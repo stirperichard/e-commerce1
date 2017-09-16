@@ -7,6 +7,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%
     String tipo = request.getParameter("type");
+    if(tipo != null){
+        System.out.println(tipo);
+    }
 %>
 <!DOCTYPE HTML>
 <html>
@@ -159,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"></div>
                 <br><br>
                 <div class="register-but">
-                    <form>
+                    <form action="send_registration.jsp">
                         <input type="submit" value="submit">
                         <div class="clearfix"></div>
                     </form>

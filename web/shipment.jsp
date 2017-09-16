@@ -15,22 +15,19 @@
 private DeliveryStatus s; %>
 <%
     if (request.getParameter("check") != null){
-        String string_date = request.getParameter("date");
         String tracking = request.getParameter("tracking");
 
-        if (tracking != null && string_date != null) {
+        if (tracking != null) {
 
             try {
-                s = ShipmentController.shipment(tracking, string_date);
+                s = ShipmentController.shipment(tracking);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-            System.out.println(s);
-
             if (s != null) {
                 if (s == DeliveryStatus.NOT_FOUND) {
-                    label = "Username o ShipID non validi";
+                    label = "Spedizione non trovata";
                 } else if (s == DeliveryStatus.NOTSENT) {
                     label = "Da spedire";
                 } else if (s == DeliveryStatus.SENT) {
@@ -95,9 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <form method="post" action="shipment.jsp" name="nomeform">
                         <fieldset>
                             <label for="tracking">Tracking ID : </label><br>
-                            <input type="text" NAME="tracking" id="tracking" required><br>
-                            <label for="date">Date: </label><br>
-                            <input type="date" NAME="date" id="date" required><br><br>
+                            <input type="text" NAME="tracking" id="tracking" required><br><br>
                             <input type="submit" name="check" value="Check"><br><br><br>
                             <% if (s != null){ %>
                             <label>Stato : </label> <%= label %>
