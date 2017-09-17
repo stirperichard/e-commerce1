@@ -4,13 +4,7 @@
 <%@ page import="com.afjcjsbx.eshop.entity.login.Charity" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.AbstractUser" %>
 <%@ page import="com.afjcjsbx.eshop.enums.Roles" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Richard
-  Date: 17/02/2017
-  Time: 16:19
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" session="true"%>
 
@@ -33,12 +27,12 @@
     String paypal = request.getParameter("paypal");
     String type = request.getParameter("type");
 
-
-    if ( !(mail.isEmpty()) && !(password.isEmpty()) && (mail == confirm_mail) && (password == confirm_password)) {
+    if ((mail.equals(confirm_mail)) && (password.equals(confirm_password))) {
 
         RegistrationController controller = new RegistrationController();
 
         if(type.equals("Consumer")){
+
             Consumer user = new Consumer();
             user.setName(name);
             user.setSurname(surname);
@@ -54,11 +48,12 @@
             user.setPhone(telephone);
             user.setPayPalAccount(paypal);
             user.setWebsite(website);
+            user.setType(Roles.CONSUMER);
 
             session.setAttribute("currentSessionUser", user);
 
             if (controller.FindByEmail(mail) && controller.FindByUsername(username)) {
-                if(controller.register_user(user)){
+                if(controller.register_user(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal, Roles.CONSUMER)){
                     response.sendRedirect("userRegistered.jsp");
                 } else {
                     response.sendRedirect("InvalidRegistration.jsp");
@@ -68,6 +63,7 @@
             }
 
         } else if(type.equals("Producer")){
+
             Producer user = new Producer();
             user.setName(name);
             user.setSurname(surname);
@@ -83,11 +79,12 @@
             user.setPhone(telephone);
             user.setPayPalAccount(paypal);
             user.setWebsite(website);
+            user.setType(Roles.PRODUCER);
 
             session.setAttribute("currentSessionUser", user);
 
             if (controller.FindByEmail(mail) && controller.FindByUsername(username)) {
-                if(controller.register_user(user)){
+                if(controller.register_user(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal, Roles.PRODUCER)){
                     response.sendRedirect("userRegistered.jsp");
                 } else {
                     response.sendRedirect("InvalidRegistration.jsp");
@@ -97,6 +94,7 @@
             }
 
         }else if(type.equals("Charity")){
+
             Charity user = new Charity();
             user.setName(name);
             user.setSurname(surname);
@@ -112,11 +110,12 @@
             user.setPhone(telephone);
             user.setPayPalAccount(paypal);
             user.setWebsite(website);
+            user.setType(Roles.CHARITY);
 
             session.setAttribute("currentSessionUser", user);
 
             if (controller.FindByEmail(mail) && controller.FindByUsername(username)) {
-                if(controller.register_user(user)){
+                if(controller.register_user(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal, Roles.CHARITY)){
                     response.sendRedirect("userRegistered.jsp");
                 } else {
                     response.sendRedirect("InvalidRegistration.jsp");
@@ -125,6 +124,8 @@
                 response.sendRedirect("InvalidRegistration.jsp");
             }
         }
+    } else {
+        System.out.println("Mail o Password diversi");
     }
 %>
 

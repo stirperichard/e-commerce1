@@ -47,7 +47,6 @@ public class LoginController extends AbstractController {
         if (resultSet.next()) {
             return retrieveUserInfoFromDatabaseQuery(resultSet);
         }
-
         throw new SQLException();
     }
 
@@ -60,7 +59,6 @@ public class LoginController extends AbstractController {
 
         System.out.println("Welcome " + email + " " + password);
 
-
         ResultSet resultSet = preparedStatement.executeQuery();
 
         if (resultSet.next()) {
@@ -69,6 +67,4 @@ public class LoginController extends AbstractController {
 
         throw new SQLException();
     }
-
-
 }

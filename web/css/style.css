@@ -1141,7 +1141,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
     text-transform: uppercase;
 }
 
-.register-top-grid input[type="text"], .register-top-grid input[type="tel"], .register-top-grid input[type="email"], .register-top-grid input[type="password"], .register-top-grid input[id="country"], .register-top-grid input[id="state"], .register-bottom-grid input[type="text"], .register-bottom-grid input[type="password"], .register-bottom-grid input[type="tel"], .register-bottom-grid input[type="email"]{
+.register-top-grid input[type="text"], .register-top-grid input[type="tel"], .register-top-grid input[type="email"], .register-top-grid input[type="password"], .register-bottom-grid input[type="text"], .register-bottom-grid input[type="password"], .register-bottom-grid input[type="tel"], .register-bottom-grid input[type="email"]{
     border: 1px solid #555;
     outline-color: #FD9F3E;
     width: 96%;
@@ -1162,22 +1162,6 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="password
     position: relative;
     font-size: 0.85em;
     color: #555;
-}
-
-select#state{
-    border: 1px solid #555;
-    outline-color: #FD9F3E;
-    width: 96%;
-    font-size: 1em;
-    padding: 0.5em;
-}
-
-select#country{
-    border: 1px solid #555;
-    outline-color: #FD9F3E;
-    width: 96%;
-    font-size: 1em;
-    padding: 0.5em;
 }
 
 .checkbox:last-child {
@@ -1243,11 +1227,11 @@ select#country{
     color: #00BFF0;
 }
 
-.register-but {
+.register-top-grid {
     margin-top: 1em;
 }
 
-.register-but form input[type="submit"] {
+.register-top-grid input[type="submit"] {
     border: 2px solid #000;
     color: #000;
     font-size: 1.2em;
@@ -1262,7 +1246,7 @@ select#country{
     background-color: #fff;
 }
 
-.register-but input[type="submit"]:hover {
+.register-top-grid input[type="submit"]:hover {
     background: #000;
     color: #fff;
 }
@@ -3212,7 +3196,7 @@ address {
         font-size: 1.25em;
     }
 
-    .register-but form input[type="submit"] {
+    .register-top-grid input[type="submit"] {
         font-size: 0.9em;
     }
 

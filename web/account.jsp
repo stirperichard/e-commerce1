@@ -7,9 +7,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%
     String tipo = request.getParameter("type");
-    if(tipo != null){
-        System.out.println(tipo);
-    }
 %>
 <!DOCTYPE HTML>
 <html>
@@ -54,13 +51,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--header-->
 <%@ include file="header_menu.jsp" %>
 <!--header-->
-<script src="countries.js"></script>
 <div class="content">
     <!-- registration -->
     <div class="main-1">
         <div class="container">
             <div class="register">
-                <form action="send_registration.jsp">
+                <form action="send_registration.jsp" method="post">
                     <div class="register-top-grid">
                         <h3>PERSONAL INFORMATION</h3>
                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
@@ -103,24 +99,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Address 2<label>*</label></span>
                             <input type="text" name="address2" id="address2">
                         </div>
-                        <div class="wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>Country<label>*</label></span>
-                            <form id="countryform">
-                                <select id="country" name="country" required></select>
-                            </form>
+                            <input type="text" name="country" id="country" required>
                         </div>
-                        <div class="wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>State<label>*</label></span>
-                            <form id="stateform">
-                                <select name="state" id="state" required></select>
-                            </form>
+                            <input type="text" name="state" id="state" required>
                         </div>
-
-                        <script language="javascript">
-                            populateCountries("country", "state");
-                        </script>
-
-                        <div class="wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>City<label>*</label></span>
                             <input type="text" name="city" id="city" required>
                         </div>
@@ -156,17 +143,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Paypal Account<label>*</label></span>
                             <input type="email" name="paypal" id="paypal">
                         </div>
-                        <div class="clearfix"></div>
+                        <div style="visibility: hidden">
+                            <span>Hidden div<label>*</label></span>
+                            <input type="text">
+                        </div>
+                        <div >
+                            <input type="submit" value="submit">
+                        </div>
                     </div>
                 </form>
                 <div class="clearfix"></div>
-                <br><br>
-                <div class="register-but">
-                    <form action="send_registration.jsp">
-                        <input type="submit" value="submit">
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
