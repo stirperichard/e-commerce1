@@ -13,6 +13,8 @@ public class FactoryUsers {
                 return new Consumer();
             case "A":
                 return new Admin();
+            case "H":
+                return new Charity();
             default:
                 return new Guest();
         }

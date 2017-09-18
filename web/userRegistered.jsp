@@ -52,9 +52,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="content">
         <div class="contact">
             <div class="container">
-                <META http-equiv="refresh" content="3;URL=index.jsp">
+                <META http-equiv="refresh" content="5;URL=index.jsp">
 
-                <h2>User register successfully. You will be redirecting to homepage in 3 seconds</h2>
+                <h2>User register successfully. You will be redirecting to homepage in 5 seconds</h2>
 
                 <a href="/"><h2>Return to base</h2></a>
                 <br><br>

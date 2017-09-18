@@ -38,5 +38,5 @@ public class Query {
 
     public static final String FIND_USER_BY_USERNAME = "SELECT * FROM users WHERE Username = ?"; //Creato da Richard
 
-    public static final String INSERT_USER = "INSERT INTO users (Username, Mail, Password, Name, Surname, Address1, Address2, City, State, PostalCode, Country, Phone, Website, PaypalAccount, Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //Creato da Richard
+    public static final String INSERT_USER = "INSERT INTO users (Username, Mail, Password, Name, Surname, Address1, Address2, City, State, PostalCode, Country, Phone, Website, PayPalAccount, Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //Creato da Richard
 }

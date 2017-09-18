@@ -34,7 +34,6 @@
             }
             //Compio il carrello della sessione precedente
             if (user != null) {
-
                 if (user.isValid()) {
 
                     session.setAttribute("currentSessionUser", user);
@@ -43,15 +42,10 @@
                 } else {
                     response.sendRedirect("invalid_login.jsp"); //error page
                 }
-
             }
-
-
         }
     }
 %>
-
-
 <%
     ShoppingCartController shoppingCartController = new ShoppingCartController();
 
@@ -76,12 +70,17 @@
             <h2>Login</h2>
             <br>
             <p><b>I'm already an ESHOP user</b><br>Enter your e-mail address and password to log into the website.</p>
-            <form action="">
-                <input type="text" name="email">
+            <form action="" method="post">
+                <input type="text" name="email" value="Insert mail" onfocus="myFunction(this)">
                 <br><br>
-                <input type="password" name="password">
+                <input type="password" name="password" value="Insert password" onfocus="myFunction(this)">
                 <br><br>
                 <a class="forgot" href="#">Forgot Your Password?</a>
+                <script>
+                    function myFunction(x) {
+                        x.value = "";
+                    }
+                </script>
                 <br>
                 <br>
                 <div class="contact-right">
