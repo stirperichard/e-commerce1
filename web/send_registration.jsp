@@ -4,6 +4,7 @@
 <%@ page import="com.afjcjsbx.eshop.entity.login.Charity" %>
 <%@ page import="com.afjcjsbx.eshop.entity.login.AbstractUser" %>
 <%@ page import="com.afjcjsbx.eshop.enums.Roles" %>
+<%@ page import="java.sql.SQLException" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" session="true"%>
@@ -27,28 +28,18 @@
     String paypal = request.getParameter("paypal");
     String type = request.getParameter("type");
 
-    if ((mail.equals(confirm_mail)) && (password.equals(confirm_password))) {
+    RegistrationController controller = new RegistrationController();
+    AbstractUser user = null;
 
-        RegistrationController controller = new RegistrationController();
+    if ((mail.equals(confirm_mail)) && (password.equals(confirm_password))) {
 
         if(type.equals("Consumer")){
 
-            Consumer user = new Consumer();
-            user.setName(name);
-            user.setSurname(surname);
-            user.setEmail(mail);
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setAddress1(address);
-            user.setAddress2(address2);
-            user.setCountry(country);
-            user.setState(state);
-            user.setCity(city);
-            user.setZip_code(cap);
-            user.setPhone(telephone);
-            user.setPayPalAccount(paypal);
-            user.setWebsite(website);
-            user.setType(Roles.CONSUMER);
+            try {
+                user = controller.create_user(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal, Roles.CONSUMER);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             session.setAttribute("currentSessionUser", user);
 
@@ -64,22 +55,12 @@
 
         } else if(type.equals("Producer")){
 
-            Producer user = new Producer();
-            user.setName(name);
-            user.setSurname(surname);
-            user.setEmail(mail);
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setAddress1(address);
-            user.setAddress2(address2);
-            user.setCountry(country);
-            user.setState(state);
-            user.setCity(city);
-            user.setZip_code(cap);
-            user.setPhone(telephone);
-            user.setPayPalAccount(paypal);
-            user.setWebsite(website);
-            user.setType(Roles.PRODUCER);
+
+            try {
+                user = controller.create_user(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal, Roles.PRODUCER);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             session.setAttribute("currentSessionUser", user);
 
@@ -95,22 +76,11 @@
 
         }else if(type.equals("Charity")){
 
-            Charity user = new Charity();
-            user.setName(name);
-            user.setSurname(surname);
-            user.setEmail(mail);
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setAddress1(address);
-            user.setAddress2(address2);
-            user.setCountry(country);
-            user.setState(state);
-            user.setCity(city);
-            user.setZip_code(cap);
-            user.setPhone(telephone);
-            user.setPayPalAccount(paypal);
-            user.setWebsite(website);
-            user.setType(Roles.CHARITY);
+            try {
+                user = controller.create_user(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal, Roles.CHARITY);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             session.setAttribute("currentSessionUser", user);
 

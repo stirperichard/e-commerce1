@@ -1,6 +1,7 @@
 package com.afjcjsbx.eshop.controller.registration;
 
 import com.afjcjsbx.eshop.controller.AbstractController;
+import com.afjcjsbx.eshop.entity.login.AbstractUser;
 import com.afjcjsbx.eshop.entity.login.*;
 import com.afjcjsbx.eshop.enums.Roles;
 import com.afjcjsbx.eshop.persistence.DataSource;
@@ -9,8 +10,6 @@ import com.afjcjsbx.eshop.persistence.Query;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import static com.afjcjsbx.eshop.enums.Roles.CONSUMER;
 
 /**
  * Created by Richard on 07/02/2017.
@@ -43,7 +42,31 @@ public class RegistrationController extends AbstractController {
         return true;
     }
 
-    public boolean register_user(String username, String mail, String password, String name, String surname, String address, String address2, String city, String state, String cap, String country, String telephone, String website, String paypal, Roles roles) throws SQLException {
+
+
+    public AbstractUser create_user(String username, String mail, String password, String name, String surname, String address, String address2, String city, String state, String cap, String country, String telephone, String website, String paypal, Roles roles) throws SQLException {
+
+        Consumer user = new Consumer();
+        user.setName(name);
+        user.setSurname(surname);
+        user.setEmail(mail);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setAddress1(address);
+        user.setAddress2(address2);
+        user.setCountry(country);
+        user.setState(state);
+        user.setCity(city);
+        user.setZip_code(cap);
+        user.setPhone(telephone);
+        user.setPayPalAccount(paypal);
+        user.setWebsite(website);
+        user.setType(roles);
+
+        return user;
+    }
+
+        public boolean register_user(String username, String mail, String password, String name, String surname, String address, String address2, String city, String state, String cap, String country, String telephone, String website, String paypal, Roles roles) throws SQLException {
 
         String role;
         if(String.valueOf(roles).equals("CONSUMER")){
@@ -57,10 +80,6 @@ public class RegistrationController extends AbstractController {
         } else {
             role = "G";
         }
-
-        System.out.println(roles);
-        System.out.println(role);
-        System.out.println(String.valueOf(roles));
 
         try {
 

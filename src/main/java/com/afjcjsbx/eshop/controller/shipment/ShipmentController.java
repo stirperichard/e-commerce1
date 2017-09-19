@@ -1,16 +1,13 @@
 package com.afjcjsbx.eshop.controller.shipment;
 
-import com.afjcjsbx.eshop.entity.shipment.Shipment;
 import com.afjcjsbx.eshop.enums.shipment.DeliveryStatus;
 import com.afjcjsbx.eshop.persistence.DataSource;
 import com.afjcjsbx.eshop.persistence.Query;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by Richard on 07/02/2017.
@@ -18,8 +15,6 @@ import java.text.SimpleDateFormat;
 public class ShipmentController {
 
     private static DeliveryStatus retrieveShipmentStatus(ResultSet resultSet) throws SQLException, ParseException {
-        DeliveryStatus ds = null;
-        String s_tracking = resultSet.getString("ShipmentTrack");
         String s_status = resultSet.getString("ShipmentStatus");
 
         if (s_status.equals("NOT_FOUND")){
