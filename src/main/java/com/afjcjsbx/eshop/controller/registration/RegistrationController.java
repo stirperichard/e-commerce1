@@ -46,7 +46,20 @@ public class RegistrationController extends AbstractController {
 
     public AbstractUser create_user(String username, String mail, String password, String name, String surname, String address, String address2, String city, String state, String cap, String country, String telephone, String website, String paypal, Roles roles) throws SQLException {
 
-        Consumer user = new Consumer();
+        AbstractUser user;
+
+        if(String.valueOf(roles).equals("CONSUMER")){
+            user = new Consumer();
+        }else if(String.valueOf(roles).equals("PRODUCER")){
+            user = new Producer();
+        } else if(String.valueOf(roles).equals("CHARITY")){
+            user = new Charity();
+        } else if(String.valueOf(roles).equals("ADMINISTRATOR")){
+            user = new Admin();
+        } else {
+            user = new Guest();
+        }
+
         user.setName(name);
         user.setSurname(surname);
         user.setEmail(mail);
@@ -68,37 +81,38 @@ public class RegistrationController extends AbstractController {
 
         public boolean register_user(String username, String mail, String password, String name, String surname, String address, String address2, String city, String state, String cap, String country, String telephone, String website, String paypal, Roles roles) throws SQLException {
 
-        String role;
+        AbstractUser user;
+
         if(String.valueOf(roles).equals("CONSUMER")){
-            role = "C";
+            user = new Consumer(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal);
         }else if(String.valueOf(roles).equals("PRODUCER")){
-            role = "P";
+            user = new Producer(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal);
         } else if(String.valueOf(roles).equals("CHARITY")){
-            role = "H";
+            user = new Charity(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal);
         } else if(String.valueOf(roles).equals("ADMINISTRATOR")){
-            role = "A";
+            user = new Admin(username, mail, password, name, surname, address, address2, city, state, cap, country, telephone, website, paypal);
         } else {
-            role = "G";
+            user = new Guest();
         }
 
         try {
 
             PreparedStatement preparedStatement = DataSource.getConnection().prepareStatement(Query.INSERT_USER);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, mail);
-            preparedStatement.setString(3, password);
-            preparedStatement.setString(4, name);
-            preparedStatement.setString(5, surname);
-            preparedStatement.setString(6, address);
-            preparedStatement.setString(7, address2);
-            preparedStatement.setString(8, city);
-            preparedStatement.setString(9, state);
-            preparedStatement.setString(10, cap);
-            preparedStatement.setString(11, country);
-            preparedStatement.setString(12, telephone);
-            preparedStatement.setString(13, website);
-            preparedStatement.setString(14, paypal);
-            preparedStatement.setString(15, role);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getName());
+            preparedStatement.setString(5, user.getSurname());
+            preparedStatement.setString(6, user.getAddress1());
+            preparedStatement.setString(7, user.getAddress2());
+            preparedStatement.setString(8, user.getCity());
+            preparedStatement.setString(9, user.getState());
+            preparedStatement.setString(10, user.getZip_code());
+            preparedStatement.setString(11, user.getCountry());
+            preparedStatement.setString(12, user.getPhone());
+            preparedStatement.setString(13, user.getWebsite());
+            preparedStatement.setString(14, user.getPayPalAccount());
+            preparedStatement.setString(15, String.valueOf(user.getRoles()));
 
             int rowsInserted = preparedStatement.executeUpdate();
 
